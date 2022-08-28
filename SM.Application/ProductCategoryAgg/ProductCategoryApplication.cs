@@ -4,7 +4,7 @@ using BaseFramwork.Application;
 using _0_Framework.Application;
 using ShopManagement.Domain.ProductCategoryAgg;
 
-namespace ShopManagement.Application;
+namespace ShopManagement.Application.ProductCategoryAgg;
 
 public class ProductCategoryApplication : IProductCategoryApplication
 {
@@ -39,7 +39,7 @@ public class ProductCategoryApplication : IProductCategoryApplication
         if (productCategory is null)
             return operationResult.Faild("اطلاعات مورد نظر یافت نشد");
 
-        if(ProductCategoryRepository.Exist(x => x.Name == editProductCategory.Name && x.Id != editProductCategory.Id))
+        if (ProductCategoryRepository.Exist(x => x.Name == editProductCategory.Name && x.Id != editProductCategory.Id))
             return operationResult.Faild("نام ثبت شده تکراری است لطفا مجدد تلاش کنید");
 
         productCategory.Edit(editProductCategory.Name, editProductCategory.Description,
