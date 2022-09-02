@@ -5,8 +5,8 @@ namespace BaseFramwork.Repository;
 public interface IBaseRepository<TKeyType, T> where T : class
 {
     void Create(T entity);
-    T GetBy(TKeyType id);
+    T? GetBy(TKeyType id);
     List<T> GetList();
     bool Exist(Expression<Func<T, bool>> expression);
-    void SaveChanges();
+    void SaveChanges(T entity);
 }

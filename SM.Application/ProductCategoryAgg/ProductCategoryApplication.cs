@@ -27,7 +27,6 @@ public class ProductCategoryApplication : IProductCategoryApplication
             createProductCategory.MetaDescription, createProductCategory.Slug.ModifySlug());
 
         ProductCategoryRepository.Create(productCategory);
-        ProductCategoryRepository.SaveChanges();
         return operationResult.Success();
     }
 
@@ -47,11 +46,11 @@ public class ProductCategoryApplication : IProductCategoryApplication
             editProductCategory.PictureTitle, editProductCategory.Keywords,
             editProductCategory.MetaDescription, editProductCategory.Slug.ModifySlug());
 
-        ProductCategoryRepository.SaveChanges();
+        ProductCategoryRepository.SaveChanges(productCategory);
         return operationResult.Success();
     }
 
-    public EditProductCategory GetDetail(long id)
+    public EditProductCategory? GetDetail(long id)
     {
         return ProductCategoryRepository.GetDetail(id);
     }
@@ -61,4 +60,23 @@ public class ProductCategoryApplication : IProductCategoryApplication
         return ProductCategoryRepository.Search(productCategorySearchModel);
     }
 
+    public void Delete(long id)
+    {
+        var category = ProductCategoryRepository.GetBy(id);
+        if (category is null)
+            throw new NullReferenceException();
+
+        category.DeActive();
+        ProductCategoryRepository.SaveChanges(category);
+    }
+
+    public void Restore(long id)
+    {
+        var category = ProductCategoryRepository.GetBy(id);
+        if (category is null)
+            throw new NullReferenceException();
+
+        category.Active();
+        ProductCategoryRepository.SaveChanges(category);
+    }
 }

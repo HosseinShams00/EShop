@@ -1,4 +1,5 @@
 ﻿using BaseFramwork.Repository;
+using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Constracts.ProductCategroy;
 using ShopManagement.Application.Constracts.ProductCategroy.Command;
 using ShopManagement.Domain.ProductCategoryAgg;
@@ -14,7 +15,7 @@ public class ProductCategoryRepository : BaseRepository<long, ProductCategory>, 
         Context = context;
     }
 
-    public EditProductCategory GetDetail(long id)
+    public EditProductCategory? GetDetail(long id)
     {
         return Context.ProductCategories.Select(x => new EditProductCategory()
         {
@@ -36,12 +37,18 @@ public class ProductCategoryRepository : BaseRepository<long, ProductCategory>, 
             Id = x.Id,
             Picture = x.Picture,
             Name = x.Name,
-            CreationTime = x.CreationTime.ToString()
+            CreationTime = x.CreationTime.ToString(),
+            IsRemoved = x.IsRemoved,
+            Description = x.Description,
+
         });
 
         if (!string.IsNullOrWhiteSpace(productCategorySearchModel.Name))
             query = query.Where(x => x.Name.Contains(productCategorySearchModel.Name));
 
-        return query.OrderByDescending(x => x.Id).ToList();
+        if (productCategorySearchModel.IsRemoved == false)
+            query = query.Where(q => q.IsRemoved == false);
+
+        return query.OrderByDescending(x => x.Id).AsNoTracking().ToList();
     }
 }

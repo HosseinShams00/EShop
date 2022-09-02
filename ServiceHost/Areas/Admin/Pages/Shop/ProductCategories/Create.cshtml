@@ -1,0 +1,53 @@
+﻿@page
+@model ServiceHost.Areas.Admin.Pages.Shop.ProductCategories.CreateModel
+@{
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="نام دسته بندی" class="form-control" asp-for="createProductCategory.Name" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="slug" class="form-control" asp-for="createProductCategory.Slug" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="Keywords" class="form-control" asp-for="createProductCategory.Keywords" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="ادرس عکس" class="form-control" asp-for="createProductCategory.Picture" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="alt عکس" class="form-control" asp-for="createProductCategory.PictureAlt" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="تایتل عکس" class="form-control" asp-for="createProductCategory.PictureTitle" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="Meta Description" class="form-control" asp-for="createProductCategory.MetaDescription" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>توضیحات دسته بندی</label>
+                <textarea asp-for="createProductCategory.Description" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+
+        <button type="submit"class="btn bg-gradient-success">تایید</button>
+
+    </div>
+</form>

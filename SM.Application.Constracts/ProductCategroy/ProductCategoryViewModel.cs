@@ -8,4 +8,5 @@ public class ProductCategoryViewModel
     public string Picture { get; set; }
     public string CreationTime { get; set; }
     public long ProductsCount { get; set; }
+    public bool IsRemoved { get; set; }
 }
