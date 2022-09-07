@@ -22,7 +22,7 @@ public class ProductApplication : IProductApplication
     public void Create(CreateProduct createProduct)
     {
         if (ProductRepository.Exist(x => x.Name == createProduct.Name))
-            throw new DuplicatedEntityException();
+            throw new DuplicatedEntityNameException();
 
         try
         {
@@ -49,7 +49,7 @@ public class ProductApplication : IProductApplication
             throw new EntityNotFoundException();
 
         if (ProductRepository.Exist(x => x.Name == editProduct.Name && x.Id != editProduct.Id))
-            throw new DuplicatedEntityException();
+            throw new DuplicatedEntityNameException();
 
         try
         {

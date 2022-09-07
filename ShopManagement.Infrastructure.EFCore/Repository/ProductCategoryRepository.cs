@@ -35,17 +35,16 @@ public class ProductCategoryRepository : BaseRepository<long, ProductCategory>, 
 
     public List<ProductCategoryViewModel> GetViewModels()
     {
-        return Context.ProductCategories.Where(x => x.IsRemoved == false)
-            .Select(x => new ProductCategoryViewModel
-            {
-                Id = x.Id,
-                Picture = x.Picture,
-                Name = x.Name,
-                CreationTime = x.CreationTime.ToString(),
-                IsRemoved = x.IsRemoved,
-                Description = x.Description,
+        return Context.ProductCategories.Select(x => new ProductCategoryViewModel
+        {
+            Id = x.Id,
+            Picture = x.Picture,
+            Name = x.Name,
+            CreationTime = x.CreationTime.ToString(),
+            IsRemoved = x.IsRemoved,
+            Description = x.Description,
 
-            }).ToList();
+        }).ToList();
     }
 
     public List<ProductCategoryViewModel> Search(ProductCategorySearchModel productCategorySearchModel)

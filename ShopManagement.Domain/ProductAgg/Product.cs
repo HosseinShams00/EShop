@@ -1,5 +1,6 @@
 ﻿using BaseFramwork.Domain;
 using ShopManagement.Domain.ProductCategoryAgg;
+using ShopManagement.Domain.ProductPictureAgg;
 
 namespace ShopManagement.Domain.ProductAgg;
 
@@ -16,10 +17,11 @@ public class Product : ProductBase
     public string Slug { get; private set; }
     public long ProductCategoryId { get; private set; }
     public ProductCategory ProductCategory { get; private set; }
+    public IReadOnlyCollection<ProductPicture> ProductPictures { get; private set; }
 
     protected Product()
     {
-
+        ProductPictures = new List<ProductPicture>();
     }
 
     public Product(string name, string description,

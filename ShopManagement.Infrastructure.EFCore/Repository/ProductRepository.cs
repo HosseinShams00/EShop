@@ -17,9 +17,9 @@ public class ProductRepository : BaseRepository<long, Product>, IProductReposito
 
     public EditProduct? GetDetail(long id)
     {
-        return Context.Products.Select(x => new EditProduct()
+        return Context.Products.AsNoTracking().Select(x => new EditProduct()
         {
-            Id = id,
+            Id = x.Id,
             Name = x.Name,
             Description = x.Description,
             Keywords = x.Keywords,

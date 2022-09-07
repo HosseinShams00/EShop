@@ -47,7 +47,7 @@ public class ProductCategoryApplication : IProductCategoryApplication
             throw new EntityNotFoundException();
 
         if (ProductCategoryRepository.Exist(x => x.Name == editProductCategory.Name && x.Id != editProductCategory.Id))
-            throw new DuplicatedEntityException();
+            throw new DuplicatedEntityNameException();
 
         try
         {
