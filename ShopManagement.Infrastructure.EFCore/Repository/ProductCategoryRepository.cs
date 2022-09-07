@@ -1,8 +1,9 @@
 ﻿using BaseFramwork.Repository;
 using Microsoft.EntityFrameworkCore;
-using ShopManagement.Application.Constracts.ProductCategroy;
-using ShopManagement.Application.Constracts.ProductCategroy.Command;
+using ShopManagement.Application.Constracts.ProductCategroyAgg;
+using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
 using ShopManagement.Domain.ProductCategoryAgg;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ShopManagement.Infrastructure.EFCore.Repository;
 
@@ -29,7 +30,24 @@ public class ProductCategoryRepository : BaseRepository<long, ProductCategory>, 
             PictureTitle = x.PictureTitle,
             Slug = x.Slug
         }).FirstOrDefault(x => x.Id == id);
+
     }
+
+    public List<ProductCategoryViewModel> GetViewModels()
+    {
+        return Context.ProductCategories.Where(x => x.IsRemoved == false)
+            .Select(x => new ProductCategoryViewModel
+            {
+                Id = x.Id,
+                Picture = x.Picture,
+                Name = x.Name,
+                CreationTime = x.CreationTime.ToString(),
+                IsRemoved = x.IsRemoved,
+                Description = x.Description,
+
+            }).ToList();
+    }
+
     public List<ProductCategoryViewModel> Search(ProductCategorySearchModel productCategorySearchModel)
     {
         var query = Context.ProductCategories.Select(x => new ProductCategoryViewModel
@@ -43,7 +61,7 @@ public class ProductCategoryRepository : BaseRepository<long, ProductCategory>, 
 
         });
 
-        if (!string.IsNullOrWhiteSpace(productCategorySearchModel.Name))
+        if (string.IsNullOrWhiteSpace(productCategorySearchModel.Name) == false)
             query = query.Where(x => x.Name.Contains(productCategorySearchModel.Name));
 
         if (productCategorySearchModel.IsRemoved == false)

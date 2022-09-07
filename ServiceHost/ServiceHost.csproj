@@ -27,16 +27,6 @@
     <None Include="wwwroot\AdminTheme\assets\fonts\nucleo-icons.svg" />
     <None Include="wwwroot\AdminTheme\assets\fonts\nucleo-icons.woff2" />
     <None Include="wwwroot\AdminTheme\assets\fonts\nucleo.woff2" />
-    <None Include="wwwroot\AdminTheme\assets\img\down-arrow-dark.svg" />
-    <None Include="wwwroot\AdminTheme\assets\img\down-arrow.svg" />
-    <None Include="wwwroot\AdminTheme\assets\img\shapes\waves-white.svg" />
-    <None Include="wwwroot\AdminTheme\assets\img\small-logos\logo-atlassian.svg" />
-    <None Include="wwwroot\AdminTheme\assets\img\small-logos\logo-invision.svg" />
-    <None Include="wwwroot\AdminTheme\assets\img\small-logos\logo-jira.svg" />
-    <None Include="wwwroot\AdminTheme\assets\img\small-logos\logo-slack.svg" />
-    <None Include="wwwroot\AdminTheme\assets\img\small-logos\logo-spotify.svg" />
-    <None Include="wwwroot\AdminTheme\assets\img\small-logos\logo-webdev.svg" />
-    <None Include="wwwroot\AdminTheme\assets\img\small-logos\logo-xd.svg" />
     <None Include="wwwroot\AdminTheme\assets\js\core\bootstrap.min.js" />
     <None Include="wwwroot\AdminTheme\assets\js\core\popper.min.js" />
     <None Include="wwwroot\AdminTheme\assets\js\plugins\bootstrap-notify.js" />

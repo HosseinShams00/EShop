@@ -1,0 +1,82 @@
+﻿@page
+@model ServiceHost.Areas.Admin.Pages.Shop.Products.EditModel
+@{
+}
+
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="نام محصول" class="form-control" asp-for="editProduct.Name" />
+                <span asp-validation-for="editProduct.Name" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="slug" class="form-control" asp-for="editProduct.Slug" />
+                <span asp-validation-for="editProduct.Name" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="Keywords" class="form-control" asp-for="editProduct.Keywords" />
+                <span asp-validation-for="editProduct.Keywords" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="ادرس عکس" class="form-control" asp-for="editProduct.Picture" />
+                <span asp-validation-for="editProduct.Picture" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="alt عکس" class="form-control" asp-for="editProduct.PictureAlt" />
+                <span asp-validation-for="editProduct.PictureAlt" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="تایتل عکس" class="form-control" asp-for="editProduct.PictureTitle" />
+                <span asp-validation-for="editProduct.PictureTitle" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="Meta Description" class="form-control" asp-for="editProduct.MetaDescription" />
+                <span asp-validation-for="editProduct.MetaDescription" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>توضیحات محصول</label>
+                <textarea asp-for="editProduct.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="editProduct.Description" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>توضیحات کوتاه از محصول</label>
+                <textarea asp-for="editProduct.ShortDecription" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="editProduct.ShortDecription" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">دسته بندی ها</label>
+                <select class="form-control" id="exampleFormControlSelect1" asp-for="editProduct.ProductCategoryId" asp-items='@new SelectList(Model.editProduct.ProductCategroyies,"Id","Name")'>
+                    <option value="0">یک دسته بندی انتخاب کنید</option>
+                </select>
+                <span asp-validation-for="editProduct.ProductCategoryId" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <input type="hidden" asp-for="editProduct.Id" />
+        <button type="submit" class="btn bg-gradient-success">تایید</button>
+
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

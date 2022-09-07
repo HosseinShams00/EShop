@@ -1,6 +1,6 @@
 ﻿using BaseFramwork.Repository;
-using ShopManagement.Application.Constracts.ProductCategroy;
-using ShopManagement.Application.Constracts.ProductCategroy.Command;
+using ShopManagement.Application.Constracts.ProductCategroyAgg;
+using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
 
 
 namespace ShopManagement.Domain.ProductCategoryAgg;
@@ -9,4 +9,5 @@ public interface IProductCategoryRepository : IBaseRepository<long , ProductCate
 {
     EditProductCategory? GetDetail(long id);
     List<ProductCategoryViewModel> Search(ProductCategorySearchModel productCategorySearchModel);
+    List<ProductCategoryViewModel> GetViewModels();
 }

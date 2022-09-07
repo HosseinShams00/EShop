@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShopManagement.Application.Constracts.ProductCategroy;
-using ShopManagement.Application.Constracts.ProductCategroy.Command;
+using ShopManagement.Application.Constracts.ProductCategroyAgg;
+using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories
 {
@@ -20,8 +20,11 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories
             createProductCategory = new();
         }
 
-        public RedirectToPageResult OnPost()
+        public IActionResult OnPost()
         {
+            if (ModelState.IsValid == false)
+                return Page();
+
             productCategoryApplication.Create(createProductCategory);
             return RedirectToPage("./index");
         }

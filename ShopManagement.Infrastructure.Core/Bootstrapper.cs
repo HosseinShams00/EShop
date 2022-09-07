@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ShopManagement.Application.Constracts.ProductCategroy;
+using ShopManagement.Application.Constracts.ProductAgg;
+using ShopManagement.Application.Constracts.ProductCategroyAgg;
+using ShopManagement.Application.ProductAgg;
 using ShopManagement.Application.ProductCategoryAgg;
+using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Infrastructure.EFCore;
 using ShopManagement.Infrastructure.EFCore.Repository;
@@ -16,5 +19,10 @@ public class Bootstrapper
 
         services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
         services.AddTransient<IProductCategoryApplication, ProductCategoryApplication>();
+        services.AddTransient<IProductCategoryValidator, ProductCategoryValidator>();
+
+        services.AddTransient<IProductRepository, ProductRepository>();
+        services.AddTransient<IProductApplication, ProductApplication>();
+        services.AddTransient<IProductValidator, ProductValidator>();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Infrastructure.EFCore.Mapping;
 
@@ -19,6 +20,6 @@ public class EFCoreDbContext : DbContext
 	}
 
 	public DbSet<ProductCategory> ProductCategories { get; set; }
-
+	public DbSet<Product> Products { get; set; }
 
 }

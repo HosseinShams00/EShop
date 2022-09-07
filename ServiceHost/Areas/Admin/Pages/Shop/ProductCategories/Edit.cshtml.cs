@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShopManagement.Application.Constracts.ProductCategroy;
-using ShopManagement.Application.Constracts.ProductCategroy.Command;
+using ShopManagement.Application.Constracts.ProductCategroyAgg;
+using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories
 {
@@ -20,17 +20,13 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories
             editProductCategory = productCategoryApplication.GetDetail(id);
         }
 
-        public RedirectToPageResult OnPost()
+        public IActionResult OnPost()
         {
             if (ModelState.IsValid)
-            {
-                productCategoryApplication.Update(editProductCategory);
-                return RedirectToPage("./index");
-            }
-            return RedirectToPage(".", new { id = editProductCategory.Id });
+                return Page();
 
+            productCategoryApplication.Update(editProductCategory);
+            return RedirectToPage("./index");
         }
-
-
     }
 }

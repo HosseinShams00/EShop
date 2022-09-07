@@ -4,52 +4,64 @@
 }
 
 
+
 <form method="post">
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <input type="text" placeholder="نام دسته بندی" class="form-control" asp-for="editProductCategory.Name" />
+                <span asp-validation-for="editProductCategory.Name" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <input type="text" placeholder="slug" class="form-control" asp-for="editProductCategory.Slug" />
+                <span asp-validation-for="editProductCategory.Slug" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <input type="text" placeholder="Keywords" class="form-control" asp-for="editProductCategory.Keywords" />
+                <span asp-validation-for="editProductCategory.Keywords" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <input type="text" placeholder="ادرس عکس" class="form-control" asp-for="editProductCategory.Picture" />
+                <span asp-validation-for="editProductCategory.Picture" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <input type="text" placeholder="alt عکس" class="form-control" asp-for="editProductCategory.PictureAlt" />
+                <span asp-validation-for="editProductCategory.PictureAlt" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <input type="text" placeholder="تایتل عکس" class="form-control" asp-for="editProductCategory.PictureTitle" />
+                <span asp-validation-for="editProductCategory.PictureTitle" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <input type="text" placeholder="Meta Description" class="form-control" asp-for="editProductCategory.MetaDescription" />
+                <span asp-validation-for="editProductCategory.MetaDescription" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>توضیحات دسته بندی</label>
                 <textarea asp-for="editProductCategory.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="editProductCategory.Description" class="text-danger text-sm"></span>
             </div>
         </div>
-        <input type="hidden" asp-for="editProductCategory.Id" />
 
         <button type="submit" class="btn bg-gradient-success">تایید</button>
 
     </div>
 </form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

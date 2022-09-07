@@ -1,4 +1,4 @@
-﻿namespace ShopManagement.Application.Constracts.Product.Command;
+﻿namespace ShopManagement.Application.Constracts.ProductAgg.Command;
 
 public class EditProduct : CreateProduct
 {

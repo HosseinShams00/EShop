@@ -20,7 +20,7 @@ public class BaseRepository<TKeyType, T> : IBaseRepository<TKeyType, T> where T 
 
     public bool Exist(Expression<Func<T, bool>> expression)
     {
-        return Context.Set<T>().Any(expression);
+        return Context.Set<T>().AsNoTracking().Any(expression);
     }
 
     public T? GetBy(TKeyType id)

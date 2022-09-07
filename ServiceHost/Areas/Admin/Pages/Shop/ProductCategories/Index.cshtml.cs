@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShopManagement.Application.Constracts.ProductCategroy;
+using ShopManagement.Application.Constracts.ProductCategroyAgg;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories;
 
@@ -21,7 +21,6 @@ public class IndexModel : PageModel
     public void OnGet(ProductCategorySearchModel searchModel)
     {
         ViewModel = ProductCategoryApplication.Search(searchModel);
-        //SearchModel = searchModel;
     }
 
     public RedirectToPageResult OnGetRemove(long id)

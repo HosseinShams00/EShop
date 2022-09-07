@@ -1,7 +1,8 @@
-﻿using ShopManagement.Application.Constracts.ProductCategroy;
-using ShopManagement.Application.Constracts.ProductCategroy.Command;
-using BaseFramwork.Application;
-using _0_Framework.Application;
+﻿using _0_Framework.Application;
+using BaseFramwork.Application.Exceptions;
+using ShopManagement.Application.Constracts.ProductCategroyAgg;
+using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
+using ShopManagement.Application.Constracts.ProductCategroyAgg.Exceptions;
 using ShopManagement.Domain.ProductCategoryAgg;
 
 namespace ShopManagement.Application.ProductCategoryAgg;
@@ -9,50 +10,68 @@ namespace ShopManagement.Application.ProductCategoryAgg;
 public class ProductCategoryApplication : IProductCategoryApplication
 {
     private readonly IProductCategoryRepository ProductCategoryRepository;
+    private readonly IProductCategoryValidator validator;
 
-    public ProductCategoryApplication(IProductCategoryRepository productCategoryRepository)
+    public ProductCategoryApplication(IProductCategoryRepository productCategoryRepository, IProductCategoryValidator validator)
     {
         ProductCategoryRepository = productCategoryRepository;
+        this.validator = validator;
     }
 
-    public OperationResult Create(CreateProductCategory createProductCategory)
+    public void Create(CreateProductCategory createProductCategory)
     {
-        OperationResult operationResult = new();
         if (ProductCategoryRepository.Exist(x => x.Name == createProductCategory.Name))
-            return operationResult.Faild("این نام وجود دارد.");
+            throw new DuplicatedProductCategoryNameException();
 
-        var productCategory = new ProductCategory(createProductCategory.Name, createProductCategory.Description,
+        try
+        {
+            var productCategory = new ProductCategory(createProductCategory.Name, createProductCategory.Description,
             createProductCategory.Picture, createProductCategory.PictureAlt,
             createProductCategory.PictureTitle, createProductCategory.Keywords,
-            createProductCategory.MetaDescription, createProductCategory.Slug.ModifySlug());
+            createProductCategory.MetaDescription, createProductCategory.Slug.ModifySlug(), validator);
 
-        ProductCategoryRepository.Create(productCategory);
-        return operationResult.Success();
+            ProductCategoryRepository.Create(productCategory);
+        }
+        catch (Exception ex)
+        {
+            if (ex is Domain.ProductCategoryAgg.Exceptions.DuplicatedProductCategoryNameException)
+                throw new DuplicatedProductCategoryNameException();
+        }
     }
 
-    public OperationResult Update(EditProductCategory editProductCategory)
+    public void Update(EditProductCategory editProductCategory)
     {
-        OperationResult operationResult = new();
         var productCategory = ProductCategoryRepository.GetBy(editProductCategory.Id);
 
         if (productCategory is null)
-            return operationResult.Faild("اطلاعات مورد نظر یافت نشد");
+            throw new EntityNotFoundException();
 
         if (ProductCategoryRepository.Exist(x => x.Name == editProductCategory.Name && x.Id != editProductCategory.Id))
-            return operationResult.Faild("نام ثبت شده تکراری است لطفا مجدد تلاش کنید");
+            throw new DuplicatedEntityException();
 
-        productCategory.Edit(editProductCategory.Name, editProductCategory.Description,
+        try
+        {
+            productCategory.Edit(editProductCategory.Name, editProductCategory.Description,
             editProductCategory.Picture, editProductCategory.PictureAlt,
             editProductCategory.PictureTitle, editProductCategory.Keywords,
-            editProductCategory.MetaDescription, editProductCategory.Slug.ModifySlug());
+            editProductCategory.MetaDescription, editProductCategory.Slug.ModifySlug(), validator);
 
-        ProductCategoryRepository.SaveChanges(productCategory);
-        return operationResult.Success();
+            ProductCategoryRepository.SaveChanges(productCategory);
+        }
+        catch (Exception ex)
+        {
+            if (ex is Domain.ProductCategoryAgg.Exceptions.DuplicatedProductCategoryNameException)
+                throw new DuplicatedProductCategoryNameException();
+        }
     }
 
-    public EditProductCategory? GetDetail(long id)
+    public EditProductCategory GetDetail(long id)
     {
-        return ProductCategoryRepository.GetDetail(id);
+        var detail = ProductCategoryRepository.GetDetail(id);
+        if (detail == null)
+            throw new EntityNotFoundException();
+
+        return detail;
     }
 
     public List<ProductCategoryViewModel> Search(ProductCategorySearchModel productCategorySearchModel)
@@ -64,7 +83,7 @@ public class ProductCategoryApplication : IProductCategoryApplication
     {
         var category = ProductCategoryRepository.GetBy(id);
         if (category is null)
-            throw new NullReferenceException();
+            throw new EntityNotFoundException();
 
         category.DeActive();
         ProductCategoryRepository.SaveChanges(category);
@@ -74,9 +93,14 @@ public class ProductCategoryApplication : IProductCategoryApplication
     {
         var category = ProductCategoryRepository.GetBy(id);
         if (category is null)
-            throw new NullReferenceException();
+            throw new EntityNotFoundException();
 
         category.Active();
         ProductCategoryRepository.SaveChanges(category);
+    }
+
+    public List<ProductCategoryViewModel> GetAll()
+    {
+        return ProductCategoryRepository.GetViewModels();
     }
 }

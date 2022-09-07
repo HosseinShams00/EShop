@@ -1,4 +1,4 @@
-﻿namespace ShopManagement.Application.Constracts.ProductCategroy.Command;
+﻿namespace ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
 
 public class EditProductCategory : CreateProductCategory
 {

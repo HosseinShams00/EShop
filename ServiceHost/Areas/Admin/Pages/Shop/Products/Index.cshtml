@@ -1,5 +1,5 @@
 ﻿@page
-@model ServiceHost.Areas.Admin.Pages.Shop.ProductCategories.IndexModel
+@model ServiceHost.Areas.Admin.Pages.Shop.Products.IndexModel
 @{
 }
 
@@ -9,7 +9,7 @@
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                 <div class="input-group">
                     <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                    <input asp-for="SearchModel.Name" type="text" class="form-control" placeholder="نام کتگوری را بنویسید">
+                    <input asp-for="SearchModel.Name" type="text" class="form-control" placeholder="نام محصول را بنویسید">
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
         <button class="col-3 mx-3 btn bg-gradient-info d-inline-block" type="submit">جستجو</button>
     </form>
     <a class="col-2" asp-page="./Create">
-        <button type="button" class="btn bg-gradient-success">ساخت کتگوری جدید</button>
+        <button type="button" class="btn bg-gradient-success">ساخت محصول جدید</button>
     </a>
 </div>
 <div class="card my-5">

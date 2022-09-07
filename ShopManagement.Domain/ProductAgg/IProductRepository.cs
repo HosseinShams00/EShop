@@ -1,11 +1,11 @@
 ﻿using BaseFramwork.Repository;
-using ShopManagement.Application.Constracts.Product.Command;
+using ShopManagement.Application.Constracts.ProductAgg;
+using ShopManagement.Application.Constracts.ProductAgg.Command;
 
 namespace ShopManagement.Domain.ProductAgg;
 
-public interface IProductRepository : IBaseRepository<long, LaptopProduct>
+public interface IProductRepository : IBaseRepository<long, Product>
 {
-    void Create(CreateProduct createProduct);
     EditProduct? GetDetail(long id);
-    List<ProductViewModel> Search(ProductSearchModel productCategorySearchModel);
+    List<ProductViewModel> Search(ProductSearchModel productSearchModel);
 }
