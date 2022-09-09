@@ -1,4 +1,4 @@
-﻿using _0_Framework.Application;
+﻿using BaseFramwork.Application;
 using BaseFramwork.Application.Exceptions;
 using ShopManagement.Application.Constracts.ProductCategroyAgg;
 using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;

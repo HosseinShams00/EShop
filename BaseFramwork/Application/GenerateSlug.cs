@@ -2,7 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace _0_Framework.Application
+namespace BaseFramwork.Application
 {
     public static class SlugHelper
     {
