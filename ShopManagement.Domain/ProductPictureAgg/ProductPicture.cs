@@ -6,8 +6,8 @@ namespace ShopManagement.Domain.ProductPictureAgg;
 public class ProductPicture : ProductPictureBase
 {
     public string Path { get; private set; }
-    public string PictureAlt { get; private set; }
-    public string PictureTitle { get; private set; }
+    public string? PictureAlt { get; private set; }
+    public string? PictureTitle { get; private set; }
     public long ProductId { get; private set; }
     public Product Product { get; set; }
     protected ProductPicture()

@@ -43,9 +43,9 @@ public class SliderApplication : ISliderApplication
     }
 
 
-    public List<SliderViewModel> GetViewModels(long id)
+    public List<SliderViewModel> GetViewModelsWith(bool IsRemoved)
     {
-        return SliderRepository.GetViewModels();
+        return SliderRepository.GetViewModelsWith(IsRemoved);
     }
 
     public void Restore(long id)

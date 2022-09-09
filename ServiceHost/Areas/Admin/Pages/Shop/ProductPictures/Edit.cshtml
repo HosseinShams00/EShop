@@ -1,0 +1,45 @@
+﻿@page "{id:long}"
+@model ServiceHost.Areas.Admin.Pages.Shop.ProductPictures.EditModel
+@{
+}
+
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="آدرس عکس" class="form-control" asp-for="editProductPicture.Path" />
+                <span asp-validation-for="editProductPicture.Path" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="alt عکس" class="form-control" asp-for="editProductPicture.PictureAlt" />
+                <span asp-validation-for="editProductPicture.PictureAlt" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" placeholder="تایتل عکس" class="form-control" asp-for="editProductPicture.PictureTitle" />
+                <span asp-validation-for="editProductPicture.PictureTitle" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">محصولات</label>
+                <select class="form-control" id="exampleFormControlSelect1" asp-for="editProductPicture.ProductId" asp-items='@new SelectList(Model.editProductPicture.Products,"Id","Name")'>
+                    <option value="0">یک محصول انتخاب کنید</option>
+                </select>
+                <span asp-validation-for="editProductPicture.ProductId" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <input type="hidden" asp-for="editProductPicture.Id" />
+        <button type="submit" class="btn bg-gradient-success">تایید</button>
+
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

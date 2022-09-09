@@ -49,7 +49,7 @@ public class CreateProduct
     public string Slug { get; set; }
 
     [Required(AllowEmptyStrings = false, ErrorMessage = "لطفا یک دسته بندی درست محصول را انتخاب نمایید")]
-    [Range(1, 100, ErrorMessage = "لطفا دسته بندی درست را انتخاب کنید")]
+    [Range(1, long.MaxValue, ErrorMessage = "لطفا دسته بندی درست را انتخاب کنید")]
     public long ProductCategoryId { get; set; }
 
     public List<ProductCategoryViewModel> ProductCategroyies { get; set; } = new();

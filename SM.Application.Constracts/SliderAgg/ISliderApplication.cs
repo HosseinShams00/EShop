@@ -10,5 +10,5 @@ public interface ISliderApplication
     EditSlider GetDetail(long id);
     void Delete(long id);
     void Restore(long id);
-    List<SliderViewModel> GetViewModels(long id);
+    List<SliderViewModel> GetViewModelsWith(bool IsRemoved);
 }

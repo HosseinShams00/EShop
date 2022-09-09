@@ -10,4 +10,5 @@ public interface IProductApplication
     void Delete(long id);
     void Restore(long id);
     List<ProductViewModel> Search(ProductSearchModel productSearchModel);
+    List<ProductViewModel> GetAll();
 }

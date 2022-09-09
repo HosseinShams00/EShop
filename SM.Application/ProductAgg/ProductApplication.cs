@@ -105,4 +105,8 @@ public class ProductApplication : IProductApplication
         return ProductRepository.Search(productSearchModel);
     }
 
+    public List<ProductViewModel> GetAll()
+    {
+        return ProductRepository.GetViewModels();
+    }
 }

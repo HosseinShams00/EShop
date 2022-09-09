@@ -35,6 +35,19 @@ public class ProductRepository : BaseRepository<long, Product>, IProductReposito
 
     }
 
+    public List<ProductViewModel> GetViewModels()
+    {
+        return Context.Products.Select(x => new ProductViewModel
+        {
+            Id = x.Id,
+            Picture = x.Picture,
+            Name = x.Name,
+            CreationTime = x.CreationTime.ToString(),
+            IsRemoved = x.IsRemoved,
+            
+        }).ToList();
+    }
+
     public List<ProductViewModel> Search(ProductSearchModel productSearchModel)
     {
         var query = Context.Products.Select(x => new ProductViewModel

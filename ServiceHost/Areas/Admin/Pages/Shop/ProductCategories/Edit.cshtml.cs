@@ -3,30 +3,29 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Constracts.ProductCategroyAgg;
 using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
 
-namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories
+namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories;
+
+public class EditModel : PageModel
 {
-    public class EditModel : PageModel
+    [BindProperty] public EditProductCategory editProductCategory { get; set; }
+    private readonly IProductCategoryApplication productCategoryApplication;
+
+    public EditModel(IProductCategoryApplication productCategoryApplication)
     {
-        [BindProperty] public EditProductCategory editProductCategory { get; set; }
-        private readonly IProductCategoryApplication productCategoryApplication;
+        this.productCategoryApplication = productCategoryApplication;
+    }
 
-        public EditModel(IProductCategoryApplication productCategoryApplication)
-        {
-            this.productCategoryApplication = productCategoryApplication;
-        }
+    public void OnGet(long id)
+    {
+        editProductCategory = productCategoryApplication.GetDetail(id);
+    }
 
-        public void OnGet(long id)
-        {
-            editProductCategory = productCategoryApplication.GetDetail(id);
-        }
+    public IActionResult OnPost()
+    {
+        if (ModelState.IsValid)
+            return Page();
 
-        public IActionResult OnPost()
-        {
-            if (ModelState.IsValid)
-                return Page();
-
-            productCategoryApplication.Update(editProductCategory);
-            return RedirectToPage("./index");
-        }
+        productCategoryApplication.Update(editProductCategory);
+        return RedirectToPage("./index");
     }
 }

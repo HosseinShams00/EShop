@@ -30,14 +30,18 @@ public class ProductPictureRepository : BaseRepository<long, ProductPicture>, IP
 
     public List<ProductPictureViewModel> GetViewModels()
     {
-        return Context.ProductPictures.AsNoTracking().Select(x => new ProductPictureViewModel()
-        {
-            Id = x.Id,
-            Path = x.Path,
-            PictureAlt = x.PictureAlt,
-            PictureTitle = x.PictureTitle,
-            ProductId = x.ProductId
+        return Context.ProductPictures.AsNoTracking().Include(x => x.Product)
+            .Select(x => new ProductPictureViewModel()
+            {
+                Id = x.Id,
+                Path = x.Path,
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle,
+                ProductId = x.ProductId,
+                CreationTime = x.CreationTime.ToString(),
+                IsRemoved = x.IsRemoved,
+                ProductName = x.Product.Name
 
-        }).ToList();
+            }).ToList();
     }
 }

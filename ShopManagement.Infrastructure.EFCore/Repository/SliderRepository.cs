@@ -30,13 +30,17 @@ public class SliderRepository : BaseRepository<long, Slider>, ISliderRepository
         }).FirstOrDefault(q => q.Id == id);
     }
 
-    public List<SliderViewModel> GetViewModels()
+    public List<SliderViewModel> GetViewModelsWith(bool IsRemoved)
     {
-        return Context.Sliders.Select(x => new SliderViewModel()
-        {
-            Id = x.Id,
-            Heading = x.Heading,
-            RedirectUrl = x.RedirectUrl,
-        }).ToList();
+        return Context.Sliders.Where(q => q.IsRemoved != IsRemoved)
+            .Select(x => new SliderViewModel()
+            {
+                Id = x.Id,
+                Heading = x.Heading,
+                RedirectUrl = x.RedirectUrl,
+                CreationTime = x.CreationTime.ToString(),
+                IsRemoved = x.IsRemoved,
+                PicturePath = x.PicturePath
+            }).ToList();
     }
 }
