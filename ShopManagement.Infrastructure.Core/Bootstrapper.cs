@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EShopQuery.Contracts.ProductCategories;
+using EShopQuery.Contracts.Slider;
+using EShopQuery.Query;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShopManagement.Application.Constracts.ProductAgg;
 using ShopManagement.Application.Constracts.ProductCategroyAgg;
@@ -51,6 +54,18 @@ public class Bootstrapper
 
         services.AddTransient<ISliderRepository, SliderRepository>();
         services.AddTransient<ISliderApplication, SliderApplication>();
+
+        #endregion
+
+        #region Product Category
+
+        services.AddTransient<IProductCategoryQuery, ProductCategoryQuery>();
+
+        #endregion
+
+        #region Slider Query
+
+        services.AddTransient<ISliderQuery, SliderQuery>();
 
         #endregion
 

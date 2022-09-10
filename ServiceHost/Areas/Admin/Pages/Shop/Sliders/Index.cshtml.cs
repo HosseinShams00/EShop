@@ -8,7 +8,7 @@ public class IndexModel : PageModel
 {
     private readonly ISliderApplication SliderApplication;
     public List<SliderViewModel> ViewModel { get; set; }
-    public bool IsRemoved { get; set; }
+    [BindProperty] public bool IsRemoved { get; set; }
 
     public IndexModel(ISliderApplication sliderApplication)
     {
@@ -16,9 +16,9 @@ public class IndexModel : PageModel
         ViewModel = new();
     }
 
-    public void OnGet()
+    public void OnGet(bool isRemoved)
     {
-        ViewModel = SliderApplication.GetViewModelsWith(IsRemoved);
+        ViewModel = SliderApplication.GetViewModelsWith(isRemoved);
     }
 
     public RedirectToPageResult OnGetRemove(long id)

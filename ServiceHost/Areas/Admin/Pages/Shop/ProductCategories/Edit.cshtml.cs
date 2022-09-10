@@ -22,7 +22,7 @@ public class EditModel : PageModel
 
     public IActionResult OnPost()
     {
-        if (ModelState.IsValid)
+        if (ModelState.IsValid == false)
             return Page();
 
         productCategoryApplication.Update(editProductCategory);

@@ -32,7 +32,7 @@ public class SliderRepository : BaseRepository<long, Slider>, ISliderRepository
 
     public List<SliderViewModel> GetViewModelsWith(bool IsRemoved)
     {
-        return Context.Sliders.Where(q => q.IsRemoved != IsRemoved)
+        return Context.Sliders.Where(q => q.IsRemoved == IsRemoved)
             .Select(x => new SliderViewModel()
             {
                 Id = x.Id,
