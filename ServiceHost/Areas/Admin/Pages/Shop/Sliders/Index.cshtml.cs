@@ -6,30 +6,30 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Sliders;
 
 public class IndexModel : PageModel
 {
-    private readonly ISliderApplication SliderApplication;
-    public List<SliderViewModel> ViewModel { get; set; }
+    private readonly ISliderApplication _Application;
+    public List<SliderViewModel> ViewModels { get; set; }
     [BindProperty] public bool IsRemoved { get; set; }
 
     public IndexModel(ISliderApplication sliderApplication)
     {
-        SliderApplication = sliderApplication;
-        ViewModel = new();
+        _Application = sliderApplication;
+        ViewModels = new();
     }
 
     public void OnGet(bool isRemoved)
     {
-        ViewModel = SliderApplication.GetViewModelsWith(isRemoved);
+        ViewModels = _Application.GetViewModelsWith(isRemoved);
     }
 
     public RedirectToPageResult OnGetRemove(long id)
     {
-        SliderApplication.Delete(id);
+        _Application.Delete(id);
         return RedirectToPage("./index");
     }
 
     public RedirectToPageResult OnGetRestore(long id)
     {
-        SliderApplication.Restore(id);
+        _Application.Restore(id);
         return RedirectToPage("./index");
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ShopManagement.Domain.SliderAgg;
 
-public class Slider : SliderBase
+public class Slider : BaseDomain
 {
    
     public string PicturePath { get; private set; }

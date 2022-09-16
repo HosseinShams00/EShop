@@ -7,17 +7,17 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Sliders
 {
     public class EditModel : PageModel
     {
-        [BindProperty] public EditSlider editSlider { get; set; }
-        private readonly ISliderApplication SliderApplication;
+        [BindProperty] public EditSlider _Command { get; set; }
+        private readonly ISliderApplication _Application;
 
         public EditModel(ISliderApplication sliderApplication)
         {
-            this.SliderApplication = sliderApplication;
+            _Application = sliderApplication;
         }
 
         public void OnGet(long id)
         {
-            editSlider = SliderApplication.GetDetail(id);
+            _Command = _Application.GetDetail(id);
         }
 
         public IActionResult OnPost()
@@ -25,7 +25,7 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Sliders
             if (ModelState.IsValid)
                 return Page();
 
-            SliderApplication.Update(editSlider);
+            _Application.Update(_Command);
             return RedirectToPage("./index");
         }
     }

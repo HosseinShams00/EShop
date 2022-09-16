@@ -9,80 +9,80 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>نام محصول</label>
-                <input type="text" placeholder="نام محصول" class="form-control" onfocusout="slugify(this.value)" asp-for="editProduct.Name" />
-                <span asp-validation-for="editProduct.Name" class="text-danger text-sm"></span>
+                <input type="text" placeholder="نام محصول" class="form-control" onfocusout="slugify(this.value)" asp-for="_Command.Name" />
+                <span asp-validation-for="_Command.Name" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>Slug</label>
-                <input type="text" placeholder="slug" class="form-control" id="Slug" asp-for="editProduct.Slug" />
-                <span asp-validation-for="editProduct.Name" class="text-danger text-sm"></span>
+                <input type="text" placeholder="slug" class="form-control" id="Slug" asp-for="_Command.Slug" />
+                <span asp-validation-for="_Command.Name" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>Keywords</label>
-                <input type="text" placeholder="Keywords" class="form-control" asp-for="editProduct.Keywords" />
-                <span asp-validation-for="editProduct.Keywords" class="text-danger text-sm"></span>
+                <input type="text" placeholder="Keywords" class="form-control" asp-for="_Command.Keywords" />
+                <span asp-validation-for="_Command.Keywords" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>مسیر عکس</label>
-                <input type="text" placeholder="مسیر عکس" class="form-control" onfocusout="ImagePreviewer(this.value,'preview')" asp-for="editProduct.Picture" />
-                <span asp-validation-for="editProduct.Picture" class="text-danger text-sm"></span>
+                <input type="text" placeholder="مسیر عکس" class="form-control" onfocusout="ImagePreviewer(this.value,'preview')" asp-for="_Command.Picture" />
+                <span asp-validation-for="_Command.Picture" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>alt عکس</label>
-                <input type="text" placeholder="alt عکس" class="form-control" asp-for="editProduct.PictureAlt" />
-                <span asp-validation-for="editProduct.PictureAlt" class="text-danger text-sm"></span>
+                <input type="text" placeholder="alt عکس" class="form-control" asp-for="_Command.PictureAlt" />
+                <span asp-validation-for="_Command.PictureAlt" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>تایتل عکس</label>
-                <input type="text" placeholder="تایتل عکس" class="form-control" asp-for="editProduct.PictureTitle" />
-                <span asp-validation-for="editProduct.PictureTitle" class="text-danger text-sm"></span>
+                <input type="text" placeholder="تایتل عکس" class="form-control" asp-for="_Command.PictureTitle" />
+                <span asp-validation-for="_Command.PictureTitle" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>Meta Description</label>
-                <input type="text" placeholder="Meta Description" class="form-control" asp-for="editProduct.MetaDescription" />
-                <span asp-validation-for="editProduct.MetaDescription" class="text-danger text-sm"></span>
+                <input type="text" placeholder="Meta Description" class="form-control" asp-for="_Command.MetaDescription" />
+                <span asp-validation-for="_Command.MetaDescription" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">دسته بندی ها</label>
-                <select class="form-control" id="exampleFormControlSelect1" asp-for="editProduct.ProductCategoryId" asp-items='@new SelectList(Model.editProduct.ProductCategroyies,"Id","Name")'>
+                <select class="form-control" id="exampleFormControlSelect1" asp-for="_Command.ProductCategoryId" asp-items='@new SelectList(Model._Command.ProductCategroyies,"Id","Name")'>
                     <option value="0">یک دسته بندی انتخاب کنید</option>
                 </select>
-                <span asp-validation-for="editProduct.ProductCategoryId" class="text-danger text-sm"></span>
+                <span asp-validation-for="_Command.ProductCategoryId" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>توضیحات محصول</label>
-                <textarea asp-for="editProduct.Description" class="form-control" rows="3"></textarea>
-                <span asp-validation-for="editProduct.Description" class="text-danger text-sm"></span>
+                <textarea asp-for="_Command.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="_Command.Description" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>توضیحات کوتاه از محصول</label>
-                <textarea asp-for="editProduct.ShortDecription" class="form-control" rows="3"></textarea>
-                <span asp-validation-for="editProduct.ShortDecription" class="text-danger text-sm"></span>
+                <textarea asp-for="_Command.ShortDecription" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="_Command.ShortDecription" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="d-none" id="preview">
             <label class="d-block">پیش نمایش عکس</label>
             <img class="mb-3 mt-3" />
         </div>
-        <input type="hidden" asp-for="editProduct.Id" />
+        <input type="hidden" asp-for="_Command.Id" />
         <button type="submit" class="btn bg-gradient-success">تایید</button>
 
     </div>

@@ -39,7 +39,7 @@ public class CustomerDiscountRepository : BaseRepository<long, CustomerDiscount>
                 Title = x.Title,
                 EndDateTime = x.EndDateTime,
                 StartDateTime = x.StartDateTime,
-                CreationDateTime = x.CreationDateTime,
+                CreationDateTime = x.CreationTime,
                 IsRemoved = x.IsRemoved,
                 DiscountPercent = x.DiscountPercent
 

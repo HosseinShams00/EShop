@@ -8,7 +8,7 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.ProductPictures;
 
 public class EditModel : PageModel
 {
-    [BindProperty] public EditProductPicture editProductPicture { get; set; }
+    [BindProperty] public EditProductPicture _Command { get; set; }
     private readonly IProductPictureApplication ProductApplication;
     private readonly IProductApplication ProductCategoryApplication;
 
@@ -21,16 +21,19 @@ public class EditModel : PageModel
 
     public void OnGet(long id)
     {
-        editProductPicture = ProductApplication.GetDetail(id);
-        editProductPicture.Products = ProductCategoryApplication.GetAll();
+        _Command = ProductApplication.GetDetail(id);
+        _Command.Products = ProductCategoryApplication.GetAll();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
+        {
+            _Command.Products = ProductCategoryApplication.GetAll();
             return Page();
+        }
 
-        ProductApplication.Update(editProductPicture);
+        ProductApplication.Update(_Command);
         return RedirectToPage("./index");
     }
 }

@@ -8,32 +8,30 @@ public class IndexModel : PageModel
 {
     private readonly IProductCategoryApplication ProductCategoryApplication;
     public ProductCategorySearchModel SearchModel { get; set; }
-    public List<ProductCategoryViewModel> ViewModel { get; set; }
+    public List<ProductCategoryViewModel> ViewModels { get; set; }
 
 
     public IndexModel(IProductCategoryApplication productCategoryApplication)
     {
         ProductCategoryApplication = productCategoryApplication;
         SearchModel = new();
-        ViewModel = new();
+        ViewModels = new();
     }
 
     public void OnGet(ProductCategorySearchModel searchModel)
     {
-        ViewModel = ProductCategoryApplication.Search(searchModel);
+        ViewModels = ProductCategoryApplication.Search(searchModel);
     }
 
     public RedirectToPageResult OnGetRemove(long id)
     {
         ProductCategoryApplication.Delete(id);
         return RedirectToPage("./index");
-
     }
 
     public RedirectToPageResult OnGetRestore(long id)
     {
         ProductCategoryApplication.Restore(id);
         return RedirectToPage("./index");
-
     }
 }

@@ -7,17 +7,17 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Sliders;
 
 public class CreateModel : PageModel
 {
-    [BindProperty] public CreateSlider createSlider { get; set; }
-    private readonly ISliderApplication SliderApplication;
+    [BindProperty] public CreateSlider _Command { get; set; }
+    private readonly ISliderApplication _Application;
 
     public CreateModel(ISliderApplication sliderApplication)
     {
-        this.SliderApplication = sliderApplication;
+        _Application = sliderApplication;
     }
 
     public void OnGet()
     {
-        createSlider = new();
+        _Command = new();
     }
 
     public IActionResult OnPost()
@@ -25,7 +25,7 @@ public class CreateModel : PageModel
         if (ModelState.IsValid == false)
             return Page();
 
-        SliderApplication.Create(createSlider);
+        _Application.Create(_Command);
         return RedirectToPage("./index");
     }
 

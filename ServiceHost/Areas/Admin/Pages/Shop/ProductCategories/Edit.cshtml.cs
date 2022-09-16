@@ -7,17 +7,17 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories;
 
 public class EditModel : PageModel
 {
-    [BindProperty] public EditProductCategory editProductCategory { get; set; }
-    private readonly IProductCategoryApplication productCategoryApplication;
+    [BindProperty] public EditProductCategory _Command { get; set; }
+    private readonly IProductCategoryApplication ProductCategoryApplication;
 
     public EditModel(IProductCategoryApplication productCategoryApplication)
     {
-        this.productCategoryApplication = productCategoryApplication;
+        ProductCategoryApplication = productCategoryApplication;
     }
 
     public void OnGet(long id)
     {
-        editProductCategory = productCategoryApplication.GetDetail(id);
+        _Command = ProductCategoryApplication.GetDetail(id);
     }
 
     public IActionResult OnPost()
@@ -25,7 +25,7 @@ public class EditModel : PageModel
         if (ModelState.IsValid == false)
             return Page();
 
-        productCategoryApplication.Update(editProductCategory);
+        ProductCategoryApplication.Update(_Command);
         return RedirectToPage("./index");
     }
 }

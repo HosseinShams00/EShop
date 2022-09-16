@@ -3,7 +3,7 @@ using ShopManagement.Domain.ProductAgg;
 
 namespace ShopManagement.Domain.ProductPictureAgg;
 
-public class ProductPicture : ProductPictureBase
+public class ProductPicture : BaseDomain
 {
     public string Path { get; private set; }
     public string? PictureAlt { get; private set; }

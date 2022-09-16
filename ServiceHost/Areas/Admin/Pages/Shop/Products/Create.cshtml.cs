@@ -8,28 +8,31 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Products;
 
 public class CreateModel : PageModel
 {
-    [BindProperty] public CreateProduct createProduct { get; set; }
-    private readonly IProductApplication productApplication;
-    private readonly IProductCategoryApplication productCategoryApplication;
+    [BindProperty] public CreateProduct _Command { get; set; }
+    private readonly IProductApplication ProductApplication;
+    private readonly IProductCategoryApplication ProductCategoryApplication;
 
     public CreateModel(IProductApplication productApplication, IProductCategoryApplication productCategoryApplication)
     {
-        this.productApplication = productApplication;
-        this.productCategoryApplication = productCategoryApplication;
+        ProductApplication = productApplication;
+        ProductCategoryApplication = productCategoryApplication;
     }
 
     public void OnGet()
     {
-        createProduct = new();
-        createProduct.ProductCategroyies = productCategoryApplication.GetAll();
+        _Command = new();
+        _Command.ProductCategroyies = ProductCategoryApplication.GetAll();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
+        {
+            _Command.ProductCategroyies = ProductCategoryApplication.GetAll();
             return Page();
+        }
 
-        productApplication.Create(createProduct);
+        ProductApplication.Create(_Command);
         return RedirectToPage("./index");
     }
 

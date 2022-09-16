@@ -9,35 +9,35 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>مسیر عکس</label>
-                <input type="text" placeholder="مسیر عکس" class="form-control" asp-for="editProductPicture.Path" />
-                <span asp-validation-for="editProductPicture.Path" class="text-danger text-sm"></span>
+                <input type="text" placeholder="مسیر عکس" class="form-control" asp-for="_Command.Path" />
+                <span asp-validation-for="_Command.Path" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>alt عکس</label>
-                <input type="text" placeholder="alt عکس" class="form-control" asp-for="editProductPicture.PictureAlt" />
-                <span asp-validation-for="editProductPicture.PictureAlt" class="text-danger text-sm"></span>
+                <input type="text" placeholder="alt عکس" class="form-control" asp-for="_Command.PictureAlt" />
+                <span asp-validation-for="_Command.PictureAlt" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>تایتل عکس</label>
-                <input type="text" placeholder="تایتل عکس" class="form-control" asp-for="editProductPicture.PictureTitle" />
-                <span asp-validation-for="editProductPicture.PictureTitle" class="text-danger text-sm"></span>
+                <input type="text" placeholder="تایتل عکس" class="form-control" asp-for="_Command.PictureTitle" />
+                <span asp-validation-for="_Command.PictureTitle" class="text-danger text-sm"></span>
             </div>
         </div>
         
         <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">محصولات</label>
-                <select class="form-control" id="exampleFormControlSelect1" asp-for="editProductPicture.ProductId" asp-items='@new SelectList(Model.editProductPicture.Products,"Id","Name")'>
+                <select class="form-control" id="exampleFormControlSelect1" asp-for="_Command.ProductId" asp-items='@new SelectList(Model._Command.Products,"Id","Name")'>
                     <option value="0">یک محصول انتخاب کنید</option>
                 </select>
-                <span asp-validation-for="editProductPicture.ProductId" class="text-danger text-sm"></span>
+                <span asp-validation-for="_Command.ProductId" class="text-danger text-sm"></span>
             </div>
         </div>
-        <input type="hidden" asp-for="editProductPicture.Id" />
+        <input type="hidden" asp-for="_Command.Id" />
         <button type="submit" class="btn bg-gradient-success">تایید</button>
 
     </div>

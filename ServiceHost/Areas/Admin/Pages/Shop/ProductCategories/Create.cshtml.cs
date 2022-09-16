@@ -7,7 +7,7 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories;
 
 public class CreateModel : PageModel
 {
-    [BindProperty] public CreateProductCategory createProductCategory { get; set; }
+    [BindProperty] public CreateProductCategory _Command { get; set; }
     private readonly IProductCategoryApplication productCategoryApplication;
 
     public CreateModel(IProductCategoryApplication productCategoryApplication)
@@ -17,7 +17,7 @@ public class CreateModel : PageModel
 
     public void OnGet()
     {
-        createProductCategory = new();
+        _Command = new();
     }
 
     public IActionResult OnPost()
@@ -25,7 +25,7 @@ public class CreateModel : PageModel
         if (ModelState.IsValid == false)
             return Page();
 
-        productCategoryApplication.Create(createProductCategory);
+        productCategoryApplication.Create(_Command);
         return RedirectToPage("./index");
     }
 }

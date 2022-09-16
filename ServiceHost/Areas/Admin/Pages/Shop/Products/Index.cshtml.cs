@@ -6,34 +6,32 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Products;
 
 public class IndexModel : PageModel
 {
-    private readonly IProductApplication ProductApplication;
+    private readonly IProductApplication _Application;
     public ProductSearchModel SearchModel { get; set; }
-    public List<ProductViewModel> ViewModel { get; set; }
+    public List<ProductViewModel> ViewModels { get; set; }
 
 
     public IndexModel(IProductApplication productApplication)
     {
-        ProductApplication = productApplication;
+        _Application = productApplication;
         SearchModel = new();
-        ViewModel = new();
+        ViewModels = new();
     }
 
     public void OnGet(ProductSearchModel searchModel)
     {
-        ViewModel = ProductApplication.Search(searchModel);
+        ViewModels = _Application.Search(searchModel);
     }
 
     public RedirectToPageResult OnGetRemove(long id)
     {
-        ProductApplication.Delete(id);
+        _Application.Delete(id);
         return RedirectToPage("./index");
-
     }
 
     public RedirectToPageResult OnGetRestore(long id)
     {
-        ProductApplication.Restore(id);
+        _Application.Restore(id);
         return RedirectToPage("./index");
-
     }
 }

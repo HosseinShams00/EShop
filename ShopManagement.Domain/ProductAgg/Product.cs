@@ -4,7 +4,7 @@ using ShopManagement.Domain.ProductPictureAgg;
 
 namespace ShopManagement.Domain.ProductAgg;
 
-public class Product : ProductBase
+public class Product : BaseDomain
 {
     public string Name { get; private set; }
     public string Description { get; private set; }

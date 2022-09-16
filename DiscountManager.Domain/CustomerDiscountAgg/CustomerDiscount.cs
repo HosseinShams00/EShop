@@ -3,7 +3,7 @@ using DiscountManager.Domain.ProductCustomerDiscountAgg;
 
 namespace DiscountManager.Domain.CustomerDiscountAgg;
 
-public class CustomerDiscount : CustomerDiscountBase
+public class CustomerDiscount : BaseDomain
 {
     public string Title { get; private set; }
     public string? Description { get; private set; }

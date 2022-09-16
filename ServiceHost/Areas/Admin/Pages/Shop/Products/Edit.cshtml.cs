@@ -9,29 +9,31 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Products;
 
 public class EditModel : PageModel
 {
-    [BindProperty] public EditProduct editProduct { get; set; }
-    private readonly IProductApplication productApplication;
-    private readonly IProductCategoryApplication productCategoryApplication;
+    [BindProperty] public EditProduct _Command { get; set; }
+    private readonly IProductApplication ProductApplication;
+    private readonly IProductCategoryApplication ProductCategoryApplication;
 
 
     public EditModel(IProductApplication productApplication, IProductCategoryApplication productCategoryApplication)
     {
-        this.productApplication = productApplication;
-        this.productCategoryApplication = productCategoryApplication;
+        ProductApplication = productApplication;
+        ProductCategoryApplication = productCategoryApplication;
     }
 
     public void OnGet(long id)
     {
-        editProduct = productApplication.GetDetail(id);
-        editProduct.ProductCategroyies = productCategoryApplication.GetAll();
+        _Command = ProductApplication.GetDetail(id);
+        _Command.ProductCategroyies = ProductCategoryApplication.GetAll();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
+        {
+            _Command.ProductCategroyies = ProductCategoryApplication.GetAll();
             return Page();
-
-        productApplication.Update(editProduct);
+        }
+        ProductApplication.Update(_Command);
         return RedirectToPage("./index");
     }
 }
