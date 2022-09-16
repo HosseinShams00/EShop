@@ -56,7 +56,7 @@ public class ProductCategoryApplication : IProductCategoryApplication
             editProductCategory.PictureTitle, editProductCategory.Keywords,
             editProductCategory.MetaDescription, editProductCategory.Slug.ModifySlug(), validator);
 
-            ProductCategoryRepository.SaveChanges(productCategory);
+            ProductCategoryRepository.UpdateEntity(productCategory);
         }
         catch (Exception ex)
         {
@@ -86,7 +86,7 @@ public class ProductCategoryApplication : IProductCategoryApplication
             throw new EntityNotFoundException();
 
         category.DeActive();
-        ProductCategoryRepository.SaveChanges(category);
+        ProductCategoryRepository.UpdateEntity(category);
     }
 
     public void Restore(long id)
@@ -96,7 +96,7 @@ public class ProductCategoryApplication : IProductCategoryApplication
             throw new EntityNotFoundException();
 
         category.Active();
-        ProductCategoryRepository.SaveChanges(category);
+        ProductCategoryRepository.UpdateEntity(category);
     }
 
     public List<ProductCategoryViewModel> GetAll()

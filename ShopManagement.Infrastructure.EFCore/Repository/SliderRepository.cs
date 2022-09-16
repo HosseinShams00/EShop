@@ -7,9 +7,9 @@ namespace ShopManagement.Infrastructure.EFCore.Repository;
 
 public class SliderRepository : BaseRepository<long, Slider>, ISliderRepository
 {
-    private readonly EFCoreDbContext Context;
+    private readonly ShopManagerEFCoreDbContext Context;
 
-    public SliderRepository(EFCoreDbContext context) : base(context)
+    public SliderRepository(ShopManagerEFCoreDbContext context) : base(context)
     {
         Context = context;
     }

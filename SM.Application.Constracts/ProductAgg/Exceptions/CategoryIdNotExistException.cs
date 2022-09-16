@@ -1,7 +1,7 @@
-﻿using BaseFramwork.Domain.Exceptions;
+﻿using BaseFramwork.Application.Exceptions;
 
 namespace ShopManagement.Application.Constracts.ProductAgg.Exceptions;
 
-public class CategoryIdNotExistException : DomainException
+public class CategoryIdNotExistException : ApplicationBaseException
 {
 }

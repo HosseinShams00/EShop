@@ -11,7 +11,7 @@ using ShopManagement.Infrastructure.EFCore;
 
 namespace ShopManagement.Infrastructure.EFCore.Migrations
 {
-    [DbContext(typeof(EFCoreDbContext))]
+    [DbContext(typeof(ShopManagerEFCoreDbContext))]
     [Migration("20220903083338_AddProducts")]
     partial class AddProducts
     {

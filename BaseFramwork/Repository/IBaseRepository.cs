@@ -8,5 +8,5 @@ public interface IBaseRepository<TKeyType, T> where T : class
     T? GetBy(TKeyType id);
     List<T> GetList();
     bool Exist(Expression<Func<T, bool>> expression);
-    void SaveChanges(T entity);
+    void UpdateEntity(T entity);
 }

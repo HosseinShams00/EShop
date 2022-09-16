@@ -1,6 +1,6 @@
 ﻿namespace BaseFramwork.Application.Exceptions;
 
-public class EntityNotFoundException : ApplicationException
+public class EntityNotFoundException : ApplicationBaseException
 {
     public EntityNotFoundException()
     {

@@ -1,11 +1,10 @@
-using ShopManagement.Infrastructure.Core;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-Bootstrapper.Config(builder.Services, builder.Configuration.GetConnectionString("sql"));
+ShopManagement.Infrastructure.Core.Bootstrapper.Config(builder.Services, builder.Configuration.GetConnectionString("sql"));
+DiscountManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, builder.Configuration.GetConnectionString("sql"));
 
 var app = builder.Build();
 

@@ -59,7 +59,7 @@ public class ProductApplication : IProductApplication
             editProduct.Keywords, editProduct.MetaDescription,
             editProduct.Slug.ModifySlug(), editProduct.ProductCategoryId, validator);
 
-            ProductRepository.SaveChanges(productCategory);
+            ProductRepository.UpdateEntity(productCategory);
         }
         catch (Exception ex)
         {
@@ -78,7 +78,7 @@ public class ProductApplication : IProductApplication
             throw new EntityNotFoundException();
 
         product.DeActive();
-        ProductRepository.SaveChanges(product);
+        ProductRepository.UpdateEntity(product);
     }
 
     public EditProduct GetDetail(long id)
@@ -97,7 +97,7 @@ public class ProductApplication : IProductApplication
             throw new EntityNotFoundException();
 
         product.Active();
-        ProductRepository.SaveChanges(product);
+        ProductRepository.UpdateEntity(product);
     }
 
     public List<ProductViewModel> Search(ProductSearchModel productSearchModel)

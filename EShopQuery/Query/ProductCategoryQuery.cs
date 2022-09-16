@@ -6,9 +6,9 @@ namespace EShopQuery.Query;
 
 public class ProductCategoryQuery : IProductCategoryQuery
 {
-    private readonly EFCoreDbContext Context;
+    private readonly ShopManagerEFCoreDbContext Context;
 
-    public ProductCategoryQuery(EFCoreDbContext context)
+    public ProductCategoryQuery(ShopManagerEFCoreDbContext context)
     {
         Context = context;
     }

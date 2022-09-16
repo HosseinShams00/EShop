@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Content Remove="Areas\Admin\Pages\Index.cshtml" />
+    <Content Remove="Areas\Admin\Pages\Shop\CustomerDiscounts\ProductCustomerList.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,11 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DiscountManager.Infrastructure.Core\DiscountManager.Infrastructure.Core.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructure.Core\ShopManagement.Infrastructure.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Areas\Admin\Pages\Index.cshtml" />
+    <None Include="Areas\Admin\Pages\Shop\CustomerDiscounts\ProductCustomerList.cshtml" />
     <None Include="wwwroot\AdminTheme\assets\css\soft-ui-dashboard.css.map" />
     <None Include="wwwroot\AdminTheme\assets\fonts\nucleo-icons.svg" />
     <None Include="wwwroot\AdminTheme\assets\fonts\nucleo-icons.woff2" />
@@ -275,6 +278,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Shop\CustomerDiscounts\ProductCustomerList.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -286,6 +290,10 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\Admin\Pages\Shop\CustomerDiscounts\ProductCustomerList.cshtml" />
   </ItemGroup>
 
 </Project>

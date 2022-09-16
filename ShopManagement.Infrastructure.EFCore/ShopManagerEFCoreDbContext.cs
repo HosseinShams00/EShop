@@ -7,9 +7,9 @@ using ShopManagement.Infrastructure.EFCore.Mapping;
 
 namespace ShopManagement.Infrastructure.EFCore;
 
-public class EFCoreDbContext : DbContext
+public class ShopManagerEFCoreDbContext : DbContext
 {
-	public EFCoreDbContext(DbContextOptions<EFCoreDbContext> options) : base(options)
+	public ShopManagerEFCoreDbContext(DbContextOptions<ShopManagerEFCoreDbContext> options) : base(options)
 	{
 	}
 

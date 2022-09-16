@@ -30,7 +30,7 @@ public class SliderApplication : ISliderApplication
             throw new EntityNotFoundException();
 
         slider.DeActive();
-        SliderRepository.SaveChanges(slider);
+        SliderRepository.UpdateEntity(slider);
     }
 
     public EditSlider GetDetail(long id)
@@ -55,7 +55,7 @@ public class SliderApplication : ISliderApplication
             throw new EntityNotFoundException();
 
         slider.Active();
-        SliderRepository.SaveChanges(slider);
+        SliderRepository.UpdateEntity(slider);
     }
 
     public void Update(EditSlider editSlider)
@@ -70,6 +70,6 @@ public class SliderApplication : ISliderApplication
             editSlider.Title, editSlider.BodyText,
             editSlider.ButtonText, editSlider.RedirectUrl);
 
-        SliderRepository.SaveChanges(slider);
+        SliderRepository.UpdateEntity(slider);
     }
 }

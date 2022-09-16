@@ -1,0 +1,49 @@
+﻿@page "{customerDiscountId:long}"
+@model ServiceHost.Areas.Admin.Pages.Shop.CustomerDiscounts.ProductCustomerListModel
+@{
+}
+
+<div class="card my-5">
+
+    <table class="table align-items-center mb-0">
+        <thead>
+            <tr>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder">#</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">عکس محصول</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">نام محصول</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ViewModel)
+            {
+                <tr>
+                    <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">@item.Id</p>
+                    </td>
+
+                    <td class="align-middle text-center">
+                        <img src="@item.PicturePath" class="avatar avatar-sm rounded-circle me-2"/>
+                    </td>
+
+                    <td class="align-middle text-center">
+                        <p class="mb-0 text-s font-weight-bold">@item.Name</p>
+                    </td>
+
+                    <td class="align-middle d-flex align-items-center text-center">
+
+                        <div class="dropdown">
+                            <button type="button" class="btn bg-gradient-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            </button>
+                            <ul class="dropdown-menu text-center" data-popper-placement="bottom-start" aria-labelledby="dropdownTable">
+                                <li><a class="dropdown-item" asp-page="./ProductCustomerList" asp-page-handler="remove" asp-route-id="@item.Id">حذف</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>

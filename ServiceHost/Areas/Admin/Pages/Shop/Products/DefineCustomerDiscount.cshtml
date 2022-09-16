@@ -1,0 +1,21 @@
+﻿@page
+@model ServiceHost.Areas.Admin.Pages.Shop.Products.DefineCustomerDiscountModel
+@{
+}
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">دسته بندی ها</label>
+                <select class="form-control" id="exampleFormControlSelect1" asp-for="Command.CustomerDiscountId" asp-items='@new SelectList(Model.ViewModels,"Id","Title")'>
+                    <option value="0">بدون تخفیف</option>
+                </select>
+            </div>
+        </div>
+        <input type="hidden" asp-for="Command.Id" />
+        <input type="hidden" asp-for="Command.ProductId" />
+
+        <button type="submit" class="btn bg-gradient-success">تایید</button>
+
+    </div>
+</form>

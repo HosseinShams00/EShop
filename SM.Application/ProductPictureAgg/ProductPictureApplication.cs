@@ -8,12 +8,12 @@ namespace ShopManagement.Application.ProductPictureAgg;
 
 public class ProductPictureApplication : IProductPictureApplication
 {
-    private readonly IProductPictureRepository ProductPictureReository;
+    private readonly IProductPictureRepository ProductPictureRepository;
     private readonly IProductPictureValidator Validator;
 
-    public ProductPictureApplication(IProductPictureRepository productPictureReository, IProductPictureValidator validator)
+    public ProductPictureApplication(IProductPictureRepository productPictureRepository, IProductPictureValidator validator)
     {
-        ProductPictureReository = productPictureReository;
+        ProductPictureRepository = productPictureRepository;
         Validator = validator;
     }
 
@@ -24,7 +24,7 @@ public class ProductPictureApplication : IProductPictureApplication
             var productPicture = new ProductPicture(createProductCategory.Path, createProductCategory.PictureAlt,
                 createProductCategory.PictureTitle, createProductCategory.ProductId, Validator);
 
-            ProductPictureReository.Create(productPicture);
+            ProductPictureRepository.Create(productPicture);
         }
         catch (Exception ex)
         {
@@ -34,22 +34,22 @@ public class ProductPictureApplication : IProductPictureApplication
 
     public void Delete(long id)
     {
-        var picture = ProductPictureReository.GetBy(id);
+        var picture = ProductPictureRepository.GetBy(id);
         if (picture == null)
             throw new EntityNotFoundException();
 
         picture.DeActive();
-        ProductPictureReository.SaveChanges(picture);
+        ProductPictureRepository.UpdateEntity(picture);
     }
 
     public List<ProductPictureViewModel> GetAll()
     {
-        return ProductPictureReository.GetViewModels();
+        return ProductPictureRepository.GetViewModels();
     }
 
     public EditProductPicture GetDetail(long id)
     {
-        var picture = ProductPictureReository.GetDetail(id);
+        var picture = ProductPictureRepository.GetDetail(id);
         if (picture is null)
             throw new EntityNotFoundException();
 
@@ -58,26 +58,26 @@ public class ProductPictureApplication : IProductPictureApplication
 
     public void Restore(long id)
     {
-        var picture = ProductPictureReository.GetBy(id);
+        var picture = ProductPictureRepository.GetBy(id);
         if (picture == null)
             throw new EntityNotFoundException();
 
         picture.Active();
-        ProductPictureReository.SaveChanges(picture);
+        ProductPictureRepository.UpdateEntity(picture);
     }
 
     public void Update(EditProductPicture editProductCategory)
     {
         try
         {
-            var picture = ProductPictureReository.GetBy(editProductCategory.Id);
+            var picture = ProductPictureRepository.GetBy(editProductCategory.Id);
             if (picture == null)
                 throw new EntityNotFoundException();
 
             picture.Edit(editProductCategory.Path, editProductCategory.PictureAlt,
             editProductCategory.PictureTitle, editProductCategory.ProductId, Validator);
 
-            ProductPictureReository.SaveChanges(picture);
+            ProductPictureRepository.UpdateEntity(picture);
         }
         catch (Exception ex)
         {

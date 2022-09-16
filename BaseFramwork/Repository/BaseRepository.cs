@@ -15,7 +15,7 @@ public class BaseRepository<TKeyType, T> : IBaseRepository<TKeyType, T> where T 
     public void Create(T entity)
     {
         Context.Add<T>(entity);
-        SaveChanges(entity);
+        UpdateEntity(entity);
     }
 
     public bool Exist(Expression<Func<T, bool>> expression)
@@ -33,7 +33,7 @@ public class BaseRepository<TKeyType, T> : IBaseRepository<TKeyType, T> where T 
         return Context.Set<T>().AsNoTracking().ToList();
     }
 
-    public void SaveChanges(T entity)
+    public void UpdateEntity(T entity)
     {
         Context.SaveChanges();
     }

@@ -7,9 +7,9 @@ namespace EShopQuery.Query;
 
 public class SliderQuery : ISliderQuery
 {
-    private readonly EFCoreDbContext Context;
+    private readonly ShopManagerEFCoreDbContext Context;
 
-    public SliderQuery(EFCoreDbContext context)
+    public SliderQuery(ShopManagerEFCoreDbContext context)
     {
         Context = context;
     }

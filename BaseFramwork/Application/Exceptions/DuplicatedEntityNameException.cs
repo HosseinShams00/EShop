@@ -1,6 +1,6 @@
 ﻿namespace BaseFramwork.Application.Exceptions;
 
-public class DuplicatedEntityNameException : ApplicationException
+public class DuplicatedEntityNameException : ApplicationBaseException
 {
     public DuplicatedEntityNameException()
     {

@@ -24,7 +24,7 @@ public class Bootstrapper
 {
     public static void Config(IServiceCollection services, string stringConnection)
     {
-        services.AddDbContext<EFCoreDbContext>(x => x.UseSqlServer(stringConnection));
+        services.AddDbContext<ShopManagerEFCoreDbContext>(x => x.UseSqlServer(stringConnection));
 
         #region Product Category
 
