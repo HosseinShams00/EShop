@@ -1,3 +1,4 @@
+using EShopQuery.Contracts.Admin.Slider;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Constracts.SliderAgg;
@@ -7,18 +8,21 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Sliders;
 public class IndexModel : PageModel
 {
     private readonly ISliderApplication _Application;
+    private readonly IAdminSliderQuery _AdminSliderQuery;
+
     public List<SliderViewModel> ViewModels { get; set; }
     [BindProperty] public bool IsRemoved { get; set; }
 
-    public IndexModel(ISliderApplication sliderApplication)
+    public IndexModel(ISliderApplication sliderApplication, IAdminSliderQuery adminSliderQuery)
     {
         _Application = sliderApplication;
         ViewModels = new();
+        _AdminSliderQuery = adminSliderQuery;
     }
 
     public void OnGet(bool isRemoved)
     {
-        ViewModels = _Application.GetViewModelsWith(isRemoved);
+        ViewModels = _AdminSliderQuery.GetViewModelsWith(isRemoved);
     }
 
     public RedirectToPageResult OnGetRemove(long id)

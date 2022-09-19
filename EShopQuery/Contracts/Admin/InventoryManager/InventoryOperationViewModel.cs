@@ -1,4 +1,4 @@
-﻿namespace InventoryManager.Applicaton.Contracts.InventoryOperationAgg;
+﻿namespace EShopQuery.Contracts.Admin.InventoryManager;
 
 public class InventoryOperationViewModel
 {

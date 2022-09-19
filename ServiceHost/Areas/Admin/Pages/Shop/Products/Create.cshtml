@@ -57,7 +57,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">دسته بندی ها</label>
-                <select class="form-control" id="exampleFormControlSelect1" asp-for="_Command.ProductCategoryId" asp-items='@new SelectList(Model._Command.ProductCategroyies,"Id","Name")'>
+                <select class="form-control" id="exampleFormControlSelect1" asp-for="_Command.ProductCategoryId" asp-items='@new SelectList(Model.ProductCategroies,"Id","Name")'>
                     <option value="0">یک دسته بندی انتخاب کنید</option>
                 </select>
                 <span asp-validation-for="_Command.ProductCategoryId" class="text-danger text-sm"></span>

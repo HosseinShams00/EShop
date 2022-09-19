@@ -1,4 +1,4 @@
-﻿namespace DiscountManager.Application.Contracts.ProductCustomerDiscountAgg;
+﻿namespace EShopQuery.Contracts.Admin.DiscountManager;
 
 public class ProductCustomerDiscountViewModel
 {

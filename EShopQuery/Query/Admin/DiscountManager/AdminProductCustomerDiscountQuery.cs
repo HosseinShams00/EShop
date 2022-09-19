@@ -1,5 +1,4 @@
-﻿using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg;
-using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg.Command;
+﻿using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg.Command;
 using DiscountManager.Infrastructure.EFCore;
 using EShopQuery.Contracts.Admin.DiscountManager;
 using Microsoft.EntityFrameworkCore;

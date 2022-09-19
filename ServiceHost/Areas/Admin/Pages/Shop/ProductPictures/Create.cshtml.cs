@@ -12,6 +12,8 @@ public class CreateModel : PageModel
     private readonly IProductPictureApplication ProductPictureApplication;
     private readonly IAdminProductQuery _AdminQuery;
 
+    public List<ProductViewModel> Products { get; set; } = new();
+
     public CreateModel(IProductPictureApplication productPictureApplication, IAdminProductQuery adminQuery)
     {
         ProductPictureApplication = productPictureApplication;
@@ -21,14 +23,14 @@ public class CreateModel : PageModel
     public void OnGet()
     {
         _Command = new();
-        _Command.Products = _AdminQuery.GetViewModels();
+        Products = _AdminQuery.GetViewModels();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
         {
-            _Command.Products = _AdminQuery.GetViewModels();
+            Products = _AdminQuery.GetViewModels();
             return Page();
         }
 

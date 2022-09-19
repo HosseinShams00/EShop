@@ -31,7 +31,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">محصولات</label>
-                <select class="form-control" id="exampleFormControlSelect1" asp-for="_Command.ProductId" asp-items='@new SelectList(Model._Command.Products,"Id","Name")'>
+                <select class="form-control" id="exampleFormControlSelect1" asp-for="_Command.ProductId" asp-items='@new SelectList(Model.Products,"Id","Name")'>
                     <option value="0">یک محصول انتخاب کنید</option>
                 </select>
                 <span asp-validation-for="_Command.ProductId" class="text-danger text-sm"></span>

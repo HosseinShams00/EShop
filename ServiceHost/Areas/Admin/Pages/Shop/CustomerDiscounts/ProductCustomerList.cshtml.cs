@@ -1,4 +1,3 @@
-using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg;
 using EShopQuery.Contracts.Admin.DiscountManager;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

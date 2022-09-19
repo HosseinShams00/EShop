@@ -1,5 +1,4 @@
-﻿using ShopManagement.Application.Constracts.ProductCategroyAgg;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ShopManagement.Application.Constracts.ProductAgg.Command;
 
@@ -52,6 +51,5 @@ public class CreateProduct
     [Range(1, long.MaxValue, ErrorMessage = "لطفا دسته بندی درست را انتخاب کنید")]
     public long ProductCategoryId { get; set; }
 
-    public List<ProductCategoryViewModel> ProductCategroyies { get; set; } = new();
 
 }

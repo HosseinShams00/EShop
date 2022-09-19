@@ -1,5 +1,4 @@
 ﻿using ShopManagement.Application.Constracts.ProductAgg.Command;
-using ShopManagement.Application.Constracts.ProductAgg;
 
 namespace EShopQuery.Contracts.Admin.Product;
 

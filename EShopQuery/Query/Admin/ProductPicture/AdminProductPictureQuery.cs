@@ -1,6 +1,5 @@
 ﻿using EShopQuery.Contracts.Admin.ProductPicture;
 using ShopManagement.Application.Constracts.ProductPictureAgg.Command;
-using ShopManagement.Application.Constracts.ProductPictureAgg;
 using ShopManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using BaseFramwork.Application.Exceptions;

@@ -14,6 +14,7 @@ public class EditModel : PageModel
     private readonly IAdminProductCategoryQuery _AdminQuery;
     private readonly IAdminProductQuery _AdminProductQuery;
 
+    public List<ProductCategoryViewModel> ProductCategroies { get; set; } = new();
 
     public EditModel(IProductApplication productApplication, IAdminProductCategoryQuery adminQuery, IAdminProductQuery adminProductQuery)
     {
@@ -27,7 +28,7 @@ public class EditModel : PageModel
         try
         {
             _Command = _AdminProductQuery.GetDetail(id);
-            _Command.ProductCategroyies = _AdminQuery.GetViewModels();
+            ProductCategroies = _AdminQuery.GetViewModels();
         }
         catch (Exception ex)
         {
@@ -40,7 +41,7 @@ public class EditModel : PageModel
     {
         if (ModelState.IsValid == false)
         {
-            _Command.ProductCategroyies = _AdminQuery.GetViewModels();
+            ProductCategroies = _AdminQuery.GetViewModels();
             return Page();
         }
         ProductApplication.Update(_Command);

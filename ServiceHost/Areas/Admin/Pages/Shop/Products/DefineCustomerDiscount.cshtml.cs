@@ -1,4 +1,3 @@
-using DiscountManager.Application.Contracts.CustommerDiscountAgg;
 using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg;
 using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg.Command;
 using EShopQuery.Contracts.Admin.DiscountManager;

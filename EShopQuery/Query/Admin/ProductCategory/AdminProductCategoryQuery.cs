@@ -1,6 +1,5 @@
 ﻿using EShopQuery.Contracts.Admin.ProductCategory;
 using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
-using ShopManagement.Application.Constracts.ProductCategroyAgg;
 using ShopManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 

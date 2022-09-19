@@ -1,4 +1,4 @@
-﻿namespace ShopManagement.Application.Constracts.ProductCategroyAgg;
+﻿namespace EShopQuery.Contracts.Admin.ProductCategory;
 
 public class ProductCategorySearchModel
 {

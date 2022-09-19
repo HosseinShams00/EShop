@@ -1,6 +1,5 @@
 ﻿using EShopQuery.Contracts.Admin.Product;
 using ShopManagement.Application.Constracts.ProductAgg.Command;
-using ShopManagement.Application.Constracts.ProductAgg;
 using ShopManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using BaseFramwork.Application.Exceptions;

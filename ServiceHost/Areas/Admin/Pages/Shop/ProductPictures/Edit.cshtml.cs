@@ -12,8 +12,9 @@ public class EditModel : PageModel
     [BindProperty] public EditProductPicture _Command { get; set; }
     private readonly IProductPictureApplication ProductApplication;
     private readonly IAdminProductQuery _AdminQuery;
-    private readonly IAdminProductPictureQuery _AdminroductPictureQuery;
+    private readonly IAdminProductPictureQuery _AdminProductPictureQuery;
 
+    public List<ProductViewModel> Products { get; set; } = new();
 
     public EditModel(IProductPictureApplication productPictureApplication,
         IAdminProductQuery adminQuery,
@@ -21,20 +22,20 @@ public class EditModel : PageModel
     {
         ProductApplication = productPictureApplication;
         _AdminQuery = adminQuery;
-        _AdminroductPictureQuery = adminroductPictureQuery;
+        _AdminProductPictureQuery = adminroductPictureQuery;
     }
 
     public void OnGet(long id)
     {
-        _Command = _AdminroductPictureQuery.GetDetail(id);
-        _Command.Products = _AdminQuery.GetViewModels();
+        _Command = _AdminProductPictureQuery.GetDetail(id);
+        Products = _AdminQuery.GetViewModels();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
         {
-            _Command.Products = _AdminQuery.GetViewModels();
+            Products = _AdminQuery.GetViewModels();
             return Page();
         }
 

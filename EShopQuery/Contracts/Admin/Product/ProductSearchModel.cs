@@ -1,4 +1,4 @@
-﻿namespace ShopManagement.Application.Constracts.ProductAgg;
+﻿namespace EShopQuery.Contracts.Admin.Product;
 
 public class ProductSearchModel
 {

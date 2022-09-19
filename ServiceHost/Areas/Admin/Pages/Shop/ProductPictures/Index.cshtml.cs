@@ -8,7 +8,7 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.ProductPictures;
 public class IndexModel : PageModel
 {
     private readonly IProductPictureApplication ProductPictureApplication;
-    private readonly IAdminProductPictureQuery _AdminroductPictureQuery;
+    private readonly IAdminProductPictureQuery _AdminProductPictureQuery;
 
     public List<ProductPictureViewModel> ViewModels { get; set; }
 
@@ -17,12 +17,12 @@ public class IndexModel : PageModel
     {
         ProductPictureApplication = productPictureApplication;
         ViewModels = new();
-        _AdminroductPictureQuery = adminroductPictureQuery;
+        _AdminProductPictureQuery = adminroductPictureQuery;
     }
 
     public void OnGet()
     {
-        ViewModels = _AdminroductPictureQuery.GetViewModels();
+        ViewModels = _AdminProductPictureQuery.GetViewModels();
     }
 
     public RedirectToPageResult OnGetRemove(long id)

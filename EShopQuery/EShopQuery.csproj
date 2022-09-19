@@ -13,6 +13,7 @@
     <ProjectReference Include="..\InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contracts.csproj" />
     <ProjectReference Include="..\InventoryManager.Infrastructure\InventoryManager.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructure.EFCore\ShopManagement.Infrastructure.EFCore.csproj" />
+    <ProjectReference Include="..\SM.Application.Constracts\ShopManagement.Application.Constracts.csproj" />
   </ItemGroup>
 
 </Project>

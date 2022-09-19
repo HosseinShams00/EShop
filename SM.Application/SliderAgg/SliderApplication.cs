@@ -33,21 +33,6 @@ public class SliderApplication : ISliderApplication
         SliderRepository.UpdateEntity(slider);
     }
 
-    public EditSlider GetDetail(long id)
-    {
-        var slider = SliderRepository.GetDetails(id);
-        if (slider == null)
-            throw new EntityNotFoundException();
-
-        return slider;
-    }
-
-
-    public List<SliderViewModel> GetViewModelsWith(bool IsRemoved)
-    {
-        return SliderRepository.GetViewModelsWith(IsRemoved);
-    }
-
     public void Restore(long id)
     {
         var slider = SliderRepository.GetBy(id);

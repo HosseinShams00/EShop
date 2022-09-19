@@ -1,5 +1,4 @@
 ﻿using ShopManagement.Application.Constracts.ProductPictureAgg.Command;
-using ShopManagement.Application.Constracts.ProductPictureAgg;
 
 namespace EShopQuery.Contracts.Admin.ProductPicture;
 

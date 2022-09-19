@@ -1,5 +1,4 @@
-﻿using ShopManagement.Application.Constracts.ProductAgg;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ShopManagement.Application.Constracts.ProductPictureAgg.Command;
 
@@ -19,5 +18,4 @@ public class CreateProductPicture
     [Range(1 , long.MaxValue , ErrorMessage = "مقدار وارد شده صحیح نمیباشد")]
     public long ProductId { get; set; }
 
-    public List<ProductViewModel> Products { get; set; } = new();
 }

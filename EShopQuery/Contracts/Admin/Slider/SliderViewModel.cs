@@ -1,4 +1,4 @@
-﻿namespace ShopManagement.Application.Constracts.SliderAgg;
+﻿namespace EShopQuery.Contracts.Admin.Slider;
 
 public class SliderViewModel
 {

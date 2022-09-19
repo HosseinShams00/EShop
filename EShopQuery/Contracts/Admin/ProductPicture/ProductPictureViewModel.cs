@@ -1,4 +1,4 @@
-﻿namespace ShopManagement.Application.Constracts.ProductPictureAgg;
+﻿namespace EShopQuery.Contracts.Admin.ProductPicture;
 
 public class ProductPictureViewModel
 {

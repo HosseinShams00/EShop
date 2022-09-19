@@ -11,6 +11,7 @@ public class CreateModel : PageModel
     [BindProperty] public CreateProduct _Command { get; set; }
     private readonly IProductApplication ProductApplication;
     private readonly IAdminProductCategoryQuery _AdminQuery;
+    public List<ProductCategoryViewModel> ProductCategroies { get; set; } = new();
 
 
     public CreateModel(IProductApplication productApplication,
@@ -23,14 +24,14 @@ public class CreateModel : PageModel
     public void OnGet()
     {
         _Command = new();
-        _Command.ProductCategroyies = _AdminQuery.GetViewModels();
+        ProductCategroies = _AdminQuery.GetViewModels();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
         {
-            _Command.ProductCategroyies = _AdminQuery.GetViewModels();
+            ProductCategroies = _AdminQuery.GetViewModels();
             return Page();
         }
 

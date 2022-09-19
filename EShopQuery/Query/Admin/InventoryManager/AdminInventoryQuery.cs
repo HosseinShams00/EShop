@@ -1,7 +1,5 @@
 ﻿using EShopQuery.Contracts.Admin.InventoryManager;
-using InventoryManager.Applicaton.Contracts.InventoryAgg;
 using InventoryManager.Applicaton.Contracts.InventoryAgg.Command;
-using InventoryManager.Applicaton.Contracts.InventoryOperationAgg;
 using InventoryManager.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Infrastructure.EFCore;
