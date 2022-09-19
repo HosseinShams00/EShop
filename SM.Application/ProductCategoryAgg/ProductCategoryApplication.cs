@@ -65,20 +65,6 @@ public class ProductCategoryApplication : IProductCategoryApplication
         }
     }
 
-    public EditProductCategory GetDetail(long id)
-    {
-        var detail = ProductCategoryRepository.GetDetail(id);
-        if (detail == null)
-            throw new EntityNotFoundException();
-
-        return detail;
-    }
-
-    public List<ProductCategoryViewModel> Search(ProductCategorySearchModel productCategorySearchModel)
-    {
-        return ProductCategoryRepository.Search(productCategorySearchModel);
-    }
-
     public void Delete(long id)
     {
         var category = ProductCategoryRepository.GetBy(id);
@@ -97,10 +83,5 @@ public class ProductCategoryApplication : IProductCategoryApplication
 
         category.Active();
         ProductCategoryRepository.UpdateEntity(category);
-    }
-
-    public List<ProductCategoryViewModel> GetAll()
-    {
-        return ProductCategoryRepository.GetViewModels();
     }
 }

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BaseFramwork\BaseFramwork.csproj" />
-    <ProjectReference Include="..\InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

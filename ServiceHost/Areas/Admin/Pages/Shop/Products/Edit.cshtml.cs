@@ -1,3 +1,4 @@
+using EShopQuery.Contracts.Admin.ProductCategory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Constracts.ProductAgg;
@@ -11,26 +12,26 @@ public class EditModel : PageModel
 {
     [BindProperty] public EditProduct _Command { get; set; }
     private readonly IProductApplication ProductApplication;
-    private readonly IProductCategoryApplication ProductCategoryApplication;
+    private readonly IAdminProductCategoryQuery _AdminQuery;
 
 
-    public EditModel(IProductApplication productApplication, IProductCategoryApplication productCategoryApplication)
+    public EditModel(IProductApplication productApplication, IAdminProductCategoryQuery adminQuery)
     {
         ProductApplication = productApplication;
-        ProductCategoryApplication = productCategoryApplication;
+        _AdminQuery = adminQuery;
     }
 
     public void OnGet(long id)
     {
         _Command = ProductApplication.GetDetail(id);
-        _Command.ProductCategroyies = ProductCategoryApplication.GetAll();
+        _Command.ProductCategroyies = _AdminQuery.GetViewModels();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
         {
-            _Command.ProductCategroyies = ProductCategoryApplication.GetAll();
+            _Command.ProductCategroyies = _AdminQuery.GetViewModels();
             return Page();
         }
         ProductApplication.Update(_Command);
