@@ -42,20 +42,6 @@ public class ProductPictureApplication : IProductPictureApplication
         ProductPictureRepository.UpdateEntity(picture);
     }
 
-    public List<ProductPictureViewModel> GetAll()
-    {
-        return ProductPictureRepository.GetViewModels();
-    }
-
-    public EditProductPicture GetDetail(long id)
-    {
-        var picture = ProductPictureRepository.GetDetail(id);
-        if (picture is null)
-            throw new EntityNotFoundException();
-
-        return picture;
-    }
-
     public void Restore(long id)
     {
         var picture = ProductPictureRepository.GetBy(id);
