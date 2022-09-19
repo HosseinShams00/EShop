@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\Admin\Pages\Index.cshtml" />
-    <Content Remove="Areas\Admin\Pages\Shop\CustomerDiscounts\ProductCustomerList.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,12 +16,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DiscountManager.Infrastructure.Core\DiscountManager.Infrastructure.Core.csproj" />
+    <ProjectReference Include="..\InventoryManager.Infrastructure.Core\InventoryManager.Infrastructure.Core.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructure.Core\ShopManagement.Infrastructure.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Areas\Admin\Pages\Index.cshtml" />
-    <None Include="Areas\Admin\Pages\Shop\CustomerDiscounts\ProductCustomerList.cshtml" />
     <None Include="wwwroot\AdminTheme\assets\css\soft-ui-dashboard.css.map" />
     <None Include="wwwroot\AdminTheme\assets\fonts\nucleo-icons.svg" />
     <None Include="wwwroot\AdminTheme\assets\fonts\nucleo-icons.woff2" />
@@ -273,15 +268,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Areas\Admin\Pages\Index.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Index.cshtml" />
-    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Shop\CustomerDiscounts\ProductCustomerList.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Areas\Admin\Pages\Shop\ProductPictures\Edit.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -290,10 +276,6 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Areas\Admin\Pages\Shop\CustomerDiscounts\ProductCustomerList.cshtml" />
   </ItemGroup>
 
 </Project>

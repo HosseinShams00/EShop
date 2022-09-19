@@ -7,10 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\InventoryManager.Application\InventoryManager.Application.csproj" />
-    <ProjectReference Include="..\InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contracts.csproj" />
     <ProjectReference Include="..\InventoryManager.Infrastructure\InventoryManager.Infrastructure.EFCore.csproj" />
-    <ProjectReference Include="..\ShopManagement.Infrastructure.EFCore\ShopManagement.Infrastructure.EFCore.csproj" />
   </ItemGroup>
 
 </Project>

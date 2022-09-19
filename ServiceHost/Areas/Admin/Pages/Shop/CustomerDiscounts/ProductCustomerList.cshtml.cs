@@ -1,4 +1,5 @@
 using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.CustomerDiscounts;
@@ -11,11 +12,12 @@ public class ProductCustomerListModel : PageModel
 
     public ProductCustomerListModel(IProductCustomerDiscountApplication application)
     {
-        this._Application = application;
+        _Application = application;
     }
 
     public void OnGet(long customerDiscountId)
     {
         ViewModels = _Application.GetProductsViewModels(customerDiscountId);
     }
+
 }
