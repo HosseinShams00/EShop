@@ -81,15 +81,6 @@ public class ProductApplication : IProductApplication
         ProductRepository.UpdateEntity(product);
     }
 
-    public EditProduct GetDetail(long id)
-    {
-        var product = ProductRepository.GetDetail(id);
-        if (product is null)
-            throw new EntityNotFoundException();
-
-        return product;
-    }
-
     public void Restore(long id)
     {
         var product = ProductRepository.GetBy(id);
@@ -98,15 +89,5 @@ public class ProductApplication : IProductApplication
 
         product.Active();
         ProductRepository.UpdateEntity(product);
-    }
-
-    public List<ProductViewModel> Search(ProductSearchModel productSearchModel)
-    {
-        return ProductRepository.Search(productSearchModel);
-    }
-
-    public List<ProductViewModel> GetAll()
-    {
-        return ProductRepository.GetViewModels();
     }
 }

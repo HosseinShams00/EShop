@@ -5,6 +5,8 @@ using EShopQuery.Contracts.Admin.InventoryManager;
 using EShopQuery.Query.Admin.InventoryManager;
 using EShopQuery.Contracts.Admin.ProductCategory;
 using EShopQuery.Query.Admin.ProductCategory;
+using EShopQuery.Contracts.Admin.Product;
+using EShopQuery.Query.Admin.Product;
 
 namespace EShopQuery;
 
@@ -16,6 +18,7 @@ public class Bootstrapper
         services.AddTransient<IAdminCustomerDiscountQuery, AdminCustomerDiscountQuery>();
         services.AddTransient<IAdminProductCustomerDiscountQuery, AdminProductCustomerDiscountQuery>();
         services.AddTransient<IAdminProductCategoryQuery, AdminProductCategoryQuery>();
+        services.AddTransient<IAdminProductQuery, AdminProductQuery>();
 
     }
 }

@@ -1,6 +1,6 @@
+using EShopQuery.Contracts.Admin.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShopManagement.Application.Constracts.ProductAgg;
 using ShopManagement.Application.Constracts.ProductPictureAgg;
 using ShopManagement.Application.Constracts.ProductPictureAgg.Command;
 
@@ -10,25 +10,25 @@ public class CreateModel : PageModel
 {
     [BindProperty] public CreateProductPicture _Command { get; set; }
     private readonly IProductPictureApplication ProductPictureApplication;
-    private readonly IProductApplication ProductApplication;
+    private readonly IAdminProductQuery _AdminQuery;
 
-    public CreateModel(IProductPictureApplication productPictureApplication, IProductApplication productApplication)
+    public CreateModel(IProductPictureApplication productPictureApplication, IAdminProductQuery adminQuery)
     {
         ProductPictureApplication = productPictureApplication;
-        ProductApplication = productApplication;
+        _AdminQuery = adminQuery;
     }
 
     public void OnGet()
     {
         _Command = new();
-        _Command.Products = ProductApplication.GetAll();
+        _Command.Products = _AdminQuery.GetViewModels();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
         {
-            _Command.Products = ProductApplication.GetAll();
+            _Command.Products = _AdminQuery.GetViewModels();
             return Page();
         }
 
