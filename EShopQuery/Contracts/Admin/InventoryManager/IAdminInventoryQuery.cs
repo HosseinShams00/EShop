@@ -4,7 +4,7 @@ using InventoryManager.Applicaton.Contracts.InventoryOperationAgg;
 
 namespace EShopQuery.Contracts.Admin.InventoryManager;
 
-public interface IInventoryQuery
+public interface IAdminInventoryQuery
 {
     EditInventoryCommand? GetDetails(long id);
     List<InventoryViewModel> GetViewModels();

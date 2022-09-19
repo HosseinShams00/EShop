@@ -8,7 +8,7 @@ string connectionString = builder.Configuration.GetConnectionString("sql");
 ShopManagement.Infrastructure.Core.Bootstrapper.Config(builder.Services, connectionString);
 DiscountManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, connectionString);
 InventoryManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, connectionString);
-
+EShopQuery.Bootstrapper.Config(builder.Services);
 
 var app = builder.Build();
 

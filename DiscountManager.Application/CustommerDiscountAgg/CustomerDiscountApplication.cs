@@ -52,21 +52,6 @@ public class CustomerDiscountApplication : ICustomerDiscountApplication
         Repository.UpdateEntity(entity);
     }
 
-    public List<CustomerDiscountViewModel> GetViewModels()
-    {
-        return Repository.GetViewModels();
-    }
-
-    public EditCustomerDiscount GetDetail(long id)
-    {
-        var editCustomerDiscount = Repository.GetDitail(id);
-
-        if (editCustomerDiscount == null)
-            throw new EntityNotFoundException();
-
-        return editCustomerDiscount;
-    }
-
     public void Restore(long id)
     {
         var entity = Repository.GetBy(id);

@@ -7,6 +7,4 @@ namespace DiscountManager.Domain.CustomerDiscountAgg;
 
 public interface ICustomerDiscountRepository : IBaseRepository<long , CustomerDiscount>
 {
-    EditCustomerDiscount? GetDitail(long id);
-    List<CustomerDiscountViewModel> GetViewModels();
 }

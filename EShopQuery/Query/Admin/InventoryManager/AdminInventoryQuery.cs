@@ -9,12 +9,12 @@ using System.Linq;
 
 namespace EShopQuery.Query.Admin.InventoryManager;
 
-public class InventoryQuery : IInventoryQuery
+public class AdminInventoryQuery : IAdminInventoryQuery
 {
     private readonly InventoryEFCoreDbContext _InventoryDbContext;
     private readonly ShopManagerEFCoreDbContext _ShopManagerDbContext;
 
-    public InventoryQuery(InventoryEFCoreDbContext inventoryDbContext, ShopManagerEFCoreDbContext shopManagerDbContext)
+    public AdminInventoryQuery(InventoryEFCoreDbContext inventoryDbContext, ShopManagerEFCoreDbContext shopManagerDbContext)
     {
         _InventoryDbContext = inventoryDbContext;
         _ShopManagerDbContext = shopManagerDbContext;

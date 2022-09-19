@@ -6,7 +6,7 @@ namespace DiscountManager.Infrastructure.EFCore;
 
 public class DiscountManagerEFCoreDbContext : DbContext
 {
-    public DiscountManagerEFCoreDbContext(DbContextOptions options) : base(options)
+    public DiscountManagerEFCoreDbContext(DbContextOptions<DiscountManagerEFCoreDbContext> options) : base(options)
     {
     }
 

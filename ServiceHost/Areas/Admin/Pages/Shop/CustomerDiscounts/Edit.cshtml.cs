@@ -1,5 +1,6 @@
 using DiscountManager.Application.Contracts.CustommerDiscountAgg;
 using DiscountManager.Application.Contracts.CustommerDiscountAgg.Command;
+using EShopQuery.Contracts.Admin.DiscountManager;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -9,15 +10,17 @@ public class EditModel : PageModel
 {
     [BindProperty] public EditCustomerDiscount _Command { get; set; }
     private readonly ICustomerDiscountApplication _Application;
+    private readonly IAdminDiscountQuery _AdminDiscountQuery;
 
-    public EditModel(ICustomerDiscountApplication productCategoryApplication)
+    public EditModel(ICustomerDiscountApplication productCategoryApplication, IAdminDiscountQuery adminDiscountQuery)
     {
         _Application = productCategoryApplication;
+        this._AdminDiscountQuery = adminDiscountQuery;
     }
 
     public void OnGet(long id)
     {
-        _Command = _Application.GetDetail(id);
+        _Command = _AdminDiscountQuery.GetDetail(id);
     }
 
     public IActionResult OnPost()
