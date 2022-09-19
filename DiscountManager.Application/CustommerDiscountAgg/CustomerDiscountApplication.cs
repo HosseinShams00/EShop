@@ -18,7 +18,6 @@ public class CustomerDiscountApplication : ICustomerDiscountApplication
         Validator = validator;
     }
 
-
     public void Create(DefineCustomerDiscount customerDiscount)
     {
         try
@@ -72,9 +71,9 @@ public class CustomerDiscountApplication : ICustomerDiscountApplication
 
         try
         {
-            customerDiscount.Edit(customerDiscount.Title, customerDiscount.Description,
-                                  customerDiscount.StartDateTime, customerDiscount.EndDateTime,
-                                  customerDiscount.DiscountPercent, Validator);
+            customerDiscount.Edit(editProduct.Title, editProduct.Description,
+                                  editProduct.StartDateTime, editProduct.EndDateTime,
+                                  editProduct.DiscountPercent, Validator);
 
             Repository.UpdateEntity(customerDiscount);
         }

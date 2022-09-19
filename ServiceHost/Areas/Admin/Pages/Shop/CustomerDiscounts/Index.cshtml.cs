@@ -8,11 +8,11 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.CustomerDiscounts;
 public class IndexModel : PageModel
 {
     private readonly ICustomerDiscountApplication _Application;
-    private readonly IAdminDiscountQuery _AdminDiscountQuery;
+    private readonly IAdminCustomerDiscountQuery _AdminDiscountQuery;
 
     public List<CustomerDiscountViewModel> ViewModels { get; set; } = new();
 
-    public IndexModel(ICustomerDiscountApplication application, IAdminDiscountQuery adminDiscountQuery)
+    public IndexModel(ICustomerDiscountApplication application, IAdminCustomerDiscountQuery adminDiscountQuery)
     {
         _Application = application;
         _AdminDiscountQuery = adminDiscountQuery;

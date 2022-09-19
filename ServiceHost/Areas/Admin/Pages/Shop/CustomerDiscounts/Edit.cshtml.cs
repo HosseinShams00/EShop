@@ -10,12 +10,12 @@ public class EditModel : PageModel
 {
     [BindProperty] public EditCustomerDiscount _Command { get; set; }
     private readonly ICustomerDiscountApplication _Application;
-    private readonly IAdminDiscountQuery _AdminDiscountQuery;
+    private readonly IAdminCustomerDiscountQuery _AdminDiscountQuery;
 
-    public EditModel(ICustomerDiscountApplication productCategoryApplication, IAdminDiscountQuery adminDiscountQuery)
+    public EditModel(ICustomerDiscountApplication productCategoryApplication, IAdminCustomerDiscountQuery adminDiscountQuery)
     {
         _Application = productCategoryApplication;
-        this._AdminDiscountQuery = adminDiscountQuery;
+        _AdminDiscountQuery = adminDiscountQuery;
     }
 
     public void OnGet(long id)

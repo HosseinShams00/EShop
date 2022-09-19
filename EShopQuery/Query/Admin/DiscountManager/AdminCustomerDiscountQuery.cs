@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EShopQuery.Query.Admin.DiscountManager;
 
-public class AdminDiscountQuery : IAdminDiscountQuery
+public class AdminCustomerDiscountQuery : IAdminCustomerDiscountQuery
 {
     private readonly DiscountManagerEFCoreDbContext Context;
 
-    public AdminDiscountQuery(DiscountManagerEFCoreDbContext context)
+    public AdminCustomerDiscountQuery(DiscountManagerEFCoreDbContext context)
     {
         Context = context;
     }

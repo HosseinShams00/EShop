@@ -1,9 +1,7 @@
 ﻿using BaseFramwork.Application.Exceptions;
-using DiscountManager.Application.Contracts.CustommerDiscountAgg.Command;
 using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg;
 using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg.Command;
 using DiscountManager.Domain.ProductCustomerDiscountAgg;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace DiscountManager.Application.ProductCustomerDiscountAgg;
 
@@ -14,7 +12,7 @@ public class ProductCustomerDiscountApplication : IProductCustomerDiscountApplic
 
     public ProductCustomerDiscountApplication(IProductCustomerDiscountRepository repository, IProductCustomerDiscountValidator validator)
     {
-        this.Repository = repository;
+        Repository = repository;
         Validator = validator;
     }
 
@@ -31,23 +29,6 @@ public class ProductCustomerDiscountApplication : IProductCustomerDiscountApplic
     public long GetCustomerDiscountId(long productId)
     {
         return Repository.GetCustomerDiscountId(productId);
-    }
-
-    public EditProdcutCustomerCommand GetEditCommand(long productId)
-    {
-        var command = Repository.GetEditCommand(productId);
-        if (command == null)
-        {
-            command = new();
-            command.ProductId = productId;
-        }
-
-        return command;
-    }
-
-    public List<ProductCustomerDiscountViewModel> GetProductsViewModels(long customerDiscountId)
-    {
-        return Repository.GetProductsViewModels(customerDiscountId);
     }
 
     public void Update(EditProdcutCustomerCommand editCustomerDiscount)

@@ -1,23 +1,23 @@
 using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg;
-using Microsoft.AspNetCore.Mvc;
+using EShopQuery.Contracts.Admin.DiscountManager;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.CustomerDiscounts;
 
 public class ProductCustomerListModel : PageModel
 {
-    private readonly IProductCustomerDiscountApplication _Application;
+    private readonly IAdminProductCustomerDiscountQuery _AdminQuery;
+
     public List<ProductCustomerDiscountViewModel> ViewModels { get; private set; }
 
-
-    public ProductCustomerListModel(IProductCustomerDiscountApplication application)
+    public ProductCustomerListModel(IAdminProductCustomerDiscountQuery adminQuery)
     {
-        _Application = application;
+        _AdminQuery = adminQuery;
     }
 
     public void OnGet(long customerDiscountId)
     {
-        ViewModels = _Application.GetProductsViewModels(customerDiscountId);
+        ViewModels = _AdminQuery.GetProductsViewModels(customerDiscountId);
     }
 
 }

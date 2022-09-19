@@ -10,8 +10,9 @@ public class Bootstrapper
 {
     public static void Config(IServiceCollection services)
     {
-        services.AddTransient<IAdminDiscountQuery, AdminDiscountQuery>();
         services.AddTransient<IAdminInventoryQuery, AdminInventoryQuery>();
+        services.AddTransient<IAdminCustomerDiscountQuery, AdminCustomerDiscountQuery>();
+        services.AddTransient<IAdminProductCustomerDiscountQuery, AdminProductCustomerDiscountQuery>();
 
     }
 }
