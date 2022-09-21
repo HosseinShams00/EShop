@@ -1,5 +1,4 @@
 ﻿using EShopQuery.Contracts.ProductCategories;
-using Microsoft.EntityFrameworkCore;
 using ShopManagement.Infrastructure.EFCore;
 
 namespace EShopQuery.Query;
@@ -14,7 +13,8 @@ public class ProductCategoryQuery : IProductCategoryQuery
     }
     public List<ProductCategoriesQueryViewModels> GetViewModels()
     {
-        return Context.ProductCategories.AsNoTracking().Where(q => q.IsRemoved == false)
+        return Context.ProductCategories
+            .Where(q => q.IsRemoved == false)
             .Select(x => new ProductCategoriesQueryViewModels()
             {
                 Name = x.Name,

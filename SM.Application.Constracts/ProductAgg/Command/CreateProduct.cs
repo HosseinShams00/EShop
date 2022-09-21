@@ -51,5 +51,8 @@ public class CreateProduct
     [Range(1, long.MaxValue, ErrorMessage = "لطفا دسته بندی درست را انتخاب کنید")]
     public long ProductCategoryId { get; set; }
 
+    [Required(AllowEmptyStrings = false, ErrorMessage = "لطفا قیمت محصول را وارد نمایید")]
+    [Range(1000, int.MaxValue, ErrorMessage = "قیمت محصول باید بیشتر از 1000 باشد ")]
+    public int UnitPrice { get; set; }
 
 }

@@ -65,6 +65,13 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
+                <label>قیمت محصول</label>
+                <input type="number" placeholder="قیمت محصول" class="form-control" asp-for="_Command.UnitPrice" />
+                <span asp-validation-for="_Command.UnitPrice" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
                 <label>توضیحات محصول</label>
                 <textarea asp-for="_Command.Description" class="form-control" rows="3"></textarea>
                 <span asp-validation-for="_Command.Description" class="text-danger text-sm"></span>
@@ -81,6 +88,7 @@
             <label class="d-block">پیش نمایش عکس</label>
             <img class="mb-3 mt-3" />
         </div>
+        
 
         <button type="submit" class="btn bg-gradient-success">تایید</button>
 

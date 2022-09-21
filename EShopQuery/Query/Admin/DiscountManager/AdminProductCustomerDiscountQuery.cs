@@ -19,7 +19,7 @@ public class AdminProductCustomerDiscountQuery : IAdminProductCustomerDiscountQu
 
     public EditProdcutCustomerCommand? GetEditCommand(long productId)
     {
-        return Context.ProductCustomerDiscounts.AsNoTracking()
+        return Context.ProductCustomerDiscounts
             .Select(x => new EditProdcutCustomerCommand()
             {
                 Id = x.Id,
@@ -32,13 +32,17 @@ public class AdminProductCustomerDiscountQuery : IAdminProductCustomerDiscountQu
     public List<ProductCustomerDiscountViewModel> GetProductsViewModels(long customerDiscountId)
     {
         List<ProductCustomerDiscountViewModel> result = new();
-        var productCustomers = Context.ProductCustomerDiscounts.Where(x => x.CustomerDiscountId == customerDiscountId)
-            .AsNoTracking().ToList();
+
+        var productCustomers = Context.ProductCustomerDiscounts
+            .Where(x => x.CustomerDiscountId == customerDiscountId)
+            .AsNoTracking()
+            .ToList();
 
         foreach (var productCustomer in productCustomers)
         {
-            var query = _ShopManagerEFCoreDbContext.Products.Where(x => x.Id == productCustomer.ProductId)
-                .AsNoTracking().Select(x => new ProductCustomerDiscountViewModel()
+            var query = _ShopManagerEFCoreDbContext.Products
+                .Where(x => x.Id == productCustomer.ProductId)
+                .Select(x => new ProductCustomerDiscountViewModel()
                 {
                     Id = x.Id,
                     Name = x.Name,

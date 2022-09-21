@@ -278,4 +278,12 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\Admin\Pages\Shop\Inventory\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Shop\Inventory\Index.cshtml" />
+  </ItemGroup>
+
 </Project>

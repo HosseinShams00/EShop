@@ -1,0 +1,50 @@
+﻿@page
+@model ServiceHost.Areas.Admin.Pages.Shop.Inventory.OperationsModel
+@{
+}
+
+<div class="row">
+    <a class="offset-10 col-2" asp-page="./AddOperation" asp-route-inventoryId="@Model.InventoryId">
+        <button type="button" class="btn bg-gradient-success">تراکنش جدید</button>
+    </a>
+</div>
+
+
+<div class="card my-5">
+
+    <table class="table align-items-center mb-0">
+        <thead>
+            <tr>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder">#</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">ایدی کاربر</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">تعداد</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">موجودی در انبار</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ViewModels)
+            {
+                <tr>
+                    <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">@item.Id</p>
+                    </td>
+
+                    <td class="align-middle text-center">
+
+                        <h6 class="mb-0 text-xs">@item.OperatorId</h6>
+
+                    </td>
+                    <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">@item.Count</p>
+                    </td>
+                    <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">@item.CurrentCount</p>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>

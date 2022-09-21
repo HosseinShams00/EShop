@@ -11,17 +11,17 @@ public class DefineCustomerDiscountModel : PageModel
     private readonly IAdminCustomerDiscountQuery _AdminDiscountQuery;
     private readonly IAdminProductCustomerDiscountQuery _AdminProductDiscountQuery;
 
-    private readonly IProductCustomerDiscountApplication productCustomerDiscountApplication;
+    private readonly IProductCustomerDiscountApplication _ProductCustomerDiscountApplication;
 
-    public List<CustomerDiscountViewModel> ViewModels { get; private set; }
-    [BindProperty] public EditProdcutCustomerCommand Command { get; set; }
+    public IReadOnlyCollection<CustomerDiscountViewModel> ViewModels { get; private set; }
+    [BindProperty] public EditProdcutCustomerCommand _Command { get; set; }
 
     public DefineCustomerDiscountModel(IProductCustomerDiscountApplication productCustomerDiscountApplication,
                                         IAdminCustomerDiscountQuery adminDiscountQuery,
                                         IAdminProductCustomerDiscountQuery adminProductDiscountQuery)
     {
-        this.productCustomerDiscountApplication = productCustomerDiscountApplication;
-        Command = new();
+        _ProductCustomerDiscountApplication = productCustomerDiscountApplication;
+        _Command = new();
         _AdminDiscountQuery = adminDiscountQuery;
         _AdminProductDiscountQuery = adminProductDiscountQuery;
     }
@@ -29,31 +29,31 @@ public class DefineCustomerDiscountModel : PageModel
     public void OnGet(long productId)
     {
         ViewModels = _AdminDiscountQuery.GetViewModels();
-        Command = _AdminProductDiscountQuery.GetEditCommand(productId);
+        _Command = _AdminProductDiscountQuery.GetEditCommand(productId) ?? new EditProdcutCustomerCommand() { ProductId = productId };
     }
 
     public IActionResult OnPost()
     {
-        if (Command.CustomerDiscountId == 0)
+        if (_Command.CustomerDiscountId == 0)
         {
-            if (Command.Id != 0)
-                productCustomerDiscountApplication.DeleteBy(Command.ProductId);
+            if (_Command.Id != 0)
+                _ProductCustomerDiscountApplication.DeleteBy(_Command.ProductId);
 
             return RedirectToPage("./index");
 
         }
-        if (Command.Id == 0)
+        if (_Command.Id == 0)
         {
-            productCustomerDiscountApplication.Create(new ProdcutCustomerCommand()
+            _ProductCustomerDiscountApplication.Create(new ProdcutCustomerCommand()
             {
-                ProductId = Command.ProductId,
-                CustomerDiscountId = Command.CustomerDiscountId
+                ProductId = _Command.ProductId,
+                CustomerDiscountId = _Command.CustomerDiscountId
             });
             return RedirectToPage("./index");
 
         }
 
-        productCustomerDiscountApplication.Update(Command);
+        _ProductCustomerDiscountApplication.Update(_Command);
         return RedirectToPage("./index");
     }
 

@@ -1,6 +1,4 @@
 ﻿using EShopQuery.Contracts.Slider;
-using Microsoft.EntityFrameworkCore;
-using ShopManagement.Application.Constracts.SliderAgg;
 using ShopManagement.Infrastructure.EFCore;
 
 namespace EShopQuery.Query;
@@ -16,7 +14,8 @@ public class SliderQuery : ISliderQuery
 
     public List<SliderQueryModel> GetViewModels()
     {
-        return Context.Sliders.AsNoTracking().Where(q => q.IsRemoved == false)
+        return Context.Sliders
+            .Where(q => q.IsRemoved == false)
             .Select(x => new SliderQueryModel()
             {
                 BodyText = x.BodyText,

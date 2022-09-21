@@ -1,7 +1,6 @@
 ﻿using EShopQuery.Contracts.Admin.Slider;
 using ShopManagement.Application.Constracts.SliderAgg.Command;
 using ShopManagement.Infrastructure.EFCore;
-using Microsoft.EntityFrameworkCore;
 using BaseFramwork.Application.Exceptions;
 
 namespace EShopQuery.Query.Admin.Slider;
@@ -30,7 +29,6 @@ public class AdminSliderQuery : IAdminSliderQuery
                 RedirectUrl = x.RedirectUrl,
                 Title = x.Title
             })
-            .AsNoTracking()
             .FirstOrDefault(q => q.Id == id);
 
         if (command == null)
@@ -52,6 +50,7 @@ public class AdminSliderQuery : IAdminSliderQuery
                 CreationTime = x.CreationTime.ToString(),
                 IsRemoved = x.IsRemoved,
                 PicturePath = x.PicturePath
-            }).ToList();
+            })
+            .ToList();
     }
 }

@@ -14,7 +14,7 @@ public class EditModel : PageModel
     private readonly IAdminProductQuery _AdminQuery;
     private readonly IAdminProductPictureQuery _AdminProductPictureQuery;
 
-    public List<ProductViewModel> Products { get; set; } = new();
+    public IReadOnlyCollection<ProductViewModel> Products { get; set; }
 
     public EditModel(IProductPictureApplication productPictureApplication,
         IAdminProductQuery adminQuery,

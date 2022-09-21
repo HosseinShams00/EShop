@@ -10,13 +10,12 @@ public class IndexModel : PageModel
     private readonly IProductPictureApplication ProductPictureApplication;
     private readonly IAdminProductPictureQuery _AdminProductPictureQuery;
 
-    public List<ProductPictureViewModel> ViewModels { get; set; }
+    public IReadOnlyCollection<ProductPictureViewModel> ViewModels { get; set; }
 
 
     public IndexModel(IProductPictureApplication productPictureApplication, IAdminProductPictureQuery adminroductPictureQuery)
     {
         ProductPictureApplication = productPictureApplication;
-        ViewModels = new();
         _AdminProductPictureQuery = adminroductPictureQuery;
     }
 

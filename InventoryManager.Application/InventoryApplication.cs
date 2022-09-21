@@ -22,9 +22,10 @@ public class InventoryApplication : IInventoryApplication
         if (entity == null)
             throw new EntityNotFoundException();
 
+
         entity.AddNewTransAction(new InventoryOperation(
             operationCommand.Count, operationCommand.OperatorId,
-            operationCommand.CurrentCount, operationCommand.Description,
+            entity.CurrentCount, operationCommand.Description,
             operationCommand.OrderId, operationCommand.InventoryId));
 
         _Repository.UpdateEntity(entity);

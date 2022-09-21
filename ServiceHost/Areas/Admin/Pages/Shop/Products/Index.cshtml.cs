@@ -1,3 +1,4 @@
+using EShopQuery.Contracts.Admin.InventoryManager;
 using EShopQuery.Contracts.Admin.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,14 +12,13 @@ public class IndexModel : PageModel
     private readonly IAdminProductQuery _AdminQuery;
 
     public ProductSearchModel SearchModel { get; set; }
-    public List<ProductViewModel> ViewModels { get; set; }
+    public IReadOnlyCollection<ProductViewModel> ViewModels { get; set; }
 
     public IndexModel(IProductApplication productApplication, IAdminProductQuery adminQuery)
     {
         _Application = productApplication;
-        SearchModel = new();
-        ViewModels = new();
         _AdminQuery = adminQuery;
+        SearchModel = new();
     }
 
     public void OnGet(ProductSearchModel searchModel)

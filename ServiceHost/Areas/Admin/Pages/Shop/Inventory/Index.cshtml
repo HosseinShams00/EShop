@@ -1,15 +1,18 @@
 ﻿@page
-@model ServiceHost.Areas.Admin.Pages.Shop.CustomerDiscounts.ProductCustomerListModel
+@model ServiceHost.Areas.Admin.Pages.Shop.Inventory.IndexModel
 @{
 }
+
+
 <div class="card my-5">
 
     <table class="table align-items-center mb-0">
         <thead>
             <tr>
                 <th class="align-middle text-center text-secondary text-s font-weight-bolder">#</th>
-                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">عکس محصول</th>
                 <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">نام محصول</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">قیمت محصول</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">موجودی در انبار</th>
                 <th></th>
             </tr>
         </thead>
@@ -22,26 +25,30 @@
                     </td>
 
                     <td class="align-middle text-center">
-                        <img src="@item.PicturePath" class="avatar avatar-sm rounded-circle me-2" />
-                    </td>
 
+                        <h6 class="mb-0 text-xs">@item.ProductName</h6>
+
+                    </td>
                     <td class="align-middle text-center">
-                        <p class="mb-0 text-s font-weight-bold">@item.Name</p>
+                        <p class="text-xs font-weight-bold mb-0">@item.UnitPrice</p>
                     </td>
-
+                    <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">@item.CurrentCount</p>
+                    </td>
                     <td class="align-middle d-flex align-items-center text-center">
 
                         <div class="dropdown">
                             <button type="button" class="btn bg-gradient-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             </button>
                             <ul class="dropdown-menu text-center" data-popper-placement="bottom-start" aria-labelledby="dropdownTable">
-                                <li><a class="dropdown-item" asp-page="./ProductCustomerList"
-                                    asp-page-handler="remove"
-                                    asp-route-id="@item.Id"
-                                    asp-route-customerDiscountId="@Model._CustomerDiscountId">حذف</a></li>
+                                <li><a class="dropdown-item" asp-page="./edit" asp-route-id="@item.Id">تغییر</a></li>
+                                <li><a class="dropdown-item" asp-page="./Operations" asp-route-id="@item.Id">ورود به پنل تراکنش ها</a></li>
+
                             </ul>
                         </div>
+
                     </td>
+
                 </tr>
             }
 

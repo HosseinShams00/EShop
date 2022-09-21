@@ -27,7 +27,6 @@ public class AdminProductPictureQuery : IAdminProductPictureQuery
                 ProductId = x.ProductId
 
             })
-            .AsNoTracking()
             .FirstOrDefault(q => q.Id == id);
 
         if (command == null)
@@ -39,7 +38,8 @@ public class AdminProductPictureQuery : IAdminProductPictureQuery
 
     public List<ProductPictureViewModel> GetViewModels()
     {
-        return Context.ProductPictures.AsNoTracking().Include(x => x.Product)
+        return Context.ProductPictures
+            .Include(x => x.Product)
             .Select(x => new ProductPictureViewModel()
             {
                 Id = x.Id,

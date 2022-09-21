@@ -11,14 +11,13 @@ public class IndexModel : PageModel
     private readonly IAdminProductCategoryQuery _AdminQuery;
 
     public ProductCategorySearchModel SearchModel { get; set; }
-    public List<ProductCategoryViewModel> ViewModels { get; set; }
+    public IReadOnlyCollection<ProductCategoryViewModel> ViewModels { get; set; }
 
 
     public IndexModel(IProductCategoryApplication productCategoryApplication, IAdminProductCategoryQuery adminQuery)
     {
         ProductCategoryApplication = productCategoryApplication;
         SearchModel = new();
-        ViewModels = new();
         _AdminQuery = adminQuery;
     }
 

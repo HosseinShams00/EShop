@@ -4,24 +4,30 @@ using ShopManagement.Application.Constracts.ProductAgg.Exceptions;
 using ShopManagement.Application.Constracts.ProductAgg.Command;
 using ShopManagement.Domain.ProductAgg;
 using BaseFramwork.Application;
+using InventoryManager.Applicaton.Contracts.InventoryAgg;
+using InventoryManager.Applicaton.Contracts.InventoryAgg.Command;
 
 namespace ShopManagement.Application.ProductAgg;
 
 public class ProductApplication : IProductApplication
 {
-    private readonly IProductValidator validator;
+    private readonly IProductValidator _Validator;
 
-    private readonly IProductRepository ProductRepository;
+    private readonly IProductRepository _ProductRepository;
+    private readonly IInventoryApplication _InventoryApplication;
 
-    public ProductApplication(IProductRepository productRepository, IProductValidator validator)
+    public ProductApplication(IProductRepository productRepository,
+        IProductValidator validator,
+        IInventoryApplication inventoryApplication)
     {
-        ProductRepository = productRepository;
-        this.validator = validator;
+        _ProductRepository = productRepository;
+        _Validator = validator;
+        _InventoryApplication = inventoryApplication;
     }
 
     public void Create(CreateProduct createProduct)
     {
-        if (ProductRepository.Exist(x => x.Name == createProduct.Name))
+        if (_ProductRepository.Exist(x => x.Name == createProduct.Name))
             throw new DuplicatedEntityNameException();
 
         try
@@ -30,9 +36,14 @@ public class ProductApplication : IProductApplication
                 createProduct.ShortDecription, createProduct.Picture,
                 createProduct.PictureAlt, createProduct.PictureTitle,
                 createProduct.Keywords, createProduct.MetaDescription,
-                createProduct.Slug.ModifySlug(), createProduct.ProductCategoryId, validator);
+                createProduct.Slug.ModifySlug(), createProduct.ProductCategoryId, _Validator);
 
-            ProductRepository.Create(product);
+            _ProductRepository.Create(product);
+            _InventoryApplication.Create(new CreateInventoryCommand()
+            {
+                ProductId = product.Id,
+                UnitPrice = createProduct.UnitPrice
+            });
         }
         catch (Exception ex)
         {
@@ -43,12 +54,12 @@ public class ProductApplication : IProductApplication
 
     public void Update(EditProduct editProduct)
     {
-        var productCategory = ProductRepository.GetBy(editProduct.Id);
+        var productCategory = _ProductRepository.GetBy(editProduct.Id);
 
         if (productCategory is null)
             throw new EntityNotFoundException();
 
-        if (ProductRepository.Exist(x => x.Name == editProduct.Name && x.Id != editProduct.Id))
+        if (_ProductRepository.Exist(x => x.Name == editProduct.Name && x.Id != editProduct.Id))
             throw new DuplicatedEntityNameException();
 
         try
@@ -57,9 +68,9 @@ public class ProductApplication : IProductApplication
             editProduct.ShortDecription, editProduct.Picture,
             editProduct.PictureAlt, editProduct.PictureTitle,
             editProduct.Keywords, editProduct.MetaDescription,
-            editProduct.Slug.ModifySlug(), editProduct.ProductCategoryId, validator);
+            editProduct.Slug.ModifySlug(), editProduct.ProductCategoryId, _Validator);
 
-            ProductRepository.UpdateEntity(productCategory);
+            _ProductRepository.UpdateEntity(productCategory);
         }
         catch (Exception ex)
         {
@@ -73,21 +84,21 @@ public class ProductApplication : IProductApplication
 
     public void Delete(long id)
     {
-        var product = ProductRepository.GetBy(id);
+        var product = _ProductRepository.GetBy(id);
         if (product == null)
             throw new EntityNotFoundException();
 
         product.DeActive();
-        ProductRepository.UpdateEntity(product);
+        _ProductRepository.UpdateEntity(product);
     }
 
     public void Restore(long id)
     {
-        var product = ProductRepository.GetBy(id);
+        var product = _ProductRepository.GetBy(id);
         if (product is null)
             throw new EntityNotFoundException();
 
         product.Active();
-        ProductRepository.UpdateEntity(product);
+        _ProductRepository.UpdateEntity(product);
     }
 }

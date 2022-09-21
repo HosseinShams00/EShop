@@ -1,20 +1,16 @@
-using DiscountManager.Application.Contracts.CustommerDiscountAgg;
 using EShopQuery.Contracts.Admin.DiscountManager;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.CustomerDiscounts;
 
 public class IndexModel : PageModel
 {
-    private readonly ICustomerDiscountApplication _Application;
     private readonly IAdminCustomerDiscountQuery _AdminDiscountQuery;
 
-    public List<CustomerDiscountViewModel> ViewModels { get; set; } = new();
+    public IReadOnlyCollection<CustomerDiscountViewModel> ViewModels { get; set; }
 
-    public IndexModel(ICustomerDiscountApplication application, IAdminCustomerDiscountQuery adminDiscountQuery)
+    public IndexModel(IAdminCustomerDiscountQuery adminDiscountQuery)
     {
-        _Application = application;
         _AdminDiscountQuery = adminDiscountQuery;
     }
 

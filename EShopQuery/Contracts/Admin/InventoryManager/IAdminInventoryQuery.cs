@@ -8,4 +8,5 @@ public interface IAdminInventoryQuery
     List<InventoryViewModel> GetViewModels();
     List<InventoryViewModel> GetViewModels(InventorySearchModel searchModel);
     List<InventoryOperationViewModel> GetOperationViewModels(long inventoryId);
+    long GetInventoryIdWith(long productId);
 }

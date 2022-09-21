@@ -1,7 +1,6 @@
 ﻿using DiscountManager.Application.Contracts.CustommerDiscountAgg.Command;
 using EShopQuery.Contracts.Admin.DiscountManager;
 using DiscountManager.Infrastructure.EFCore;
-using Microsoft.EntityFrameworkCore;
 
 namespace EShopQuery.Query.Admin.DiscountManager;
 
@@ -16,7 +15,7 @@ public class AdminCustomerDiscountQuery : IAdminCustomerDiscountQuery
 
     public EditCustomerDiscount? GetDetail(long id)
     {
-        return Context.CustomerDiscounts.AsNoTracking()
+        return Context.CustomerDiscounts
             .Select(x => new EditCustomerDiscount()
             {
                 Id = x.Id,
@@ -31,7 +30,7 @@ public class AdminCustomerDiscountQuery : IAdminCustomerDiscountQuery
 
     public List<CustomerDiscountViewModel> GetViewModels()
     {
-        return Context.CustomerDiscounts.AsNoTracking()
+        return Context.CustomerDiscounts
             .Select(x => new CustomerDiscountViewModel()
             {
                 Id = x.Id,

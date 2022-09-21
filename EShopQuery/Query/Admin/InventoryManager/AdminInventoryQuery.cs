@@ -1,9 +1,7 @@
 ﻿using EShopQuery.Contracts.Admin.InventoryManager;
 using InventoryManager.Applicaton.Contracts.InventoryAgg.Command;
 using InventoryManager.Infrastructure.EFCore;
-using Microsoft.EntityFrameworkCore;
 using ShopManagement.Infrastructure.EFCore;
-using System.Linq;
 
 namespace EShopQuery.Query.Admin.InventoryManager;
 
@@ -27,8 +25,15 @@ public class AdminInventoryQuery : IAdminInventoryQuery
                 UnitPrice = x.UnitPrice
 
             })
-            .AsNoTracking()
             .FirstOrDefault(x => x.Id == id);
+    }
+
+    public long GetInventoryIdWith(long productId)
+    {
+        return _InventoryDbContext.Inventories
+            .Where(x => x.ProductId == productId)
+            .Select(x => x.Id)
+            .FirstOrDefault();
     }
 
     public List<InventoryOperationViewModel> GetOperationViewModels(long inventoryId)
@@ -46,7 +51,6 @@ public class AdminInventoryQuery : IAdminInventoryQuery
                 OrderId = x.OrderId
 
             })
-            .AsNoTracking()
             .ToList();
     }
 
@@ -61,7 +65,6 @@ public class AdminInventoryQuery : IAdminInventoryQuery
                 UnitPrice = x.UnitPrice,
                 ProductName = String.Empty
             })
-            .AsNoTracking()
             .ToList();
 
         for (int i = 0; i < viewModels.Count; i++)
@@ -69,7 +72,6 @@ public class AdminInventoryQuery : IAdminInventoryQuery
             viewModels[i].ProductName = _ShopManagerDbContext.Products
                                         .Where(x => x.Id == viewModels[i].ProductId)
                                         .Select(x => x.Name)
-                                        .AsNoTracking()
                                         .FirstOrDefault() ?? string.Empty;
         }
 
@@ -86,8 +88,7 @@ public class AdminInventoryQuery : IAdminInventoryQuery
                 ProductId = x.ProductId,
                 UnitPrice = x.UnitPrice,
                 ProductName = String.Empty
-            })
-            .AsNoTracking();
+            });
 
         if (searchModel.ProductId != 0)
             viewModelsQuery = viewModelsQuery.Where(x => x.ProductId == searchModel.ProductId);
@@ -105,7 +106,6 @@ public class AdminInventoryQuery : IAdminInventoryQuery
             viewModels[i].ProductName = _ShopManagerDbContext.Products
                                         .Where(x => x.Id == viewModels[i].ProductId)
                                         .Select(x => x.Name)
-                                        .AsNoTracking()
                                         .FirstOrDefault() ?? string.Empty;
         }
 

@@ -1,0 +1,30 @@
+﻿@page
+@model ServiceHost.Areas.Admin.Pages.Shop.Inventory.AddOperationModel
+@{
+}
+
+
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>تعداد</label>
+                <input type="text" placeholder="تعداد" class="form-control" asp-for="_Command.Count" />
+                <span asp-validation-for="_Command.Count" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>توضیحات</label>
+                <textarea asp-for="_Command.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="_Command.Description" class="text-danger text-sm"></span>
+            </div>
+        </div>
+        <input type="hidden" asp-for="_Command.InventoryId" />
+        <button type="submit" class="btn bg-gradient-success">تایید</button>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
