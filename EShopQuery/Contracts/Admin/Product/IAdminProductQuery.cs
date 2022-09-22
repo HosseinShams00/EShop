@@ -5,6 +5,6 @@ namespace EShopQuery.Contracts.Admin.Product;
 public interface IAdminProductQuery
 {
     EditProduct GetDetail(long id);
-    List<ProductViewModel> Search(ProductSearchModel productSearchModel);
-    List<ProductViewModel> GetViewModels();
+    List<ProductQueryModel> Search(ProductSearchModel productSearchModel);
+    List<ProductQueryModel> GetViewModels();
 }

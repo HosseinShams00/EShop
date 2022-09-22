@@ -1,6 +1,6 @@
 ﻿namespace EShopQuery.Contracts.Admin.ProductPicture;
 
-public class ProductPictureViewModel
+public class ProductPictureQueryModel
 {
     public long Id { get; set; }
     public string Path { get; set; }

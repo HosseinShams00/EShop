@@ -10,7 +10,7 @@ public class IndexModel : PageModel
     private readonly IProductPictureApplication ProductPictureApplication;
     private readonly IAdminProductPictureQuery _AdminProductPictureQuery;
 
-    public IReadOnlyCollection<ProductPictureViewModel> ViewModels { get; set; }
+    public IReadOnlyCollection<ProductPictureQueryModel> ViewModels { get; set; }
 
 
     public IndexModel(IProductPictureApplication productPictureApplication, IAdminProductPictureQuery adminroductPictureQuery)

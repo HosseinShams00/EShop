@@ -1,6 +1,6 @@
 ﻿namespace EShopQuery.Contracts.Admin.InventoryManager;
 
-public class InventoryViewModel
+public class InventoryQueryModel
 {
     public long Id { get; set; }
     public string ProductName { get; set; }

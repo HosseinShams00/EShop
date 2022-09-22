@@ -5,5 +5,5 @@ namespace EShopQuery.Contracts.Admin.ProductPicture;
 public interface IAdminProductPictureQuery
 {
     EditProductPicture GetDetail(long id);
-    List<ProductPictureViewModel> GetViewModels();
+    List<ProductPictureQueryModel> GetViewModels();
 }

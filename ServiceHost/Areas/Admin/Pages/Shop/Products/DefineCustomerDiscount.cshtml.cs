@@ -13,7 +13,7 @@ public class DefineCustomerDiscountModel : PageModel
 
     private readonly IProductCustomerDiscountApplication _ProductCustomerDiscountApplication;
 
-    public IReadOnlyCollection<CustomerDiscountViewModel> ViewModels { get; private set; }
+    public IReadOnlyCollection<CustomerDiscountQueryModel> ViewModels { get; private set; }
     [BindProperty] public EditProdcutCustomerCommand _Command { get; set; }
 
     public DefineCustomerDiscountModel(IProductCustomerDiscountApplication productCustomerDiscountApplication,

@@ -8,7 +8,7 @@ public class IndexModel : PageModel
 {
     private readonly IAdminInventoryQuery _AdminQuery;
 
-    public IReadOnlyCollection<InventoryViewModel> ViewModels { get; set; }
+    public IReadOnlyCollection<InventoryQueryModel> ViewModels { get; set; }
 
     public IndexModel(IAdminInventoryQuery adminQuery)
     {

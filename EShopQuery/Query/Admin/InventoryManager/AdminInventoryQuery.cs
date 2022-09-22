@@ -36,11 +36,11 @@ public class AdminInventoryQuery : IAdminInventoryQuery
             .FirstOrDefault();
     }
 
-    public List<InventoryOperationViewModel> GetOperationViewModels(long inventoryId)
+    public List<InventoryOperationQueryModel> GetOperationViewModels(long inventoryId)
     {
         return _InventoryDbContext.InventoryOperations
             .Where(x => x.InventoryId == inventoryId)
-            .Select(x => new InventoryOperationViewModel()
+            .Select(x => new InventoryOperationQueryModel()
             {
                 Id = x.Id,
                 Count = x.Count,
@@ -54,10 +54,10 @@ public class AdminInventoryQuery : IAdminInventoryQuery
             .ToList();
     }
 
-    public List<InventoryViewModel> GetViewModels()
+    public List<InventoryQueryModel> GetViewModels()
     {
         var viewModels = _InventoryDbContext.Inventories
-            .Select(x => new InventoryViewModel()
+            .Select(x => new InventoryQueryModel()
             {
                 Id = x.Id,
                 CurrentCount = x.CurrentCount,
@@ -78,10 +78,10 @@ public class AdminInventoryQuery : IAdminInventoryQuery
         return viewModels;
     }
 
-    public List<InventoryViewModel> GetViewModels(InventorySearchModel searchModel)
+    public List<InventoryQueryModel> GetViewModels(InventorySearchModel searchModel)
     {
         var viewModelsQuery = _InventoryDbContext.Inventories
-            .Select(x => new InventoryViewModel()
+            .Select(x => new InventoryQueryModel()
             {
                 Id = x.Id,
                 CurrentCount = x.CurrentCount,

@@ -1,6 +1,6 @@
 ﻿namespace EShopQuery.Contracts.Admin.Product
 {
-    public class ProductViewModel
+    public class ProductQueryModel
     {
         public long Id { get; set; }
         public string Name { get; set; }

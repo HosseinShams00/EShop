@@ -5,8 +5,8 @@ namespace EShopQuery.Contracts.Admin.InventoryManager;
 public interface IAdminInventoryQuery
 {
     EditInventoryCommand? GetDetails(long id);
-    List<InventoryViewModel> GetViewModels();
-    List<InventoryViewModel> GetViewModels(InventorySearchModel searchModel);
-    List<InventoryOperationViewModel> GetOperationViewModels(long inventoryId);
+    List<InventoryQueryModel> GetViewModels();
+    List<InventoryQueryModel> GetViewModels(InventorySearchModel searchModel);
+    List<InventoryOperationQueryModel> GetOperationViewModels(long inventoryId);
     long GetInventoryIdWith(long productId);
 }

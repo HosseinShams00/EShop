@@ -28,10 +28,10 @@ public class AdminCustomerDiscountQuery : IAdminCustomerDiscountQuery
             }).FirstOrDefault(z => z.Id == id);
     }
 
-    public List<CustomerDiscountViewModel> GetViewModels()
+    public List<CustomerDiscountQueryModel> GetViewModels()
     {
         return Context.CustomerDiscounts
-            .Select(x => new CustomerDiscountViewModel()
+            .Select(x => new CustomerDiscountQueryModel()
             {
                 Id = x.Id,
                 Title = x.Title,

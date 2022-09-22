@@ -1,6 +1,6 @@
 ﻿namespace EShopQuery.Contracts.Admin.Slider;
 
-public class SliderViewModel
+public class SliderQueryModel
 {
     public long Id { get; set; }
     public string PicturePath { get; set; }

@@ -38,11 +38,11 @@ public class AdminSliderQuery : IAdminSliderQuery
 
     }
 
-    public List<SliderViewModel> GetViewModelsWith(bool IsRemoved)
+    public List<SliderQueryModel> GetViewModelsWith(bool IsRemoved)
     {
         return Context.Sliders
             .Where(q => q.IsRemoved == IsRemoved)
-            .Select(x => new SliderViewModel()
+            .Select(x => new SliderQueryModel()
             {
                 Id = x.Id,
                 Heading = x.Heading,

@@ -7,7 +7,7 @@ public class OperationsModel : PageModel
 {
     private readonly IAdminInventoryQuery _AdminQuery;
 
-    public IReadOnlyCollection<InventoryOperationViewModel> ViewModels { get; set; }
+    public IReadOnlyCollection<InventoryOperationQueryModel> ViewModels { get; set; }
     public long InventoryId { get; set; }
 
     public OperationsModel(IAdminInventoryQuery adminQuery)

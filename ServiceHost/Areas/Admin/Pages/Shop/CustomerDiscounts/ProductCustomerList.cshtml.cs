@@ -9,7 +9,7 @@ public class ProductCustomerListModel : PageModel
     private readonly IAdminProductCustomerDiscountQuery _AdminQuery;
     private readonly IProductCustomerDiscountApplication _Application;
 
-    public IReadOnlyCollection<ProductCustomerDiscountViewModel> ViewModels { get; private set; }
+    public IReadOnlyCollection<ProductCustomerDiscountQueryModel> ViewModels { get; private set; }
     public long _CustomerDiscountId { get; set; }
 
 

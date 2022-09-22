@@ -5,6 +5,6 @@ namespace EShopQuery.Contracts.Admin.DiscountManager;
 public interface IAdminCustomerDiscountQuery
 {
     EditCustomerDiscount? GetDetail(long id);
-    List<CustomerDiscountViewModel> GetViewModels();
+    List<CustomerDiscountQueryModel> GetViewModels();
 }
 

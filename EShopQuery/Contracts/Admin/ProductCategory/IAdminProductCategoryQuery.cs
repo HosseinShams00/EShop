@@ -5,6 +5,6 @@ namespace EShopQuery.Contracts.Admin.ProductCategory;
 public interface IAdminProductCategoryQuery
 {
     EditProductCategory? GetDetail(long id);
-    List<ProductCategoryViewModel> Search(ProductCategorySearchModel productCategorySearchModel);
-    List<ProductCategoryViewModel> GetViewModels();
+    List<ProductCategoryQueryModel> Search(ProductCategorySearchModel productCategorySearchModel);
+    List<ProductCategoryQueryModel> GetViewModels();
 }

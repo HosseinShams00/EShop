@@ -5,5 +5,5 @@ namespace EShopQuery.Contracts.Admin.Slider;
 public interface IAdminSliderQuery
 {
     EditSlider GetDetail(long id);
-    List<SliderViewModel> GetViewModelsWith(bool IsRemoved);
+    List<SliderQueryModel> GetViewModelsWith(bool IsRemoved);
 }

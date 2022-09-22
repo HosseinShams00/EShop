@@ -29,9 +29,9 @@ public class AdminProductCustomerDiscountQuery : IAdminProductCustomerDiscountQu
             }).FirstOrDefault(x => x.ProductId == productId);
     }
 
-    public List<ProductCustomerDiscountViewModel> GetProductsViewModels(long customerDiscountId)
+    public List<ProductCustomerDiscountQueryModel> GetProductsViewModels(long customerDiscountId)
     {
-        List<ProductCustomerDiscountViewModel> result = new();
+        List<ProductCustomerDiscountQueryModel> result = new();
 
         var productCustomers = Context.ProductCustomerDiscounts
             .Where(x => x.CustomerDiscountId == customerDiscountId)
@@ -42,7 +42,7 @@ public class AdminProductCustomerDiscountQuery : IAdminProductCustomerDiscountQu
         {
             var query = _ShopManagerEFCoreDbContext.Products
                 .Where(x => x.Id == productCustomer.ProductId)
-                .Select(x => new ProductCustomerDiscountViewModel()
+                .Select(x => new ProductCustomerDiscountQueryModel()
                 {
                     Id = x.Id,
                     Name = x.Name,

@@ -12,7 +12,7 @@ public class CreateModel : PageModel
     private readonly IProductPictureApplication ProductPictureApplication;
     private readonly IAdminProductQuery _AdminQuery;
 
-    public IReadOnlyCollection<ProductViewModel> Products { get; set; }
+    public IReadOnlyCollection<ProductQueryModel> Products { get; set; }
 
     public CreateModel(IProductPictureApplication productPictureApplication, IAdminProductQuery adminQuery)
     {

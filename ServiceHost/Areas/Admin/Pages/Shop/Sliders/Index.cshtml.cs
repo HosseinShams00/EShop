@@ -10,7 +10,7 @@ public class IndexModel : PageModel
     private readonly ISliderApplication _Application;
     private readonly IAdminSliderQuery _AdminSliderQuery;
 
-    public IReadOnlyCollection<SliderViewModel> ViewModels { get; set; }
+    public IReadOnlyCollection<SliderQueryModel> ViewModels { get; set; }
     [BindProperty] public bool IsRemoved { get; set; }
 
     public IndexModel(ISliderApplication sliderApplication, IAdminSliderQuery adminSliderQuery)

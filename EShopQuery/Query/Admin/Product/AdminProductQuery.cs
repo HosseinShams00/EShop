@@ -44,10 +44,10 @@ public class AdminProductQuery : IAdminProductQuery
 
     }
 
-    public List<ProductViewModel> GetViewModels()
+    public List<ProductQueryModel> GetViewModels()
     {
         return Context.Products
-            .Select(x => new ProductViewModel
+            .Select(x => new ProductQueryModel
             {
                 Id = x.Id,
                 Picture = x.Picture,
@@ -59,10 +59,10 @@ public class AdminProductQuery : IAdminProductQuery
             }).ToList();
     }
 
-    public List<ProductViewModel> Search(ProductSearchModel productSearchModel)
+    public List<ProductQueryModel> Search(ProductSearchModel productSearchModel)
     {
         var query = Context.Products
-            .Select(x => new ProductViewModel
+            .Select(x => new ProductQueryModel
             {
                 Id = x.Id,
                 Picture = x.Picture,

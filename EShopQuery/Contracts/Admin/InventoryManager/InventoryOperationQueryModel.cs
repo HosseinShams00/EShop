@@ -1,6 +1,6 @@
 ﻿namespace EShopQuery.Contracts.Admin.InventoryManager;
 
-public class InventoryOperationViewModel
+public class InventoryOperationQueryModel
 {
     public long Id { get; set; }
     public DateTime OperationDate { get; set; }

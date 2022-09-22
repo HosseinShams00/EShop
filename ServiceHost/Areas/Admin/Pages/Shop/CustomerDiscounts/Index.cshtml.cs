@@ -7,7 +7,7 @@ public class IndexModel : PageModel
 {
     private readonly IAdminCustomerDiscountQuery _AdminDiscountQuery;
 
-    public IReadOnlyCollection<CustomerDiscountViewModel> ViewModels { get; set; }
+    public IReadOnlyCollection<CustomerDiscountQueryModel> ViewModels { get; set; }
 
     public IndexModel(IAdminCustomerDiscountQuery adminDiscountQuery)
     {

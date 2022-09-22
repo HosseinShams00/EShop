@@ -36,11 +36,11 @@ public class AdminProductPictureQuery : IAdminProductPictureQuery
 
     }
 
-    public List<ProductPictureViewModel> GetViewModels()
+    public List<ProductPictureQueryModel> GetViewModels()
     {
         return Context.ProductPictures
             .Include(x => x.Product)
-            .Select(x => new ProductPictureViewModel()
+            .Select(x => new ProductPictureQueryModel()
             {
                 Id = x.Id,
                 Path = x.Path,

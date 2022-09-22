@@ -1,6 +1,6 @@
 ﻿namespace EShopQuery.Contracts.Admin.DiscountManager;
 
-public class ProductCustomerDiscountViewModel
+public class ProductCustomerDiscountQueryModel
 {
     public long Id { get; set; }
     public string Name { get; set; }

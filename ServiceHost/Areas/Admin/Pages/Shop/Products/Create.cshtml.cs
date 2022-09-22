@@ -11,7 +11,7 @@ public class CreateModel : PageModel
     [BindProperty] public CreateProduct _Command { get; set; }
     private readonly IProductApplication ProductApplication;
     private readonly IAdminProductCategoryQuery _AdminQuery;
-    public IReadOnlyCollection<ProductCategoryViewModel> ProductCategroies { get; set; }
+    public IReadOnlyCollection<ProductCategoryQueryModel> ProductCategroies { get; set; }
 
 
     public CreateModel(IProductApplication productApplication,
