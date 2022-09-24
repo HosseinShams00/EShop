@@ -5,16 +5,16 @@ namespace ServiceHost.ViewComponents;
 
 public class SliderViewComponent : ViewComponent
 {
-    private readonly ISliderQuery SliderQuery;
+    private readonly IUserSliderQuery _userSliderQuery;
 
-    public SliderViewComponent(ISliderQuery sliderQuery)
+    public SliderViewComponent(IUserSliderQuery userSliderQuery)
     {
-        SliderQuery = sliderQuery;
+        _userSliderQuery = userSliderQuery;
     }
 
     public IViewComponentResult Invoke()
     {
-        var sliders = SliderQuery.GetViewModels();
+        var sliders = _userSliderQuery.GetViewModels();
         return View(sliders);
     }
 }

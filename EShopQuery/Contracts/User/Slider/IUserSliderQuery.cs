@@ -1,6 +1,6 @@
 ﻿namespace EShopQuery.Contracts.Slider;
 
-public interface ISliderQuery
+public interface IUserSliderQuery
 {
     List<SliderQueryModel> GetViewModels();
 }

@@ -286,4 +286,8 @@
     <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Shop\Inventory\Index.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Shared\Components\LastProducts\" />
+  </ItemGroup>
+
 </Project>

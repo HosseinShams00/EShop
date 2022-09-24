@@ -1,13 +1,13 @@
 ﻿using EShopQuery.Contracts.Slider;
 using ShopManagement.Infrastructure.EFCore;
 
-namespace EShopQuery.Query;
+namespace EShopQuery.Query.User;
 
-public class SliderQuery : ISliderQuery
+public class UserSliderQuery : IUserSliderQuery
 {
     private readonly ShopManagerEFCoreDbContext Context;
 
-    public SliderQuery(ShopManagerEFCoreDbContext context)
+    public UserSliderQuery(ShopManagerEFCoreDbContext context)
     {
         Context = context;
     }
