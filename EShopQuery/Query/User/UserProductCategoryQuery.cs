@@ -1,4 +1,5 @@
-﻿using DiscountManager.Infrastructure.EFCore;
+﻿using BaseFramwork.Application.Exceptions;
+using DiscountManager.Infrastructure.EFCore;
 using EShopQuery.Contracts.User.Product;
 using EShopQuery.Contracts.User.ProductCategories;
 using InventoryManager.Infrastructure.EFCore;
@@ -27,6 +28,7 @@ public class UserProductCategoryQuery : IUserProductCategoryQuery
             .Where(q => q.IsRemoved == false)
             .Select(x => new UserProductCategoriesQuery()
             {
+                Id = x.Id,
                 Name = x.Name,
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
@@ -62,6 +64,33 @@ public class UserProductCategoryQuery : IUserProductCategoryQuery
 
     }
 
+    public UserProductCategoriesQuery GetViewModelWithProduct(long categoryId)
+    {
+        var productCategoryQueryViewModel = _context.ProductCategories
+            .Where(q => q.IsRemoved == false)
+            .Where(q => q.Id == categoryId)
+            .Select(x => new UserProductCategoriesQuery()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle,
+                Picture = x.Picture,
+                Slug = x.Slug,
+                Description = x.Description,
+
+            })
+            .FirstOrDefault();
+
+        if (productCategoryQueryViewModel == null)
+            throw new EntityNotFoundException();
+
+        productCategoryQueryViewModel.ProductQueryModels = GetProductQueryModel(productCategoryQueryViewModel);
+
+
+        return productCategoryQueryViewModel;
+    }
+
     private List<UserProductQueryModel> GetProductQueryModel(UserProductCategoriesQuery category)
     {
         var userProductQueryModels = _context.Products
@@ -89,7 +118,8 @@ public class UserProductCategoryQuery : IUserProductCategoryQuery
             item.DiscountRate = ProductHelper.GetProductDiscountValue(item.Id, _discountManagerEfCoreDbContext);
             item.PriceWithDiscount = ProductHelper.CalculateDiscount(item.IntPrice, item.DiscountRate).ToString("N0");
             item.HasDiscount = item.DiscountRate > 0;
-
+            item.DiscountExpireDate =
+                ProductHelper.GetProductDiscountExpireDateTime(item.Id, _discountManagerEfCoreDbContext);
         }
 
         return userProductQueryModels;

@@ -39,7 +39,7 @@ public class CustomerDiscount : BaseDomain
         DateTime startDateTime, DateTime endDateTime,
         int discountPercent, ICustomerDiscountValidator validator)
     {
-        validator.CheckTitleExist(title);
+        validator.CheckTitleExist(title , this.Id);
 
         Title = title;
         Description = description;

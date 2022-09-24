@@ -31,6 +31,15 @@ public static class ProductHelper
             .FirstOrDefault();
     }
 
+    public static DateTime GetProductDiscountExpireDateTime(long productId, DiscountManagerEFCoreDbContext discountManagerEfCoreDbContext)
+    {
+        return discountManagerEfCoreDbContext.ProductCustomerDiscounts
+            .Include(x => x.CustomerDiscount)
+            .Where(x => x.ProductId == productId)
+            .Select(x => x.CustomerDiscount.EndDateTime)
+            .FirstOrDefault();
+    }
+
     public static int CalculateDiscount(int price, int discount)
     {
         double dis = 100 - discount;

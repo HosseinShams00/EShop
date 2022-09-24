@@ -4,4 +4,5 @@ public interface IUserProductCategoryQuery
 {
     List<UserProductCategoriesQuery> GetViewModels();
     List<UserProductCategoriesQuery> GetViewModelsWithProduct();
+    UserProductCategoriesQuery GetViewModelWithProduct(long categoryId);
 }

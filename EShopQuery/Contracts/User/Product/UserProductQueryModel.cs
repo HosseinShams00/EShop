@@ -15,5 +15,6 @@ public class UserProductQueryModel
     public bool IsInStock { get; set; }
     public bool HasDiscount { get; set; }
     public int DiscountRate { get; set; }
+    public DateTime DiscountExpireDate { get; set; }  
 
 }

@@ -11,6 +11,12 @@ public class CustomerDiscountValidator : ICustomerDiscountValidator
         this.Repository = repository;
     }
 
+    public void CheckTitleExist(string title, long id)
+    {
+        if (Repository.Exist(x => x.Title == title && x.Id != id))
+            throw new DiscountTitletExistException(); 
+    }
+
     public void CheckDiscountPercent(int discountPercent)
     {
         if (discountPercent < 1 && discountPercent > 99)
