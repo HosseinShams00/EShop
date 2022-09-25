@@ -51,5 +51,36 @@ public class UserProductQuery : IUserProductQuery
 
         return userProductQueryModels;
     }
-    
+
+    public List<UserProductQueryModel> Search(string productName)
+    {
+        var userProductQueryModels = _shopManagerEfCoreDbContext.Products
+            .Where(x => x.Name.Contains(productName))
+            .Select(x => new UserProductQueryModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Picture = x.Picture,
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle,
+                CategoryName = x.ProductCategory.Name,
+                Slug = x.Slug,
+
+            })
+            .OrderByDescending(x => x.Id)
+            .ToList();
+
+        foreach (var item in userProductQueryModels)
+        {
+            item.Price = ProductHelper.GetProductPrice(item.Id, _inventoryEfCoreDbContext).ToString("N0");
+            item.IntPrice = ProductHelper.GetProductPrice(item.Id, _inventoryEfCoreDbContext);
+            item.IsInStock = ProductHelper.ProductIsInStock(item.Id, _inventoryEfCoreDbContext);
+            item.DiscountRate = ProductHelper.GetProductDiscountValue(item.Id, _discountManagerEfCoreDbContext);
+            item.PriceWithDiscount = ProductHelper.CalculateDiscount(item.IntPrice, item.DiscountRate).ToString("N0");
+            item.HasDiscount = item.DiscountRate > 0;
+        }
+
+
+        return userProductQueryModels;
+    }
 }
