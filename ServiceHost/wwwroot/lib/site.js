@@ -1,5 +1,4 @@
-function slugify(titleStr)
-{
+function slugify(titleStr) {
 
     // https://github.com/seyedalifazel/js-slugify-with-persian-support
     titleStr = titleStr.replace(/^\s+|\s+$/g, '');
@@ -14,17 +13,26 @@ function slugify(titleStr)
     document.getElementById("Slug").value = titleStr;
 }
 
-function ImagePreviewer(src , imageId)
-{
-    if (src != "") {
+function ImagePreviewer(fileInput, imageId) {
+
+    const reader = new FileReader();
+    reader.readAsDataURL(fileInput.files[0]);
+    reader.addEventListener("load", () => {
+   
         document.getElementById(imageId).classList.remove("d-none");
         document.getElementById(imageId).classList.add("d-block");
-        document.getElementById(imageId).getElementsByTagName("img")[0].src = src;
-    }
-    else {
-        document.getElementById(imageId).classList.remove("d-block");
-        document.getElementById(imageId).classList.add("d-none");
-        document.getElementById(imageId).getElementsByTagName("img")[0] = "";
-    }
+        document.getElementById(imageId).getElementsByTagName("img")[0].src = reader.result;
+
+    }, false);
 
 }
+
+
+$.validator.addMethod('maxFileSize', function (value, element, params) {
+    const maxSize = element.getAttribute("maxFileSize-value") * 1024 * 1024;
+    if (element.files[0].size > maxSize)
+        return false;
+    else
+        return true;
+});
+$.validator.unobtrusive.adapters.addBool('maxFileSize');

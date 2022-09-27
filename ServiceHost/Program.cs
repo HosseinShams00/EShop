@@ -9,6 +9,7 @@ ShopManagement.Infrastructure.Core.Bootstrapper.Config(builder.Services, connect
 DiscountManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, connectionString);
 InventoryManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, connectionString);
 EShopQuery.Bootstrapper.Config(builder.Services);
+DocumentManager.Infrastructures.AspBootstrapper.Config(builder.Services);
 
 var app = builder.Build();
 

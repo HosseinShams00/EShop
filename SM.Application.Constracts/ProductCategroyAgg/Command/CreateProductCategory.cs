@@ -9,7 +9,7 @@ public class CreateProductCategory
     [MinLength(3, ErrorMessage = "مقدار وارد شده کمتر از حد مجاز میباشد")]
     public string Name { get; set; }
 
-
+    [Required(ErrorMessage = "لطفا توضیحات محصول را وارد نمایید")]
     [MaxLength(500, ErrorMessage = "مقدار وارد شده بیش از حد مجاز میباشد")]
     [MinLength(5, ErrorMessage = "مقدار وارد شده کمتر از حد مجاز میباشد")]
     public string? Description { get; set; }

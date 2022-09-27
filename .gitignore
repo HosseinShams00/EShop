@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 .vs/EShop/v17/.suo
 .vs/EShop/v17/.suo
+ServiceHost/wwwroot/Pictures/

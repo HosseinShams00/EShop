@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DiscountManager.Infrastructure.Core\DiscountManager.Infrastructure.Core.csproj" />
+    <ProjectReference Include="..\DocumentManager.Infrastructures\DocumentManager.Infrastructures.csproj" />
     <ProjectReference Include="..\InventoryManager.Infrastructure.Core\InventoryManager.Infrastructure.Core.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructure.Core\ShopManagement.Infrastructure.Core.csproj" />
   </ItemGroup>
@@ -289,6 +290,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\Shared\Components\LastProducts\" />
+    <Folder Include="wwwroot\Pictures\" />
   </ItemGroup>
 
   <ItemGroup>

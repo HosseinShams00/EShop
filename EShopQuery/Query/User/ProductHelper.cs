@@ -11,7 +11,7 @@ public static class ProductHelper
         return inventoryEfCoreDbContext.Inventories
             .Where(x => x.ProductId == productId)
             .Select(x => x.CurrentCount > 0)
-        .FirstOrDefault();
+            .FirstOrDefault();
     }
 
     public static int GetProductPrice(long productId, InventoryEFCoreDbContext inventoryEfCoreDbContext)
@@ -26,7 +26,8 @@ public static class ProductHelper
     {
         return discountManagerEfCoreDbContext.ProductCustomerDiscounts
             .Include(x => x.CustomerDiscount)
-            .Where(x => x.ProductId == productId)
+            .Where(x => x.ProductId == productId 
+                        && x.CustomerDiscount.EndDateTime > DateTime.Now)
             .Select(x => x.CustomerDiscount.DiscountPercent)
             .FirstOrDefault();
     }
