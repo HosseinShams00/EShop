@@ -52,7 +52,7 @@ public class ImageResizerApplication : IImageResizerApplication
 
     private static void SaveAndResizeImage(Image image, string largeImagePath, double ratio)
     {
-        image.Mutate(x => { x.Resize((int)(image.Width / ratio), (int)(image.Width / ratio)); });
+        image.Mutate(x => { x.Resize((int)(image.Width / ratio), (int)(image.Height / ratio)); });
         image.SaveAsJpeg(largeImagePath);
     }
 }

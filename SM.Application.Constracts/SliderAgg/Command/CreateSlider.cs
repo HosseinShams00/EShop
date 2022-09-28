@@ -4,9 +4,8 @@ namespace ShopManagement.Application.Constracts.SliderAgg.Command;
 
 public class CreateSlider
 {
-    [Required(ErrorMessage = "لطفا آدرس عکس را وارد کنید")]
     [MaxLength(200, ErrorMessage = "طول متن شما نباید بیشتر از 200 کارکتر باشد")]
-    public string PicturePath { get; set; }
+    public string? PicturePath { get; set; }
 
     [MaxLength(100, ErrorMessage = "طول متن شما نباید بیشتر از 100 کارکتر باشد")]
 

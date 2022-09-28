@@ -1,5 +1,9 @@
+using System.ComponentModel.DataAnnotations;
+using DocumentManager.Application.Contracts.DirectoryManager;
+using DocumentManager.Application.Contracts.ImageManager.ImageFileManager;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ServiceHost.Attributes;
 using ShopManagement.Application.Constracts.SliderAgg;
 using ShopManagement.Application.Constracts.SliderAgg.Command;
 
@@ -7,17 +11,33 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Sliders;
 
 public class CreateModel : PageModel
 {
-    [BindProperty] public CreateSlider _Command { get; set; }
-    private readonly ISliderApplication _Application;
+    private readonly ISliderApplication _application;
+    private readonly IDirectoryApplication _directoryApplication;
+    private readonly IImageApplication _imageApplication;
 
-    public CreateModel(ISliderApplication sliderApplication)
+    private readonly string _baseDirectory;
+
+    [BindProperty] public CreateSlider Command { get; set; }
+
+    [Required(ErrorMessage = "برای این بخش باید عکس انتخاب شود")]
+    [HaveExtenstion(Extenstion = new string[] { ".png", ".jpg", ".jpeg" }, ErrorMessage = "فرمت ورودی صحیح نمیباشد")]
+    [MaxFileSize(MaxSizeInMB = 2, ErrorMessage = "حجم فایل بیش از حد مجاز {0} مگابایت است.")]
+    [BindProperty] public IFormFile PictureFile { get; set; }
+
+    public CreateModel(ISliderApplication sliderApplication,
+        IWebHostEnvironment hostEnvironment,
+        IDirectoryApplication directoryApplication,
+        IImageApplication imageApplication)
     {
-        _Application = sliderApplication;
+        _application = sliderApplication;
+        _baseDirectory = Path.Combine(hostEnvironment.WebRootPath, "Pictures");
+        _directoryApplication = directoryApplication;
+        _imageApplication = imageApplication;
     }
 
     public void OnGet()
     {
-        _Command = new();
+        Command = new();
     }
 
     public IActionResult OnPost()
@@ -25,7 +45,19 @@ public class CreateModel : PageModel
         if (ModelState.IsValid == false)
             return Page();
 
-        _Application.Create(_Command);
+        var guid = Helper.CreateImageWithGuidDirectory(_directoryApplication, _imageApplication, _baseDirectory, PictureFile);
+        Command.PicturePath = guid;
+
+        try
+        {
+            _application.Create(Command);
+
+        }
+        catch (Exception e)
+        {
+            _directoryApplication.Delete(Path.Combine(_baseDirectory, guid), true);
+        }
+
         return RedirectToPage("./index");
     }
 

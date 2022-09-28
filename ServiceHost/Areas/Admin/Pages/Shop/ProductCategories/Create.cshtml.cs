@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using DocumentManager.Application.Contracts.DirectoryManager;
 using DocumentManager.Application.Contracts.ImageManager.ImageFileManager;
-using DocumentManager.Application.Contracts.ImageManager.ImageFileManager.Commands;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ServiceHost.Attributes;
@@ -14,7 +13,6 @@ public class CreateModel : PageModel
 {
     [BindProperty] public CreateProductCategory Command { get; set; }
     private readonly IProductCategoryApplication _productCategoryApplication;
-    private readonly IWebHostEnvironment _hostEnvironment;
     private readonly IDirectoryApplication _directoryApplication;
     private readonly IImageApplication _imageApplication;
 
@@ -31,8 +29,7 @@ public class CreateModel : PageModel
         IImageApplication imageApplication)
     {
         _productCategoryApplication = productCategoryApplication;
-        _hostEnvironment = hostEnvironment;
-        _baseDirectory = Path.Combine(_hostEnvironment.WebRootPath, "Pictures");
+        _baseDirectory = Path.Combine(hostEnvironment.WebRootPath, "Pictures");
         _directoryApplication = directoryApplication;
         _imageApplication = imageApplication;
     }
@@ -47,27 +44,19 @@ public class CreateModel : PageModel
         if (ModelState.IsValid == false)
             return Page();
 
-        var guid = CreateImage();
+        var guid = Helper.CreateImageWithGuidDirectory(_directoryApplication, _imageApplication, _baseDirectory, PictureFile);
         Command.Picture = guid;
 
         try
         {
             _productCategoryApplication.Create(Command);
-            return RedirectToPage("./index");
         }
         catch (Exception e)
         {
             _directoryApplication.Delete(Path.Combine(_baseDirectory, guid), true);
-            return RedirectToPage("./index");
         }
-    }
 
-    private string CreateImage()
-    {
-        string guid = Guid.NewGuid().ToString();
-        var path = _directoryApplication.Create(_baseDirectory, guid);
-        var imageCommand = new CreateImageCommand(path, PictureFile.OpenReadStream());
-        _imageApplication.Create(imageCommand);
-        return guid;
+        return RedirectToPage("./index");
     }
+    
 }

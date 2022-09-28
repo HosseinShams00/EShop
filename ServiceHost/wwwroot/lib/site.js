@@ -18,10 +18,15 @@ function ImagePreviewer(fileInput, imageId) {
     const reader = new FileReader();
     reader.readAsDataURL(fileInput.files[0]);
     reader.addEventListener("load", () => {
-   
-        document.getElementById(imageId).classList.remove("d-none");
-        document.getElementById(imageId).classList.add("d-block");
-        document.getElementById(imageId).getElementsByTagName("img")[0].src = reader.result;
+
+        const imageElement = document.getElementById(imageId);
+        if (imageElement.classList.contains("d-none")) {
+
+            imageElement.classList.remove("d-none");
+            imageElement.classList.add("d-block");
+
+        }
+        imageElement.getElementsByTagName("img")[0].src = reader.result;
 
     }, false);
 

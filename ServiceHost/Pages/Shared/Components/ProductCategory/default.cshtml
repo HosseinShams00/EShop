@@ -13,7 +13,7 @@
                                 <div class="single-category-item">
                                     <div class="single-category-item__image">
                                         <a asp-page="./ProductCategoryDetail" asp-route-categoryId="@item.Id" asp-route-slug="@item.Slug">
-                                            <img src="@item.Picture" class="img-fluid" alt="@item.PictureAlt" title="@item.PictureTitle" />
+                                            <img src="~/Pictures/@item.Picture/medium.jpeg" class="img-fluid" alt="@item.PictureAlt" title="@item.PictureTitle" />
                                         </a>
                                     </div>
                                     <div class="single-category-item__content">

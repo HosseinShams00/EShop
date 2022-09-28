@@ -3,70 +3,71 @@
 @{
 }
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="row">
+        <div class="card p-4 col-12" id="preview">
+            <h6 class="d-block">پیش نمایش عکس</h6>
+            <img class="mb-3 mt-3 w-100 border-radius-2xl shadow-lg" src="~/Pictures/@Model.Command.Picture/large.jpeg" />
+        </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>نام دسته بندی</label>
-                <input type="text" placeholder="نام دسته بندی" class="form-control" onfocusout="slugify(this.value)" asp-for="_Command.Name" />
-                <span asp-validation-for="_Command.Name" class="text-danger text-sm"></span>
+                <input type="text" placeholder="نام دسته بندی" class="form-control" onfocusout="slugify(this.value)" asp-for="Command.Name"/>
+                <span asp-validation-for="Command.Name" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>slug</label>
-                <input type="text" placeholder="slug" class="form-control" id="Slug" asp-for="_Command.Slug" />
-                <span asp-validation-for="_Command.Slug" class="text-danger text-sm"></span>
+                <input type="text" placeholder="slug" class="form-control" id="Slug" asp-for="Command.Slug"/>
+                <span asp-validation-for="Command.Slug" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>Keywords</label>
-                <input type="text" placeholder="Keywords" class="form-control" asp-for="_Command.Keywords" />
-                <span asp-validation-for="_Command.Keywords" class="text-danger text-sm"></span>
+                <input type="text" placeholder="Keywords" class="form-control" asp-for="Command.Keywords"/>
+                <span asp-validation-for="Command.Keywords" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>مسیر عکس</label>
-                <input type="text" onfocusout="ImagePreviewer(this.value,'preview')" placeholder="مسیر عکس" class="form-control" asp-for="_Command.Picture" />
-                <span asp-validation-for="_Command.Picture" class="text-danger text-sm"></span>
+                <input type="file" placeholder="مسیر عکس" onfocusout="ImagePreviewer(this,'preview')" class="form-control" asp-for="PictureFile"/>
+                <span asp-validation-for="PictureFile" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>alt عکس</label>
-                <input type="text" placeholder="alt عکس" class="form-control" asp-for="_Command.PictureAlt" />
-                <span asp-validation-for="_Command.PictureAlt" class="text-danger text-sm"></span>
+                <input type="text" placeholder="alt عکس" class="form-control" asp-for="Command.PictureAlt"/>
+                <span asp-validation-for="Command.PictureAlt" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>تایتل عکس</label>
-                <input type="text" placeholder="تایتل عکس" class="form-control" asp-for="_Command.PictureTitle" />
-                <span asp-validation-for="_Command.PictureTitle" class="text-danger text-sm"></span>
+                <input type="text" placeholder="تایتل عکس" class="form-control" asp-for="Command.PictureTitle"/>
+                <span asp-validation-for="Command.PictureTitle" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>Meta Description</label>
-                <input type="text" placeholder="Meta Description" class="form-control" asp-for="_Command.MetaDescription" />
-                <span asp-validation-for="_Command.MetaDescription" class="text-danger text-sm"></span>
+                <input type="text" placeholder="Meta Description" class="form-control" asp-for="Command.MetaDescription"/>
+                <span asp-validation-for="Command.MetaDescription" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>توضیحات دسته بندی</label>
-                <textarea asp-for="_Command.Description" class="form-control" rows="3"></textarea>
-                <span asp-validation-for="_Command.Description" class="text-danger text-sm"></span>
+                <textarea asp-for="Command.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Command.Description" class="text-danger text-sm"></span>
             </div>
         </div>
 
-        <div class="d-none" id="preview">
-            <label class="d-block">پیش نمایش عکس</label>
-            <img class="mb-3 mt-3" />
-        </div>
-        <input type="hidden" asp-for="_Command.Id" />
+        <input type="hidden" asp-for="Command.Id"/>
+        <input type="hidden" asp-for="Command.Picture"/>
         <button type="submit" class="btn bg-gradient-success">تایید</button>
 
     </div>

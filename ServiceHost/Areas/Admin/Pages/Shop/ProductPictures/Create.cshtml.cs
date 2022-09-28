@@ -8,33 +8,34 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.ProductPictures;
 
 public class CreateModel : PageModel
 {
-    [BindProperty] public CreateProductPicture _Command { get; set; }
-    private readonly IProductPictureApplication ProductPictureApplication;
-    private readonly IAdminProductQuery _AdminQuery;
+    [BindProperty] public CreateProductPicture Command { get; set; }
+    private readonly IProductPictureApplication _productPictureApplication;
+    private readonly IAdminProductQuery _adminQuery;
 
     public IReadOnlyCollection<ProductQueryModel> Products { get; set; }
 
-    public CreateModel(IProductPictureApplication productPictureApplication, IAdminProductQuery adminQuery)
+    public CreateModel(IProductPictureApplication productPictureApplication,
+        IAdminProductQuery adminQuery)
     {
-        ProductPictureApplication = productPictureApplication;
-        _AdminQuery = adminQuery;
+        _productPictureApplication = productPictureApplication;
+        _adminQuery = adminQuery;
     }
 
     public void OnGet()
     {
-        _Command = new();
-        Products = _AdminQuery.GetViewModels();
+        Command = new();
+        Products = _adminQuery.GetViewModels();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
         {
-            Products = _AdminQuery.GetViewModels();
+            Products = _adminQuery.GetViewModels();
             return Page();
         }
 
-        ProductPictureApplication.Create(_Command);
+        _productPictureApplication.Create(Command);
         return RedirectToPage("./index");
     }
 

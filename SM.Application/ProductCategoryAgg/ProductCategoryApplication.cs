@@ -36,6 +36,8 @@ public class ProductCategoryApplication : IProductCategoryApplication
         {
             if (ex is Domain.ProductCategoryAgg.Exceptions.DuplicatedProductCategoryNameException)
                 throw new DuplicatedProductCategoryNameException();
+
+            throw;
         }
     }
 
@@ -62,6 +64,8 @@ public class ProductCategoryApplication : IProductCategoryApplication
         {
             if (ex is Domain.ProductCategoryAgg.Exceptions.DuplicatedProductCategoryNameException)
                 throw new DuplicatedProductCategoryNameException();
+
+            throw;
         }
     }
 
