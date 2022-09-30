@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Repository;
+﻿using BaseFramework.Repository;
 
 
 namespace ShopManagement.Domain.ProductCategoryAgg;

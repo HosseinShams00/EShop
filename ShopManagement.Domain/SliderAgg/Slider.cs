@@ -1,10 +1,10 @@
-﻿using BaseFramwork.Domain;
+﻿using BaseFramework.Domain;
 
 namespace ShopManagement.Domain.SliderAgg;
 
-public class Slider : BaseDomain
+public class Slider : BaseDomain , ISlider
 {
-   
+
     public string PicturePath { get; private set; }
     public string? PictureAlt { get; private set; }
     public string? PictureTitle { get; private set; }

@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Application.Exceptions;
+﻿using BaseFramework.Application.Exceptions;
 using ShopManagement.Application.Constracts.ProductPictureAgg;
 using ShopManagement.Application.Constracts.ProductPictureAgg.Command;
 using ShopManagement.Domain.ProductPictureAgg;

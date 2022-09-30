@@ -1,6 +1,6 @@
-﻿namespace BaseFramwork.Domain;
+﻿namespace BaseFramework.Domain;
 
-public class BaseDomain
+public class BaseDomain : IBaseDomain
 {
     public long Id { get; private set; }
     public DateTime CreationTime { get; private set; }

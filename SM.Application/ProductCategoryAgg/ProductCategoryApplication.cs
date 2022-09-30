@@ -1,5 +1,5 @@
-﻿using BaseFramwork.Application;
-using BaseFramwork.Application.Exceptions;
+﻿using BaseFramework.Application;
+using BaseFramework.Application.Exceptions;
 using ShopManagement.Application.Constracts.ProductCategroyAgg;
 using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
 using ShopManagement.Application.Constracts.ProductCategroyAgg.Exceptions;

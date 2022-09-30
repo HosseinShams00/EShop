@@ -1,9 +1,9 @@
-﻿using BaseFramwork.Application.Exceptions;
+﻿using BaseFramework.Application.Exceptions;
 using ShopManagement.Application.Constracts.ProductAgg;
 using ShopManagement.Application.Constracts.ProductAgg.Exceptions;
 using ShopManagement.Application.Constracts.ProductAgg.Command;
 using ShopManagement.Domain.ProductAgg;
-using BaseFramwork.Application;
+using BaseFramework.Application;
 using InventoryManager.Applicaton.Contracts.InventoryAgg;
 using InventoryManager.Applicaton.Contracts.InventoryAgg.Command;
 

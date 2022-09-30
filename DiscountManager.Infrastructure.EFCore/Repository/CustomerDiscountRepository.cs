@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Repository;
+﻿using BaseFramework.Repository;
 using DiscountManager.Domain.CustomerDiscountAgg;
 
 namespace DiscountManager.Infrastructure.EFCore.Repository;

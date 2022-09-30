@@ -1,4 +1,4 @@
-﻿namespace BaseFramwork.Application.Exceptions;
+﻿namespace BaseFramework.Application.Exceptions;
 
 public class ApplicationBaseException : Exception
 {

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ServiceHost.Attributes;
 using ShopManagement.Application.Constracts.ProductCategroyAgg;
 using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
-using BaseFramwork.Application.Exceptions;
+using BaseFramework.Application.Exceptions;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories;
 

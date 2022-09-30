@@ -1,10 +1,9 @@
-﻿using BaseFramwork.Domain;
+﻿using BaseFramework.Domain;
 using DiscountManager.Domain.CustomerDiscountAgg;
-using System.ComponentModel.DataAnnotations;
 
 namespace DiscountManager.Domain.ProductCustomerDiscountAgg;
 
-public class ProductCustomerDiscount : ProductCustomerDiscountBase
+public class ProductCustomerDiscount : ProductCustomerDiscountBase, IProductCustomerDiscount
 {
     public long ProductId { get; set; }
     public long CustomerDiscountId { get; private set; }
@@ -14,7 +13,7 @@ public class ProductCustomerDiscount : ProductCustomerDiscountBase
 
     }
 
-    public ProductCustomerDiscount(long productId, long customerDiscountId , IProductCustomerDiscountValidator validator)
+    public ProductCustomerDiscount(long productId, long customerDiscountId, IProductCustomerDiscountValidator validator)
     {
         validator.CheckProductId(productId);
         ProductId = productId;

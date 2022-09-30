@@ -1,14 +1,14 @@
-﻿using BaseFramwork.Domain;
+﻿using BaseFramework.Domain;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPictureAgg;
 
 namespace ShopManagement.Domain.ProductAgg;
 
-public class Product : BaseDomain
+public class Product : BaseDomain , IProduct
 {
     public string Name { get; private set; }
     public string Description { get; private set; }
-    public string ShortDecription { get; private set; }
+    public string ShortDescription { get; private set; }
     public string Picture { get; private set; }
     public string PictureAlt { get; private set; }
     public string PictureTitle { get; private set; }
@@ -25,7 +25,7 @@ public class Product : BaseDomain
     }
 
     public Product(string name, string description,
-        string shortDecription, string picture,
+        string shortDescription, string picture,
         string pictureAlt, string pictureTitle,
         string keywords, string metaDescription,
         string slug, long productCategoryId, IProductValidator validator)
@@ -33,7 +33,7 @@ public class Product : BaseDomain
         validator.CheckNameExist(name);
         Name = name;
         Description = description;
-        ShortDecription = shortDecription;
+        ShortDescription = shortDescription;
         Picture = picture;
         PictureAlt = pictureAlt;
         PictureTitle = pictureTitle;
@@ -44,7 +44,7 @@ public class Product : BaseDomain
     }
 
     public void Edit(string name, string description,
-        string shortDecription, string picture,
+        string shortDescription, string picture,
         string pictureAlt, string pictureTitle,
         string keywords, string metaDescription,
         string slug, long productCategoryId, IProductValidator validator)
@@ -52,7 +52,7 @@ public class Product : BaseDomain
         validator.CheckNameExistWithId(name, Id);
         Name = name;
         Description = description;
-        ShortDecription = shortDecription;
+        ShortDescription = shortDescription;
         Picture = picture;
         PictureAlt = pictureAlt;
         PictureTitle = pictureTitle;

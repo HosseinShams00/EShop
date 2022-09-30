@@ -1,6 +1,6 @@
-﻿namespace BaseFramwork.Domain;
+﻿namespace BaseFramework.Domain;
 
-public class ProductCustomerDiscountBase
+public class ProductCustomerDiscountBase : IProductCustomerDiscountBase
 {
     public long Id { get; private set; }
     public DateTime CreationTime { get; private set; }

@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Application.Exceptions;
+﻿using BaseFramework.Application.Exceptions;
 using DiscountManager.Infrastructure.EFCore;
 using EShopQuery.Contracts.User.Product;
 using EShopQuery.Contracts.User.ProductCategories;

@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Domain;
+﻿using BaseFramework.Domain;
 using InventoryManager.Domain.InventoryOperationAgg;
 
 namespace InventoryManager.Domain.InventoryAgg;

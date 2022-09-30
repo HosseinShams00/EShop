@@ -1,9 +1,9 @@
-﻿using BaseFramwork.Domain;
+﻿using BaseFramework.Domain;
 using ShopManagement.Domain.ProductAgg;
 
 namespace ShopManagement.Domain.ProductPictureAgg;
 
-public class ProductPicture : BaseDomain
+public class ProductPicture : BaseDomain , IProductPicture
 {
     public string Path { get; private set; }
     public string? PictureAlt { get; private set; }
@@ -15,7 +15,7 @@ public class ProductPicture : BaseDomain
 
     }
 
-    public ProductPicture(string path, string pictureAlt, string pictureTitle, long productId , IProductPictureValidator validator)
+    public ProductPicture(string path, string pictureAlt, string pictureTitle, long productId, IProductPictureValidator validator)
     {
         Path = path;
         PictureAlt = pictureAlt;

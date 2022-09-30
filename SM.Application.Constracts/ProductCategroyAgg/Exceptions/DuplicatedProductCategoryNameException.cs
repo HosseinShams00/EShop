@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Application.Exceptions;
+﻿using BaseFramework.Application.Exceptions;
 
 namespace ShopManagement.Application.Constracts.ProductCategroyAgg.Exceptions;
 

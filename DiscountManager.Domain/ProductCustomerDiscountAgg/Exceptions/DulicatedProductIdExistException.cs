@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Domain.Exceptions;
+﻿using BaseFramework.Domain.Exceptions;
 
 namespace DiscountManager.Domain.ProductCustomerDiscountAgg.Exceptions;
 

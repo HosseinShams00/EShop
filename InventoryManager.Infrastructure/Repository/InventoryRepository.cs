@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Repository;
+﻿using BaseFramework.Repository;
 using InventoryManager.Domain.InventoryAgg;
 
 namespace InventoryManager.Infrastructure.EFCore.Repository;

@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Domain", "SM.Domain", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Domain", "ShopManagement.Domain\ShopManagement.Domain.csproj", "{07EA7E67-6FC5-4FB2-9F88-F7146F027158}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseFramwork", "BaseFramwork\BaseFramwork.csproj", "{0C24A83A-0ACB-4DC4-B6FB-047CF71DB0E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseFramework", "BaseFramwork\BaseFramework.csproj", "{0C24A83A-0ACB-4DC4-B6FB-047CF71DB0E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Application", "SM.Application", "{00D4C1FF-EDFF-49E7-9EE0-D2A0B7975B6F}"
 EndProject
@@ -83,15 +83,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CM.Domain", "CM.Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CM.Infrastructure", "CM.Infrastructure", "{324BE960-66CB-4251-90C0-DEE1B1D54F2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentManager.Application", "CommentManager.Application\CommentManager.Application.csproj", "{1BF96331-7668-4B81-B62E-9CAB4F80EEE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentManager.Application", "CommentManager.Application\CommentManager.Application.csproj", "{1BF96331-7668-4B81-B62E-9CAB4F80EEE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentManager.Application.Contract", "CommentManager.Application.Contract\CommentManager.Application.Contract.csproj", "{98B92473-B5E4-461F-9256-EEFC4F9357FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentManager.Application.Contract", "CommentManager.Application.Contract\CommentManager.Application.Contract.csproj", "{98B92473-B5E4-461F-9256-EEFC4F9357FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentManager.Domain", "CommentManager.Domain\CommentManager.Domain.csproj", "{75512800-7769-421F-B264-91E1C3C2E1AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentManager.Domain", "CommentManager.Domain\CommentManager.Domain.csproj", "{75512800-7769-421F-B264-91E1C3C2E1AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentManager.Infrastructure.EfCore", "CommentManager.Infrastructure.EfCore\CommentManager.Infrastructure.EfCore.csproj", "{FB33DBB7-2D81-4D05-ADD7-55AED65327A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentManager.Infrastructure.EfCore", "CommentManager.Infrastructure.EfCore\CommentManager.Infrastructure.EfCore.csproj", "{FB33DBB7-2D81-4D05-ADD7-55AED65327A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommentManager.Infrastructure.Core", "CommentManager.Infrastructure.Core\CommentManager.Infrastructure.Core.csproj", "{FC3203FC-1EFD-4825-B6AA-1223E96D40AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommentManager.Infrastructure.Core", "CommentManager.Infrastructure.Core\CommentManager.Infrastructure.Core.csproj", "{FC3203FC-1EFD-4825-B6AA-1223E96D40AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

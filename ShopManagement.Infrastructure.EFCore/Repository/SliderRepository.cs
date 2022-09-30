@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Repository;
+﻿using BaseFramework.Repository;
 using ShopManagement.Domain.SliderAgg;
 
 namespace ShopManagement.Infrastructure.EFCore.Repository;

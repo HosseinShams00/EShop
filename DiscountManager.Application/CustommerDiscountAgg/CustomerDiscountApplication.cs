@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Application.Exceptions;
+﻿using BaseFramework.Application.Exceptions;
 using DiscountManager.Application.Contracts.CustommerDiscountAgg;
 using DiscountManager.Application.Contracts.CustommerDiscountAgg.Command;
 using DiscountManager.Application.Contracts.CustommerDiscountAgg.Exceptions;

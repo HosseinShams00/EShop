@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Repository;
+﻿using BaseFramework.Repository;
 
 namespace InventoryManager.Domain.InventoryAgg;
 

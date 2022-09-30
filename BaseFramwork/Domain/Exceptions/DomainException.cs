@@ -1,4 +1,4 @@
-﻿namespace BaseFramwork.Domain.Exceptions;
+﻿namespace BaseFramework.Domain.Exceptions;
 
 public class DomainException : Exception
 {

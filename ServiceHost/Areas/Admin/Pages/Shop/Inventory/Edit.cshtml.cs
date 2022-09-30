@@ -1,4 +1,4 @@
-using BaseFramwork.Application.Exceptions;
+using BaseFramework.Application.Exceptions;
 using EShopQuery.Contracts.Admin.InventoryManager;
 using InventoryManager.Applicaton.Contracts.InventoryAgg;
 using InventoryManager.Applicaton.Contracts.InventoryAgg.Command;

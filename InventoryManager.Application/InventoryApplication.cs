@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Application.Exceptions;
+﻿using BaseFramework.Application.Exceptions;
 using InventoryManager.Applicaton.Contracts.InventoryAgg;
 using InventoryManager.Applicaton.Contracts.InventoryAgg.Command;
 using InventoryManager.Applicaton.Contracts.InventoryOperationAgg.Command;

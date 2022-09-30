@@ -2,7 +2,7 @@
 
 namespace InventoryManager.Domain.InventoryOperationAgg;
 
-public class InventoryOperation
+public class InventoryOperation : IInventoryOperation
 {
     public long Id { get; private set; }
     public DateTime OperationDate { get; private set; }

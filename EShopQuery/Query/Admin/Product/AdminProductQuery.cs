@@ -2,7 +2,7 @@
 using ShopManagement.Application.Constracts.ProductAgg.Command;
 using ShopManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
-using BaseFramwork.Application.Exceptions;
+using BaseFramework.Application.Exceptions;
 using EShopQuery.Contracts.Admin.InventoryManager;
 
 namespace EShopQuery.Query.Admin.Product;
@@ -31,7 +31,7 @@ public class AdminProductQuery : IAdminProductQuery
                 Picture = x.Picture,
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
-                ShortDecription = x.ShortDecription,
+                ShortDecription = x.ShortDescription,
                 Slug = x.Slug,
                 ProductCategoryId = x.ProductCategoryId
 

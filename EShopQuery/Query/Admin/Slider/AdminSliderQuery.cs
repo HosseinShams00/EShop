@@ -1,7 +1,7 @@
 ﻿using EShopQuery.Contracts.Admin.Slider;
 using ShopManagement.Application.Constracts.SliderAgg.Command;
 using ShopManagement.Infrastructure.EFCore;
-using BaseFramwork.Application.Exceptions;
+using BaseFramework.Application.Exceptions;
 
 namespace EShopQuery.Query.Admin.Slider;
 

@@ -2,7 +2,7 @@
 using ShopManagement.Application.Constracts.ProductPictureAgg.Command;
 using ShopManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
-using BaseFramwork.Application.Exceptions;
+using BaseFramework.Application.Exceptions;
 
 namespace EShopQuery.Query.Admin.ProductPicture;
 

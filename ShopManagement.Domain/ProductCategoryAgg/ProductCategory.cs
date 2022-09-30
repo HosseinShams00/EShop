@@ -1,9 +1,9 @@
-﻿using BaseFramwork.Domain;
+﻿using BaseFramework.Domain;
 using ShopManagement.Domain.ProductAgg;
 
 namespace ShopManagement.Domain.ProductCategoryAgg;
 
-public class ProductCategory : BaseDomain
+public class ProductCategory : BaseDomain, IProductCategory
 {
     public string Name { get; private set; }
     public string Description { get; private set; }

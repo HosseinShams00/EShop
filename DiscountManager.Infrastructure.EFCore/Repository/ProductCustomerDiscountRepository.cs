@@ -1,5 +1,5 @@
-﻿using BaseFramwork.Application.Exceptions;
-using BaseFramwork.Repository;
+﻿using BaseFramework.Application.Exceptions;
+using BaseFramework.Repository;
 using DiscountManager.Domain.ProductCustomerDiscountAgg;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,9 +1,9 @@
-﻿using BaseFramwork.Domain;
+﻿using BaseFramework.Domain;
 using DiscountManager.Domain.ProductCustomerDiscountAgg;
 
 namespace DiscountManager.Domain.CustomerDiscountAgg;
 
-public class CustomerDiscount : BaseDomain
+public class CustomerDiscount : BaseDomain, ICustomerDiscount
 {
     public string Title { get; private set; }
     public string? Description { get; private set; }
@@ -39,7 +39,7 @@ public class CustomerDiscount : BaseDomain
         DateTime startDateTime, DateTime endDateTime,
         int discountPercent, ICustomerDiscountValidator validator)
     {
-        validator.CheckTitleExist(title , this.Id);
+        validator.CheckTitleExist(title, this.Id);
 
         Title = title;
         Description = description;

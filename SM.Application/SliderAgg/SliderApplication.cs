@@ -1,4 +1,4 @@
-﻿using BaseFramwork.Application.Exceptions;
+﻿using BaseFramework.Application.Exceptions;
 using ShopManagement.Application.Constracts.SliderAgg;
 using ShopManagement.Application.Constracts.SliderAgg.Command;
 using ShopManagement.Domain.SliderAgg;
