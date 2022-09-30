@@ -71,10 +71,9 @@
                             <button type="button" class="btn bg-gradient-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             </button>
                             <ul class="dropdown-menu text-center" data-popper-placement="bottom-start" aria-labelledby="dropdownTable">
-                                <li><a class="dropdown-item" asp-page="./edit" asp-route-id="@item.Id">تغییر</a></li>
-                                <li><a class="dropdown-item" asp-page="./index" asp-page-handler="restore" asp-route-id="@item.Id">بازگردانی</a></li>
-                                <li><a class="dropdown-item" asp-page="./index" asp-page-handler="remove" asp-route-id="@item.Id">حذف</a></li>
-
+                                <li class="FontSize15"><a class="dropdown-item" asp-page="./edit" asp-route-id="@item.Id"><i class="bx bxs-edit"></i>  تغییر</a></li>
+                                <li class="FontSize15"><a class="dropdown-item" asp-page="./index" asp-page-handler="restore" asp-route-id="@item.Id"><i class="bx bx-refresh"></i>  بازگردانی</a></li>
+                                <li class="FontSize15"><a class="dropdown-item" asp-page="./index" asp-page-handler="remove" asp-route-id="@item.Id"><i class="bx bxs-trash text-danger"></i>  حذف</a></li>
                             </ul>
                         </div>
 
