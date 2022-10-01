@@ -1,5 +1,4 @@
 ﻿using BaseFramework.Domain;
-using ShopManagement.Domain.ProductAgg;
 
 namespace ShopManagement.Domain.ProductCategoryAgg;
 
@@ -13,5 +12,4 @@ public interface IProductCategory : IBaseDomain
     public string Keywords { get; }
     public string MetaDescription { get; }
     public string Slug { get; }
-    public IReadOnlyList<Product> Products { get; }
 }

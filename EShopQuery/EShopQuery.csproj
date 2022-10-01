@@ -16,8 +16,4 @@
     <ProjectReference Include="..\SM.Application.Constracts\ShopManagement.Application.Constracts.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="EfCore\" />
-  </ItemGroup>
-
 </Project>

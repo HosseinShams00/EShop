@@ -3,7 +3,7 @@ using InventoryManager.Domain.InventoryOperationAgg;
 
 namespace InventoryManager.Domain.InventoryAgg;
 
-public class Inventory : BaseDomain
+public class Inventory : BaseDomain , IInventory
 {
     public long ProductId { get; private set; }
     public int UnitPrice { get; private set; }

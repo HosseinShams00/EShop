@@ -15,13 +15,18 @@ using EShopQuery.Query.Admin.Slider;
 using EShopQuery.Contracts.User.ProductCategories;
 using EShopQuery.Query.User;
 using EShopQuery.Contracts.Slider;
+using EShopQuery.EfCore;
+using EShopQuery.EfCore.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace EShopQuery;
 
 public class Bootstrapper
 {
-    public static void Config(IServiceCollection services)
+    public static void Config(IServiceCollection services, string connectionString)
     {
+        services.AddDbContext<EShopQueryEfCoreContext>(x => x.UseSqlServer(connectionString));
+
         services.AddTransient<IAdminInventoryQuery, AdminInventoryQuery>();
         services.AddTransient<IAdminCustomerDiscountQuery, AdminCustomerDiscountQuery>();
         services.AddTransient<IAdminProductCustomerDiscountQuery, AdminProductCustomerDiscountQuery>();
@@ -34,6 +39,9 @@ public class Bootstrapper
         services.AddTransient<IUserProductCategoryQuery, UserProductCategoryQuery>();
         services.AddTransient<IUserProductQuery, UserProductQuery>();
         services.AddTransient<IUserSliderQuery, UserSliderQuery>();
+
+
+        services.AddTransient<IEShopRepository, EShopRepository>();
 
     }
 }

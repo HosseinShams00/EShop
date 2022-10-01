@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InventoryManager.Infrastructure.EFCore.Mapping;
 
-public class InventoryOperationMpping : IEntityTypeConfiguration<InventoryOperation>
+public class InventoryOperationMapping : IEntityTypeConfiguration<InventoryOperation>
 {
     public void Configure(EntityTypeBuilder<InventoryOperation> builder)
     {
