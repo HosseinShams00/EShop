@@ -9,7 +9,8 @@ string eShopQueryConnectionString = builder.Configuration.GetConnectionString("E
 ShopManagement.Infrastructure.Core.Bootstrapper.Config(builder.Services, eShopConnectionString);
 DiscountManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, eShopConnectionString);
 InventoryManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, eShopConnectionString);
-EShopQuery.Bootstrapper.Config(builder.Services, eShopQueryConnectionString);
+EShopQuery.Bootstrapper.Config(builder.Services);
+SecondaryDB.Infrastructure.Core.Bootstrapper.Config(builder.Services, eShopQueryConnectionString);
 DocumentManager.Infrastructures.AspBootstrapper.Config(builder.Services);
 
 var app = builder.Build();
