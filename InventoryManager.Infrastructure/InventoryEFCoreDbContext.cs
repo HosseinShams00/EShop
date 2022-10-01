@@ -6,7 +6,7 @@ namespace InventoryManager.Infrastructure.EFCore;
 
 public class InventoryEFCoreDbContext : DbContext
 {
-    public InventoryEFCoreDbContext(DbContextOptions options) : base(options)
+    public InventoryEFCoreDbContext(DbContextOptions<InventoryEFCoreDbContext> options) : base(options)
     {
     }
 

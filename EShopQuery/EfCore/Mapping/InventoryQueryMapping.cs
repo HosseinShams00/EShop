@@ -9,13 +9,13 @@ public class InventoryQueryMapping : IEntityTypeConfiguration<InventoryQuery>
     public void Configure(EntityTypeBuilder<InventoryQuery> builder)
     {
         builder.Property(x => x.Id).ValueGeneratedNever();
-        builder.Property(x => x.ProductId).IsRequired();
 
         builder.HasMany(x => x.InventoryOperationQueries)
             .WithOne(x => x.InventoryQuery)
             .HasForeignKey(x => x.InventoryId);
 
         builder.HasOne(x => x.ProductQuery)
-            .WithOne(x => x.InventoryQuery);
+            .WithOne(x => x.InventoryQuery)
+            .HasForeignKey<ProductQuery>(x => x.InventoryId);
     }
 }

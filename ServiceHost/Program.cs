@@ -3,12 +3,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-string connectionString = builder.Configuration.GetConnectionString("sql");
+string eShopConnectionString = builder.Configuration.GetConnectionString("EShop");
+string eShopQueryConnectionString = builder.Configuration.GetConnectionString("EShopQuery");
 
-ShopManagement.Infrastructure.Core.Bootstrapper.Config(builder.Services, connectionString);
-DiscountManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, connectionString);
-InventoryManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, connectionString);
-EShopQuery.Bootstrapper.Config(builder.Services);
+ShopManagement.Infrastructure.Core.Bootstrapper.Config(builder.Services, eShopConnectionString);
+DiscountManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, eShopConnectionString);
+InventoryManager.Infrastructure.Core.Bootstrapper.Config(builder.Services, eShopConnectionString);
+EShopQuery.Bootstrapper.Config(builder.Services, eShopQueryConnectionString);
 DocumentManager.Infrastructures.AspBootstrapper.Config(builder.Services);
 
 var app = builder.Build();

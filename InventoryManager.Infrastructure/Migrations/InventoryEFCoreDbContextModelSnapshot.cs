@@ -47,7 +47,7 @@ namespace InventoryManager.Infrastructure.EFCore.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Inventories");
+                    b.ToTable("Inventories", (string)null);
                 });
 
             modelBuilder.Entity("InventoryManager.Domain.InventoryOperationAgg.InventoryOperation", b =>
@@ -84,7 +84,7 @@ namespace InventoryManager.Infrastructure.EFCore.Migrations
 
                     b.HasIndex("InventoryId");
 
-                    b.ToTable("InventoryOperations");
+                    b.ToTable("InventoryOperations", (string)null);
                 });
 
             modelBuilder.Entity("InventoryManager.Domain.InventoryOperationAgg.InventoryOperation", b =>
