@@ -16,6 +16,6 @@ public class InventoryQueryMapping : IEntityTypeConfiguration<InventoryQuery>
 
         builder.HasOne(x => x.ProductQuery)
             .WithOne(x => x.InventoryQuery)
-            .HasForeignKey<ProductQuery>(x => x.InventoryId);
+            .HasForeignKey<InventoryQuery>(x => x.ProductId);
     }
 }

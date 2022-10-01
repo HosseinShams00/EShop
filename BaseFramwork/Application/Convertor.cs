@@ -19,4 +19,19 @@ public class Convertor
 
         return instance;
     }
+
+    public static void Copy(object source, object destination)
+    {
+        var propertyInfosSrc = source.GetType().GetProperties();
+        var propertyInfosDes = destination.GetType().GetProperties();
+
+        foreach (var propertyInfoSrc in propertyInfosSrc)
+        {
+            var propertyDes = propertyInfosDes.FirstOrDefault(x => x.Name == propertyInfoSrc.Name);
+            if (propertyDes != null)
+            {
+                propertyDes.SetValue(propertyInfoSrc.GetValue(source), destination);
+            }
+        }
+    }
 }

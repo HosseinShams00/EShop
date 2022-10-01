@@ -9,6 +9,7 @@ public class InventoryQuery : IInventory
     public bool IsRemoved { get; set; }
     public int UnitPrice { get; set; }
     public long CurrentCount { get; set; }
+    public long ProductId { get; set; }
 
     public ProductQuery? ProductQuery { get; set; }
     public List<InventoryOperationQuery> InventoryOperationQueries { get; set; } = new();

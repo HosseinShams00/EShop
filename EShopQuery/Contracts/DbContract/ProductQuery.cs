@@ -17,7 +17,6 @@ public class ProductQuery : IProduct
     public string MetaDescription { get; set; }
     public string Slug { get; set; }
     public long ProductCategoryId { get; set; }
-    public long? InventoryId { get; set; }
     public long? CustomerDiscountId { get; set; }
 
     public ProductCategoryQuery? ProductCategoryQuery { get; set; }
