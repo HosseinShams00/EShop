@@ -5,8 +5,8 @@ using EShopQuery.Contracts.Admin.ProductCategory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ServiceHost.Attributes;
-using ShopManagement.Application.Constracts.ProductAgg;
-using ShopManagement.Application.Constracts.ProductAgg.Command;
+using ShopManagement.Application.Contract.ProductAgg;
+using ShopManagement.Application.Contract.ProductAgg.Command;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.Products;
 
@@ -25,7 +25,7 @@ public class CreateModel : PageModel
     private readonly IDirectoryApplication _directoryApplication;
     private readonly IImageApplication _imageApplication;
     private readonly string _baseDirectory;
-    public IReadOnlyCollection<ProductCategoryQueryModel> ProductCategroies { get; set; }
+    public IReadOnlyCollection<ProductCategoryQueryModel> ProductCategories { get; set; }
 
 
     public CreateModel(IProductApplication productApplication,
@@ -45,14 +45,14 @@ public class CreateModel : PageModel
     public void OnGet()
     {
         Command = new();
-        ProductCategroies = _adminQuery.GetViewModels();
+        ProductCategories = _adminQuery.GetViewModels();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
         {
-            ProductCategroies = _adminQuery.GetViewModels();
+            ProductCategories = _adminQuery.GetViewModels();
             return Page();
         }
 

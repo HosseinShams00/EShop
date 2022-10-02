@@ -1,23 +1,22 @@
 ﻿using EShopQuery.Contracts.Admin.ProductPicture;
-using ShopManagement.Application.Constracts.ProductPictureAgg.Command;
-using ShopManagement.Infrastructure.EFCore;
-using Microsoft.EntityFrameworkCore;
 using BaseFramework.Application.Exceptions;
+using SecondaryDB.Infrastructure.EFCore;
+using ShopManagement.Application.Contract.ProductPictureAgg.Command;
 
 namespace EShopQuery.Query.Admin.ProductPicture;
 
 public class AdminProductPictureQuery : IAdminProductPictureQuery
 {
-    private readonly ShopManagerEFCoreDbContext Context;
+    private readonly SecondaryDBEfCoreContext _context;
 
-    public AdminProductPictureQuery(ShopManagerEFCoreDbContext context)
+    public AdminProductPictureQuery(SecondaryDBEfCoreContext context)
     {
-        this.Context = context;
+        _context = context;
     }
 
     public EditProductPicture GetDetail(long id)
     {
-        var command = Context.ProductPictures
+        var command = _context.ProductPictureQueries
             .Select(x => new EditProductPicture()
             {
                 Id = x.Id,
@@ -38,8 +37,7 @@ public class AdminProductPictureQuery : IAdminProductPictureQuery
 
     public List<ProductPictureQueryModel> GetViewModels()
     {
-        return Context.ProductPictures
-            .Include(x => x.Product)
+        return _context.ProductPictureQueries
             .Select(x => new ProductPictureQueryModel()
             {
                 Id = x.Id,
@@ -49,7 +47,7 @@ public class AdminProductPictureQuery : IAdminProductPictureQuery
                 ProductId = x.ProductId,
                 CreationTime = x.CreationTime.ToString(),
                 IsRemoved = x.IsRemoved,
-                ProductName = x.Product.Name
+                ProductName = x.ProductQuery.Name
 
             }).ToList();
     }

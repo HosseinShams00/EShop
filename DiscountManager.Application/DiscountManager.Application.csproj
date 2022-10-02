@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DiscountManager.Application.Contracts\DiscountManager.Application.Contracts.csproj" />
     <ProjectReference Include="..\DiscountManager.Domain\DiscountManager.Domain.csproj" />
+    <ProjectReference Include="..\SecondaryDB.Domain\SecondaryDB.Domain.csproj" />
   </ItemGroup>
 
 </Project>

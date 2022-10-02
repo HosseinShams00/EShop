@@ -1,4 +1,4 @@
-﻿namespace InventoryManager.Applicaton.Contracts.InventoryOperationAgg.Command;
+﻿namespace InventoryManager.Applicaton.Contract.InventoryOperationAgg.Command;
 
 public class CreateInventoryOperationCommand
 {

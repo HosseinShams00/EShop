@@ -1,4 +1,4 @@
-﻿namespace ShopManagement.Application.Constracts.ProductPictureAgg.Command;
+﻿namespace ShopManagement.Application.Contract.ProductPictureAgg.Command;
 
 public class EditProductPicture : CreateProductPicture
 {

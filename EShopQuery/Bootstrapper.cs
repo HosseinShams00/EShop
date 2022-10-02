@@ -14,7 +14,7 @@ using EShopQuery.Contracts.User.Product;
 using EShopQuery.Query.Admin.Slider;
 using EShopQuery.Contracts.User.ProductCategories;
 using EShopQuery.Query.User;
-using EShopQuery.Contracts.Slider;
+using EShopQuery.Contracts.User.Slider;
 
 namespace EShopQuery;
 

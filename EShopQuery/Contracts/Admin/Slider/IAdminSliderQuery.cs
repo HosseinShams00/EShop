@@ -1,4 +1,4 @@
-﻿using ShopManagement.Application.Constracts.SliderAgg.Command;
+﻿using ShopManagement.Application.Contract.SliderAgg.Command;
 
 namespace EShopQuery.Contracts.Admin.Slider;
 

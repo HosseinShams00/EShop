@@ -1,22 +1,21 @@
 ﻿using EShopQuery.Contracts.Admin.ProductCategory;
-using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
-using ShopManagement.Infrastructure.EFCore;
-using Microsoft.EntityFrameworkCore;
+using SecondaryDB.Infrastructure.EFCore;
+using ShopManagement.Application.Contract.ProductCategroyAgg.Command;
 
 namespace EShopQuery.Query.Admin.ProductCategory;
 
 public class AdminProductCategoryQuery : IAdminProductCategoryQuery
 {
-    private readonly ShopManagerEFCoreDbContext Context;
+    private readonly SecondaryDBEfCoreContext _context;
 
-    public AdminProductCategoryQuery(ShopManagerEFCoreDbContext context)
+    public AdminProductCategoryQuery(SecondaryDBEfCoreContext context)
     {
-        Context = context;
+        _context = context;
     }
 
     public EditProductCategory? GetDetail(long id)
     {
-        return Context.ProductCategories
+        return _context.ProductCategoryQueries
             .Select(x => new EditProductCategory()
             {
                 Id = x.Id,
@@ -35,7 +34,7 @@ public class AdminProductCategoryQuery : IAdminProductCategoryQuery
 
     public List<ProductCategoryQueryModel> GetViewModels()
     {
-        return Context.ProductCategories
+        return _context.ProductCategoryQueries
             .Select(x => new ProductCategoryQueryModel
             {
                 Id = x.Id,
@@ -50,7 +49,7 @@ public class AdminProductCategoryQuery : IAdminProductCategoryQuery
 
     public List<ProductCategoryQueryModel> Search(ProductCategorySearchModel productCategorySearchModel)
     {
-        var query = Context.ProductCategories
+        var query = _context.ProductCategoryQueries
             .Select(x => new ProductCategoryQueryModel
             {
                 Id = x.Id,
@@ -68,6 +67,6 @@ public class AdminProductCategoryQuery : IAdminProductCategoryQuery
         if (productCategorySearchModel.IsRemoved == false)
             query = query.Where(q => q.IsRemoved == false);
 
-        return query.OrderByDescending(x => x.Id).AsNoTracking().ToList();
+        return query.OrderByDescending(x => x.Id).ToList();
     }
 }

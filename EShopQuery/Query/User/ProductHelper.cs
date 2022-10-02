@@ -1,45 +1,27 @@
-﻿using DiscountManager.Infrastructure.EFCore;
-using InventoryManager.Infrastructure.EFCore;
-using Microsoft.EntityFrameworkCore;
+﻿using EShopQuery.Contracts.User.Product;
+using EShopQuery.Contracts.User.ProductCategories;
 
 namespace EShopQuery.Query.User;
 
 public static class ProductHelper
 {
-    public static bool ProductIsInStock(long productId, InventoryEFCoreDbContext inventoryEfCoreDbContext)
+
+    public static void FillPriceWithDiscountValue(UserProductCategoriesQuery? productCategoryQueryViewModel)
     {
-        return inventoryEfCoreDbContext.Inventories
-            .Where(x => x.ProductId == productId)
-            .Select(x => x.CurrentCount > 0)
-            .FirstOrDefault();
+        foreach (var userProductQueryModel in productCategoryQueryViewModel.ProductQueryModels)
+        {
+            FillPriceWithDiscountValue(userProductQueryModel);
+        }
+    }
+    public static void FillPriceWithDiscountValue(UserProductQueryModel? productQueryModel)
+    {
+        if (productQueryModel == null)
+            return;
+
+        productQueryModel.PriceWithDiscount = CalculateDiscount(productQueryModel.IntPrice.GetValueOrDefault(),
+                                                productQueryModel.DiscountRate.GetValueOrDefault()).ToString("N0");
     }
 
-    public static int GetProductPrice(long productId, InventoryEFCoreDbContext inventoryEfCoreDbContext)
-    {
-        return inventoryEfCoreDbContext.Inventories
-            .Where(x => x.ProductId == productId)
-            .Select(x => x.UnitPrice)
-            .FirstOrDefault();
-    }
-
-    public static int GetProductDiscountValue(long productId, DiscountManagerEFCoreDbContext discountManagerEfCoreDbContext)
-    {
-        return discountManagerEfCoreDbContext.ProductCustomerDiscounts
-            .Include(x => x.CustomerDiscount)
-            .Where(x => x.ProductId == productId 
-                        && x.CustomerDiscount.EndDateTime > DateTime.Now)
-            .Select(x => x.CustomerDiscount.DiscountPercent)
-            .FirstOrDefault();
-    }
-
-    public static DateTime GetProductDiscountExpireDateTime(long productId, DiscountManagerEFCoreDbContext discountManagerEfCoreDbContext)
-    {
-        return discountManagerEfCoreDbContext.ProductCustomerDiscounts
-            .Include(x => x.CustomerDiscount)
-            .Where(x => x.ProductId == productId)
-            .Select(x => x.CustomerDiscount.EndDateTime)
-            .FirstOrDefault();
-    }
 
     public static int CalculateDiscount(int price, int discount)
     {

@@ -1,12 +1,7 @@
-﻿using EShopQuery.Contracts.Slider;
-using EShopQuery.Contracts.User.ProductCategories;
+﻿using EShopQuery.Contracts.User.ProductCategories;
 using EShopQuery.Query.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ShopManagement.Application.Constracts.ProductAgg;
-using ShopManagement.Application.Constracts.ProductCategroyAgg;
-using ShopManagement.Application.Constracts.ProductPictureAgg;
-using ShopManagement.Application.Constracts.SliderAgg;
 using ShopManagement.Application.ProductAgg;
 using ShopManagement.Application.ProductCategoryAgg;
 using ShopManagement.Application.ProductPictureAgg;
@@ -17,6 +12,11 @@ using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Domain.SliderAgg;
 using ShopManagement.Infrastructure.EFCore;
 using ShopManagement.Infrastructure.EFCore.Repository;
+using ShopManagement.Application.Contract.ProductCategroyAgg;
+using ShopManagement.Application.Contract.ProductPictureAgg;
+using ShopManagement.Application.Contract.ProductAgg;
+using ShopManagement.Application.Contract.SliderAgg;
+using EShopQuery.Contracts.User.Slider;
 
 namespace ShopManagement.Infrastructure.Core;
 

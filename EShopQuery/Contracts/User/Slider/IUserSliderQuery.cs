@@ -1,4 +1,4 @@
-﻿namespace EShopQuery.Contracts.Slider;
+﻿namespace EShopQuery.Contracts.User.Slider;
 
 public interface IUserSliderQuery
 {

@@ -5,8 +5,8 @@ using EShopQuery.Contracts.Admin.ProductCategory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ServiceHost.Attributes;
-using ShopManagement.Application.Constracts.ProductAgg;
-using ShopManagement.Application.Constracts.ProductAgg.Command;
+using ShopManagement.Application.Contract.ProductAgg;
+using ShopManagement.Application.Contract.ProductAgg.Command;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.Products;
 
@@ -25,7 +25,7 @@ public class EditModel : PageModel
     [MaxFileSize(MaxSizeInMB = 2, ErrorMessage = "حجم فایل بیش از حد مجاز {0} مگابایت است.")]
     [BindProperty] public IFormFile? PictureFile { get; set; }
 
-    public IReadOnlyCollection<ProductCategoryQueryModel> ProductCategroies { get; set; }
+    public IReadOnlyCollection<ProductCategoryQueryModel> ProductCategories { get; set; }
 
     public EditModel(IProductApplication productApplication,
         IAdminProductCategoryQuery adminQuery,
@@ -46,7 +46,7 @@ public class EditModel : PageModel
     {
 
         Command = _adminProductQuery.GetDetail(id);
-        ProductCategroies = _adminQuery.GetViewModels();
+        ProductCategories = _adminQuery.GetViewModels();
 
     }
 
@@ -54,7 +54,7 @@ public class EditModel : PageModel
     {
         if (ModelState.IsValid == false)
         {
-            ProductCategroies = _adminQuery.GetViewModels();
+            ProductCategories = _adminQuery.GetViewModels();
             return Page();
         }
 

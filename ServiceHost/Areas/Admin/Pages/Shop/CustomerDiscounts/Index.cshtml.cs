@@ -5,17 +5,17 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.CustomerDiscounts;
 
 public class IndexModel : PageModel
 {
-    private readonly IAdminCustomerDiscountQuery _AdminDiscountQuery;
+    private readonly IAdminCustomerDiscountQuery _adminDiscountQuery;
 
     public IReadOnlyCollection<CustomerDiscountQueryModel> ViewModels { get; set; }
 
     public IndexModel(IAdminCustomerDiscountQuery adminDiscountQuery)
     {
-        _AdminDiscountQuery = adminDiscountQuery;
+        _adminDiscountQuery = adminDiscountQuery;
     }
 
     public void OnGet()
     {
-        ViewModels = _AdminDiscountQuery.GetViewModels();
+        ViewModels = _adminDiscountQuery.GetViewModels();
     }
 }

@@ -1,6 +1,6 @@
-﻿using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
+﻿using ShopManagement.Application.Contract.ProductCategroyAgg.Command;
 
-namespace ShopManagement.Application.Constracts.ProductCategroyAgg;
+namespace ShopManagement.Application.Contract.ProductCategroyAgg;
 
 public interface IProductCategoryApplication
 {

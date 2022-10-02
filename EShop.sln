@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Application", "SM.Applic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Application", "SM.Application\ShopManagement.Application.csproj", "{6BE4EB29-54D4-44BA-9D69-F3DC670B6A25}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Application.Constracts", "SM.Application.Constracts\ShopManagement.Application.Constracts.csproj", "{D9CBEA64-48F0-496B-8817-8298DE62FA44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Application.Contract", "SM.Application.Constracts\ShopManagement.Application.Contract.csproj", "{D9CBEA64-48F0-496B-8817-8298DE62FA44}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Infrastructure", "SM.Infrastructure", "{4362C984-04CF-41B9-A427-47BE792C6262}"
 EndProject
@@ -57,7 +57,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManager.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManager.Application", "InventoryManager.Application\InventoryManager.Application.csproj", "{3C816D2D-274D-48B6-A2BC-C261BDEC273D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManager.Applicaton.Contracts", "InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contracts.csproj", "{76E72490-6335-4A0B-BAA4-7B99B35A6D75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManager.Applicaton.Contract", "InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contract.csproj", "{76E72490-6335-4A0B-BAA4-7B99B35A6D75}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManager.Infrastructure.EFCore", "InventoryManager.Infrastructure\InventoryManager.Infrastructure.EFCore.csproj", "{C82D6EA6-E9C0-4C01-BE36-61CAF8001351}"
 EndProject
@@ -101,13 +101,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{E20ECB57-B723-4013-8B8C-5100B80148DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondaryDB.Domain", "SecondaryDB.Domain\SecondaryDB.Domain.csproj", "{C6BF2FE2-8BFD-4D3F-852C-4A14B6E87BC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondaryDB.Domain", "SecondaryDB.Domain\SecondaryDB.Domain.csproj", "{C6BF2FE2-8BFD-4D3F-852C-4A14B6E87BC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondaryDB.Application", "SecondaryDB.Application\SecondaryDB.Application.csproj", "{90490C65-89A8-4E6C-A28A-2C989B3E6B94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondaryDB.Application", "SecondaryDB.Application\SecondaryDB.Application.csproj", "{90490C65-89A8-4E6C-A28A-2C989B3E6B94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondaryDB.Infrastructure.Core", "SecondaryDB.Infrastructure.Core\SecondaryDB.Infrastructure.Core.csproj", "{83D948FC-9A68-4BA2-A14B-71BF228BFCB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondaryDB.Infrastructure.Core", "SecondaryDB.Infrastructure.Core\SecondaryDB.Infrastructure.Core.csproj", "{83D948FC-9A68-4BA2-A14B-71BF228BFCB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondaryDB.Infrastructure.EFCore", "SecondaryDB.Infrastructure.EFCore\SecondaryDB.Infrastructure.EFCore.csproj", "{9883C229-C3EB-467A-9C13-94BB100745F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondaryDB.Infrastructure.EFCore", "SecondaryDB.Infrastructure.EFCore\SecondaryDB.Infrastructure.EFCore.csproj", "{9883C229-C3EB-467A-9C13-94BB100745F3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondaryDB.Application.Contract", "SecondaryDB.Application.Contract\SecondaryDB.Application.Contract.csproj", "{512D6BEF-72FB-414B-A91B-3067011BD06C}"
 EndProject

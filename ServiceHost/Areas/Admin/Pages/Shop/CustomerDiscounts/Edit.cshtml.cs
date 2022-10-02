@@ -8,19 +8,19 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.CustomerDiscounts;
 
 public class EditModel : PageModel
 {
-    [BindProperty] public EditCustomerDiscount _Command { get; set; }
-    private readonly ICustomerDiscountApplication _Application;
-    private readonly IAdminCustomerDiscountQuery _AdminDiscountQuery;
+    [BindProperty] public EditCustomerDiscount Command { get; set; }
+    private readonly ICustomerDiscountApplication _application;
+    private readonly IAdminCustomerDiscountQuery _adminDiscountQuery;
 
     public EditModel(ICustomerDiscountApplication productCategoryApplication, IAdminCustomerDiscountQuery adminDiscountQuery)
     {
-        _Application = productCategoryApplication;
-        _AdminDiscountQuery = adminDiscountQuery;
+        _application = productCategoryApplication;
+        _adminDiscountQuery = adminDiscountQuery;
     }
 
     public void OnGet(long id)
     {
-        _Command = _AdminDiscountQuery.GetDetail(id);
+        Command = _adminDiscountQuery.GetDetail(id);
     }
 
     public IActionResult OnPost()
@@ -28,7 +28,7 @@ public class EditModel : PageModel
         if (ModelState.IsValid == false)
             return Page();
 
-        _Application.Update(_Command);
+        _application.Update(Command);
         return RedirectToPage("./index");
     }
 }

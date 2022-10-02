@@ -1,36 +1,44 @@
 ﻿using BaseFramework.Application;
 using BaseFramework.Application.Exceptions;
-using ShopManagement.Application.Constracts.ProductCategroyAgg;
-using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
-using ShopManagement.Application.Constracts.ProductCategroyAgg.Exceptions;
+using SecondaryDB.Domain;
+using ShopManagement.Application.Contract.ProductCategroyAgg.Exceptions;
+using ShopManagement.Application.Contract.ProductCategroyAgg;
+using ShopManagement.Application.Contract.ProductCategroyAgg.Command;
 using ShopManagement.Domain.ProductCategoryAgg;
 
 namespace ShopManagement.Application.ProductCategoryAgg;
 
 public class ProductCategoryApplication : IProductCategoryApplication
 {
-    private readonly IProductCategoryRepository ProductCategoryRepository;
-    private readonly IProductCategoryValidator validator;
+    private readonly IProductCategoryRepository _productCategoryRepository;
+    private readonly IProductCategoryValidator _validator;
+    private readonly IProductCategoryQueryRepository _productCategoryQueryRepository;
 
-    public ProductCategoryApplication(IProductCategoryRepository productCategoryRepository, IProductCategoryValidator validator)
+    public ProductCategoryApplication(IProductCategoryRepository productCategoryRepository,
+        IProductCategoryValidator validator,
+        IProductCategoryQueryRepository productCategoryQueryRepository)
     {
-        ProductCategoryRepository = productCategoryRepository;
-        this.validator = validator;
+        _productCategoryRepository = productCategoryRepository;
+        _validator = validator;
+        _productCategoryQueryRepository = productCategoryQueryRepository;
     }
 
     public void Create(CreateProductCategory createProductCategory)
     {
-        if (ProductCategoryRepository.Exist(x => x.Name == createProductCategory.Name))
+        if (_productCategoryRepository.Exist(x => x.Name == createProductCategory.Name))
             throw new DuplicatedProductCategoryNameException();
 
         try
         {
-            var productCategory = new ProductCategory(createProductCategory.Name, createProductCategory.Description,
+            var entity = new ProductCategory(createProductCategory.Name, createProductCategory.Description,
             createProductCategory.Picture, createProductCategory.PictureAlt,
             createProductCategory.PictureTitle, createProductCategory.Keywords,
-            createProductCategory.MetaDescription, createProductCategory.Slug.ModifySlug(), validator);
+            createProductCategory.MetaDescription, createProductCategory.Slug.ModifySlug(), _validator);
 
-            ProductCategoryRepository.Create(productCategory);
+            _productCategoryRepository.Create(entity);
+            var categoryQuery = Convertor.Convert<ProductCategoryQuery>(entity);
+            _productCategoryQueryRepository.Create(categoryQuery);
+
         }
         catch (Exception ex)
         {
@@ -43,22 +51,26 @@ public class ProductCategoryApplication : IProductCategoryApplication
 
     public void Update(EditProductCategory editProductCategory)
     {
-        var productCategory = ProductCategoryRepository.GetBy(editProductCategory.Id);
+        var entity = _productCategoryRepository.GetBy(editProductCategory.Id);
 
-        if (productCategory is null)
+        if (entity is null)
             throw new EntityNotFoundException();
 
-        if (ProductCategoryRepository.Exist(x => x.Name == editProductCategory.Name && x.Id != editProductCategory.Id))
+        if (_productCategoryRepository.Exist(x => x.Name == editProductCategory.Name && x.Id != editProductCategory.Id))
             throw new DuplicatedEntityNameException();
 
         try
         {
-            productCategory.Edit(editProductCategory.Name, editProductCategory.Description,
+            entity.Edit(editProductCategory.Name, editProductCategory.Description,
             editProductCategory.Picture, editProductCategory.PictureAlt,
             editProductCategory.PictureTitle, editProductCategory.Keywords,
-            editProductCategory.MetaDescription, editProductCategory.Slug.ModifySlug(), validator);
+            editProductCategory.MetaDescription, editProductCategory.Slug.ModifySlug(), _validator);
 
-            ProductCategoryRepository.UpdateEntity(productCategory);
+            _productCategoryRepository.UpdateEntity(entity);
+
+            var productCategoryQuery = _productCategoryQueryRepository.Get(x => x.Id == entity.Id);
+            Convertor.Copy(entity, productCategoryQuery);
+            _productCategoryQueryRepository.UpdateEntity(productCategoryQuery);
         }
         catch (Exception ex)
         {
@@ -71,21 +83,29 @@ public class ProductCategoryApplication : IProductCategoryApplication
 
     public void Delete(long id)
     {
-        var category = ProductCategoryRepository.GetBy(id);
-        if (category is null)
+        var entity = _productCategoryRepository.GetBy(id);
+        if (entity is null)
             throw new EntityNotFoundException();
 
-        category.DeActive();
-        ProductCategoryRepository.UpdateEntity(category);
+        entity.DeActive();
+        _productCategoryRepository.UpdateEntity(entity);
+
+        var productCategoryQuery = _productCategoryQueryRepository.Get(x => x.Id == entity.Id);
+        productCategoryQuery.IsRemoved = entity.IsRemoved;
+        _productCategoryQueryRepository.UpdateEntity(productCategoryQuery);
     }
 
     public void Restore(long id)
     {
-        var category = ProductCategoryRepository.GetBy(id);
-        if (category is null)
+        var entity = _productCategoryRepository.GetBy(id);
+        if (entity is null)
             throw new EntityNotFoundException();
 
-        category.Active();
-        ProductCategoryRepository.UpdateEntity(category);
+        entity.Active();
+        _productCategoryRepository.UpdateEntity(entity);
+
+        var productCategoryQuery = _productCategoryQueryRepository.Get(x => x.Id == entity.Id);
+        productCategoryQuery.IsRemoved = entity.IsRemoved;
+        _productCategoryQueryRepository.UpdateEntity(productCategoryQuery);
     }
 }

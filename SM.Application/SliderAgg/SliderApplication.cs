@@ -1,60 +1,80 @@
-﻿using BaseFramework.Application.Exceptions;
-using ShopManagement.Application.Constracts.SliderAgg;
-using ShopManagement.Application.Constracts.SliderAgg.Command;
+﻿using BaseFramework.Application;
+using BaseFramework.Application.Exceptions;
+using SecondaryDB.Domain;
+using ShopManagement.Application.Contract.SliderAgg;
+using ShopManagement.Application.Contract.SliderAgg.Command;
 using ShopManagement.Domain.SliderAgg;
 
 namespace ShopManagement.Application.SliderAgg;
 
 public class SliderApplication : ISliderApplication
 {
-    private readonly ISliderRepository SliderRepository;
+    private readonly ISliderRepository _sliderRepository;
+    private readonly ISliderQueryRepository _sliderQueryRepository;
 
-    public SliderApplication(ISliderRepository sliderRepository)
+    public SliderApplication(ISliderRepository sliderRepository, ISliderQueryRepository sliderQueryRepository)
     {
-        SliderRepository = sliderRepository;
+        _sliderRepository = sliderRepository;
+        _sliderQueryRepository = sliderQueryRepository;
     }
     public void Create(CreateSlider createSlider)
     {
-        var slider = new Slider(createSlider.PicturePath, createSlider.PictureAlt,
+        var entity = new Slider(createSlider.PicturePath, createSlider.PictureAlt,
             createSlider.PictureTitle, createSlider.Heading,
             createSlider.Title, createSlider.BodyText,
             createSlider.ButtonText, createSlider.RedirectUrl);
 
-        SliderRepository.Create(slider);
+        _sliderRepository.Create(entity);
+
+        var sliderQuery = Convertor.Convert<SliderQuery>(entity);
+        _sliderQueryRepository.Create(sliderQuery);
+
     }
 
     public void Delete(long id)
     {
-        var slider = SliderRepository.GetBy(id);
-        if (slider == null)
+        var entity = _sliderRepository.GetBy(id);
+        if (entity == null)
             throw new EntityNotFoundException();
 
-        slider.DeActive();
-        SliderRepository.UpdateEntity(slider);
+        entity.DeActive();
+        _sliderRepository.UpdateEntity(entity);
+
+        var sliderQuery = _sliderQueryRepository.Get(x => x.Id == entity.Id);
+        sliderQuery.IsRemoved = entity.IsRemoved;
+        _sliderQueryRepository.UpdateEntity(sliderQuery);
     }
 
     public void Restore(long id)
     {
-        var slider = SliderRepository.GetBy(id);
-        if (slider == null)
+        var entity = _sliderRepository.GetBy(id);
+        if (entity == null)
             throw new EntityNotFoundException();
 
-        slider.Active();
-        SliderRepository.UpdateEntity(slider);
+        entity.Active();
+        _sliderRepository.UpdateEntity(entity);
+
+        var sliderQuery = _sliderQueryRepository.Get(x => x.Id == entity.Id);
+        sliderQuery.IsRemoved = entity.IsRemoved;
+        _sliderQueryRepository.UpdateEntity(sliderQuery);
     }
 
     public void Update(EditSlider editSlider)
     {
 
-        var slider = SliderRepository.GetBy(editSlider.Id);
-        if (slider == null)
+        var entity = _sliderRepository.GetBy(editSlider.Id);
+        if (entity == null)
             throw new EntityNotFoundException();
 
-        slider.Edit(editSlider.PicturePath, editSlider.PictureAlt,
+        entity.Edit(editSlider.PicturePath, editSlider.PictureAlt,
             editSlider.PictureTitle, editSlider.Heading,
             editSlider.Title, editSlider.BodyText,
             editSlider.ButtonText, editSlider.RedirectUrl);
 
-        SliderRepository.UpdateEntity(slider);
+        _sliderRepository.UpdateEntity(entity);
+
+        var sliderQuery = _sliderQueryRepository.Get(x => x.Id == entity.Id);
+        Convertor.Copy(entity, sliderQuery);
+        _sliderQueryRepository.UpdateEntity(sliderQuery);
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IReadOnlyCollection<EShopQuery.Contracts.User.Product.UserProductQueryModel>
+﻿@model List<EShopQuery.Contracts.User.Product.UserProductQueryModel>
 
 <div class="single-row-slider-area section-space">
     <div class="container">
@@ -34,6 +34,7 @@
                     {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
                     {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
                 ]'>
+
                         @foreach (var product in Model)
                         {
                             <div class="col">
@@ -43,7 +44,7 @@
                                             @if (product.HasDiscount)
                                             {
                                                 <span class="sale">-@product.DiscountRate%</span>
-                                                @*<span class="new">جدید</span>*@
+                                                <span class="new">جدید</span>
                                             }
                                         </div>
                                         <a asp-page="/Product" asp-route-id="@product.Slug">
@@ -80,6 +81,7 @@
                                 </div>
                             </div>
                         }
+
                     </div>
                 </div>
             </div>

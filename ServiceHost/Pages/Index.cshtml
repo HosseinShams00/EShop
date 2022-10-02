@@ -6,11 +6,9 @@
 
 @await Component.InvokeAsync("Slider")
 
-@await Component.InvokeAsync("ProductCategory")
+<partial name="Shared/Components/ProductCategory/default" model="Model.ViewModel"/>
 
-
-@await Component.InvokeAsync("ProductCategoryWithProducts")
-
+<partial name="Shared/Components/ProductCategoryWithProducts/default" model="Model.ViewModel" />
 
 @await Component.InvokeAsync("LastProducts")
 

@@ -1,5 +1,5 @@
-using InventoryManager.Applicaton.Contracts.InventoryAgg;
-using InventoryManager.Applicaton.Contracts.InventoryOperationAgg.Command;
+using InventoryManager.Applicaton.Contract.InventoryAgg;
+using InventoryManager.Applicaton.Contract.InventoryOperationAgg.Command;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -7,18 +7,18 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Inventory;
 
 public class AddOperationModel : PageModel
 {
-    private readonly IInventoryApplication _Application;
-    [BindProperty] public CreateInventoryOperationCommand _Command { get; set; }
+    private readonly IInventoryApplication _application;
+    [BindProperty] public CreateInventoryOperationCommand Command { get; set; }
 
     public AddOperationModel(IInventoryApplication application)
     {
-        _Application = application;
-        _Command = new();
+        _application = application;
+        Command = new();
     }
 
     public void OnGet(long inventoryId)
     {
-        _Command.InventoryId = inventoryId;
+        Command.InventoryId = inventoryId;
     }
 
     public IActionResult OnPost()
@@ -26,10 +26,10 @@ public class AddOperationModel : PageModel
         if (ModelState.IsValid == false)
             return Page();
 
-        _Command.OperatorId = 0;
-        _Command.OrderId = 0;
+        Command.OperatorId = 0;
+        Command.OrderId = 0;
 
-        _Application.AddNewOperation(_Command);
+        _application.AddNewOperation(Command);
         return RedirectToPage("./index");
     }
 }

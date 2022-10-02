@@ -1,21 +1,21 @@
 ﻿using DiscountManager.Application.Contracts.CustommerDiscountAgg.Command;
 using EShopQuery.Contracts.Admin.DiscountManager;
-using DiscountManager.Infrastructure.EFCore;
+using SecondaryDB.Infrastructure.EFCore;
 
 namespace EShopQuery.Query.Admin.DiscountManager;
 
 public class AdminCustomerDiscountQuery : IAdminCustomerDiscountQuery
 {
-    private readonly DiscountManagerEFCoreDbContext Context;
+    private readonly SecondaryDBEfCoreContext _context;
 
-    public AdminCustomerDiscountQuery(DiscountManagerEFCoreDbContext context)
+    public AdminCustomerDiscountQuery(SecondaryDBEfCoreContext context)
     {
-        Context = context;
+        _context = context;
     }
 
     public EditCustomerDiscount? GetDetail(long id)
     {
-        return Context.CustomerDiscounts
+        return _context.CustomerDiscountQueries
             .Select(x => new EditCustomerDiscount()
             {
                 Id = x.Id,
@@ -30,7 +30,7 @@ public class AdminCustomerDiscountQuery : IAdminCustomerDiscountQuery
 
     public List<CustomerDiscountQueryModel> GetViewModels()
     {
-        return Context.CustomerDiscounts
+        return _context.CustomerDiscountQueries
             .Select(x => new CustomerDiscountQueryModel()
             {
                 Id = x.Id,

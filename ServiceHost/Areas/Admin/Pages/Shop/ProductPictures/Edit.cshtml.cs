@@ -2,44 +2,44 @@ using EShopQuery.Contracts.Admin.Product;
 using EShopQuery.Contracts.Admin.ProductPicture;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShopManagement.Application.Constracts.ProductPictureAgg;
-using ShopManagement.Application.Constracts.ProductPictureAgg.Command;
+using ShopManagement.Application.Contract.ProductPictureAgg;
+using ShopManagement.Application.Contract.ProductPictureAgg.Command;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.ProductPictures;
 
 public class EditModel : PageModel
 {
-    [BindProperty] public EditProductPicture _Command { get; set; }
-    private readonly IProductPictureApplication ProductApplication;
-    private readonly IAdminProductQuery _AdminQuery;
-    private readonly IAdminProductPictureQuery _AdminProductPictureQuery;
+    [BindProperty] public EditProductPicture Command { get; set; }
+    private readonly IProductPictureApplication _productApplication;
+    private readonly IAdminProductQuery _adminQuery;
+    private readonly IAdminProductPictureQuery _adminProductPictureQuery;
 
     public IReadOnlyCollection<ProductQueryModel> Products { get; set; }
 
     public EditModel(IProductPictureApplication productPictureApplication,
         IAdminProductQuery adminQuery,
-        IAdminProductPictureQuery adminroductPictureQuery)
+        IAdminProductPictureQuery adminProductPictureQuery)
     {
-        ProductApplication = productPictureApplication;
-        _AdminQuery = adminQuery;
-        _AdminProductPictureQuery = adminroductPictureQuery;
+        _productApplication = productPictureApplication;
+        _adminQuery = adminQuery;
+        _adminProductPictureQuery = adminProductPictureQuery;
     }
 
     public void OnGet(long id)
     {
-        _Command = _AdminProductPictureQuery.GetDetail(id);
-        Products = _AdminQuery.GetViewModels();
+        Command = _adminProductPictureQuery.GetDetail(id);
+        Products = _adminQuery.GetViewModels();
     }
 
     public IActionResult OnPost()
     {
         if (ModelState.IsValid == false)
         {
-            Products = _AdminQuery.GetViewModels();
+            Products = _adminQuery.GetViewModels();
             return Page();
         }
 
-        ProductApplication.Update(_Command);
+        _productApplication.Update(Command);
         return RedirectToPage("./index");
     }
 }

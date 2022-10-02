@@ -9,18 +9,18 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>تعداد</label>
-                <input type="text" placeholder="تعداد" class="form-control" asp-for="_Command.Count" />
-                <span asp-validation-for="_Command.Count" class="text-danger text-sm"></span>
+                <input type="text" placeholder="تعداد" class="form-control" asp-for="Command.Count" />
+                <span asp-validation-for="Command.Count" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>توضیحات</label>
-                <textarea asp-for="_Command.Description" class="form-control" rows="3"></textarea>
-                <span asp-validation-for="_Command.Description" class="text-danger text-sm"></span>
+                <textarea asp-for="Command.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Command.Description" class="text-danger text-sm"></span>
             </div>
         </div>
-        <input type="hidden" asp-for="_Command.InventoryId" />
+        <input type="hidden" asp-for="Command.InventoryId" />
         <button type="submit" class="btn bg-gradient-success">تایید</button>
     </div>
 </form>

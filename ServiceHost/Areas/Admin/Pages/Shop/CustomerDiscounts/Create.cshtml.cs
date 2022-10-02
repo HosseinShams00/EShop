@@ -7,19 +7,19 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.CustomerDiscounts;
 
 public class CreateModel : PageModel
 {
-    [BindProperty] public DefineCustomerDiscount _Command { get; set; }
-    private readonly ICustomerDiscountApplication _Application;
+    [BindProperty] public DefineCustomerDiscount Command { get; set; }
+    private readonly ICustomerDiscountApplication _application;
 
     public CreateModel(ICustomerDiscountApplication productCategoryApplication)
     {
-        _Application = productCategoryApplication;
+        _application = productCategoryApplication;
     }
 
     public void OnGet()
     {
-        _Command = new();
-        _Command.StartDateTime = DateTime.Now;
-        _Command.EndDateTime = DateTime.Now;
+        Command = new();
+        Command.StartDateTime = DateTime.Now;
+        Command.EndDateTime = DateTime.Now;
     }
 
     public IActionResult OnPost()
@@ -27,7 +27,7 @@ public class CreateModel : PageModel
         if (ModelState.IsValid == false)
             return Page();
 
-        _Application.Create(_Command);
+        _application.Create(Command);
         return RedirectToPage("./index");
     }
 }

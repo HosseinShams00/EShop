@@ -4,8 +4,8 @@ using DocumentManager.Application.Contracts.ImageManager.ImageFileManager;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ServiceHost.Attributes;
-using ShopManagement.Application.Constracts.ProductCategroyAgg;
-using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
+using ShopManagement.Application.Contract.ProductCategroyAgg;
+using ShopManagement.Application.Contract.ProductCategroyAgg.Command;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories;
 

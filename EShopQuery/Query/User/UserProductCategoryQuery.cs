@@ -15,7 +15,6 @@ public class UserProductCategoryQuery : IUserProductCategoryQuery
         _secondaryDbEfCoreContext = secondaryDbEfCoreContext;
     }
 
-
     public List<UserProductCategoriesQuery> GetViewModels()
     {
         return _secondaryDbEfCoreContext.ProductCategoryQueries
@@ -28,14 +27,20 @@ public class UserProductCategoryQuery : IUserProductCategoryQuery
                 PictureTitle = x.PictureTitle,
                 Picture = x.Picture,
                 Slug = x.Slug,
+                Description = x.Description,
 
             }).ToList();
     }
 
     public List<UserProductCategoriesQuery> GetViewModelsWithProduct()
     {
-        return GetProductCategoryWithProductsQueryable(null).ToList();
+        var userProductCategoriesQueries = GetProductCategoryWithProductsQueryable(null).ToList();
+        foreach (var userProductCategoriesQuery in userProductCategoriesQueries)
+        {
+            ProductHelper.FillPriceWithDiscountValue(userProductCategoriesQuery);
+        }
 
+        return userProductCategoriesQueries;
     }
 
     public UserProductCategoriesQuery GetViewModelWithProduct(long categoryId)
@@ -43,18 +48,14 @@ public class UserProductCategoryQuery : IUserProductCategoryQuery
         var productCategoryQueryViewModel = GetProductCategoryWithProductsQueryable(categoryId)
             .FirstOrDefault();
 
+        ProductHelper.FillPriceWithDiscountValue(productCategoryQueryViewModel);
+
         if (productCategoryQueryViewModel == null)
             throw new EntityNotFoundException();
 
-        foreach (var userProductQueryModel in productCategoryQueryViewModel.ProductQueryModels)
-        {
-            userProductQueryModel.PriceWithDiscount = ProductHelper.CalculateDiscount(userProductQueryModel.IntPrice,
-                userProductQueryModel.DiscountRate).ToString("N0");
-        }
-
         return productCategoryQueryViewModel;
     }
-
+    
     private IQueryable<UserProductCategoriesQuery> GetProductCategoryWithProductsQueryable(long? categoryId)
     {
         var query = _secondaryDbEfCoreContext.ProductCategoryQueries
@@ -83,12 +84,14 @@ public class UserProductCategoryQuery : IUserProductCategoryQuery
                 PictureTitle = q.PictureTitle,
                 CategoryName = x.Name,
                 Slug = q.Slug,
-                DiscountRate = q.CustomerDiscountQuery.DiscountPercent,
-                DiscountExpireDate = q.CustomerDiscountQuery.EndDateTime,
-                HasDiscount = q.CustomerDiscountId != 0,
-                IntPrice = q.InventoryQuery.UnitPrice,
-                IsInStock = q.InventoryQuery.CurrentCount > 0,
-                Price = q.InventoryQuery.UnitPrice.ToString("N0"),
+                DiscountRate = (int?)(q.CustomerDiscountQuery.DiscountPercent),
+                DiscountExpireDate = (DateTime?)(q.CustomerDiscountQuery.EndDateTime),
+                HasDiscount = q.CustomerDiscountId != null,
+                IntPrice = (int?)(q.InventoryQuery.UnitPrice),
+                IsInStock = q.InventoryQuery != null && q.InventoryQuery.CurrentCount > 0,
+                Price = ((int?)(q.InventoryQuery.UnitPrice)) == null
+                        ? ""
+                        : q.InventoryQuery.UnitPrice.ToString("N0"),
 
             })
                 .OrderByDescending(z => z.Id)

@@ -1,31 +1,43 @@
-﻿using BaseFramework.Application.Exceptions;
+﻿using BaseFramework.Application;
+using BaseFramework.Application.Exceptions;
 using DiscountManager.Application.Contracts.CustommerDiscountAgg;
 using DiscountManager.Application.Contracts.CustommerDiscountAgg.Command;
 using DiscountManager.Application.Contracts.CustommerDiscountAgg.Exceptions;
 using DiscountManager.Domain.CustomerDiscountAgg;
+using SecondaryDB.Domain;
+using ShopManagement.Domain.ProductAgg;
 
-namespace DiscountManager.Application.CustommerDiscountAgg;
+namespace DiscountManager.Application.CustomerDiscountAgg;
 
 public class CustomerDiscountApplication : ICustomerDiscountApplication
 {
-    private readonly ICustomerDiscountRepository Repository;
-    public ICustomerDiscountValidator Validator { get; }
+    private readonly ICustomerDiscountRepository _repository;
+    private readonly ICustomerDiscountValidator _validator;
+    private readonly ICustomerDiscountQueryRepository _customerDiscountQueryRepository;
 
 
-    public CustomerDiscountApplication(ICustomerDiscountRepository repository, ICustomerDiscountValidator validator)
+    public CustomerDiscountApplication(ICustomerDiscountRepository repository,
+        ICustomerDiscountValidator validator,
+        ICustomerDiscountQueryRepository customerDiscountQueryRepository)
     {
-        Repository = repository;
-        Validator = validator;
+        _repository = repository;
+        _validator = validator;
+        _customerDiscountQueryRepository = customerDiscountQueryRepository;
     }
 
     public void Create(DefineCustomerDiscount customerDiscount)
     {
         try
         {
-            Repository.Create(new CustomerDiscount(
+            var entity = new CustomerDiscount(
                 customerDiscount.Title, customerDiscount.Description,
                 customerDiscount.StartDateTime, customerDiscount.EndDateTime,
-                customerDiscount.DiscountPercent, Validator));
+                customerDiscount.DiscountPercent, _validator);
+
+            _repository.Create(entity);
+
+            var discountQuery = Convertor.Convert<CustomerDiscountQuery>(entity);
+            _customerDiscountQueryRepository.Create(discountQuery);
         }
 
         catch (Exception ex)
@@ -36,46 +48,60 @@ public class CustomerDiscountApplication : ICustomerDiscountApplication
                 throw new DiscountTitletExistException();
             else if (ex is Domain.CustomerDiscountAgg.Exceptions.EndDateTimeBiggerThanStartDateTimeException)
                 throw new EndDateTimeBiggerThanStartDateTimeException();
+
+            throw;
         }
 
     }
 
     public void Delete(long id)
     {
-        var entity = Repository.GetBy(id);
+        var entity = _repository.GetBy(id);
 
         if (entity == null)
             throw new EntityNotFoundException();
 
         entity.DeActive();
-        Repository.UpdateEntity(entity);
+        _repository.UpdateEntity(entity);
+
+        var discountQuery = _customerDiscountQueryRepository.Get(x => x.Id == entity.Id);
+        discountQuery.IsRemoved = entity.IsRemoved;
+        _customerDiscountQueryRepository.UpdateEntity(discountQuery);
     }
 
     public void Restore(long id)
     {
-        var entity = Repository.GetBy(id);
+        var entity = _repository.GetBy(id);
 
         if (entity == null)
             throw new EntityNotFoundException();
 
         entity.Active();
-        Repository.UpdateEntity(entity);
+        _repository.UpdateEntity(entity);
+
+        var discountQuery = _customerDiscountQueryRepository.Get(x => x.Id == entity.Id);
+        discountQuery.IsRemoved = entity.IsRemoved;
+        _customerDiscountQueryRepository.UpdateEntity(discountQuery);
     }
 
     public void Update(EditCustomerDiscount editProduct)
     {
-        var customerDiscount = Repository.GetBy(editProduct.Id);
+        var entity = _repository.GetBy(editProduct.Id);
 
-        if (customerDiscount == null)
+        if (entity == null)
             throw new EntityNotFoundException();
 
         try
         {
-            customerDiscount.Edit(editProduct.Title, editProduct.Description,
+            entity.Edit(editProduct.Title, editProduct.Description,
                                   editProduct.StartDateTime, editProduct.EndDateTime,
-                                  editProduct.DiscountPercent, Validator);
+                                  editProduct.DiscountPercent, _validator);
 
-            Repository.UpdateEntity(customerDiscount);
+            _repository.UpdateEntity(entity);
+
+            var discountQuery = _customerDiscountQueryRepository.Get(x => x.Id == entity.Id);
+            Convertor.Copy(entity, discountQuery);
+            _customerDiscountQueryRepository.UpdateEntity(discountQuery);
         }
         catch (Exception ex)
         {
@@ -85,6 +111,8 @@ public class CustomerDiscountApplication : ICustomerDiscountApplication
                 throw new DiscountTitletExistException();
             else if (ex is Domain.CustomerDiscountAgg.Exceptions.EndDateTimeBiggerThanStartDateTimeException)
                 throw new EndDateTimeBiggerThanStartDateTimeException();
+
+            throw;
         }
     }
 }

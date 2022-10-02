@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ShopManagement.Application.Constracts.SliderAgg.Command;
+namespace ShopManagement.Application.Contract.SliderAgg.Command;
 
 public class CreateSlider
 {

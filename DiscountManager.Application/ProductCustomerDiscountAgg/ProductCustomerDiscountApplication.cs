@@ -1,45 +1,57 @@
 ﻿using BaseFramework.Application.Exceptions;
 using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg;
 using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg.Command;
+using DiscountManager.Domain.CustomerDiscountAgg;
 using DiscountManager.Domain.ProductCustomerDiscountAgg;
+using SecondaryDB.Domain;
 
 namespace DiscountManager.Application.ProductCustomerDiscountAgg;
 
 public class ProductCustomerDiscountApplication : IProductCustomerDiscountApplication
 {
-    private readonly IProductCustomerDiscountRepository Repository;
-    private readonly IProductCustomerDiscountValidator Validator;
+    private readonly IProductCustomerDiscountRepository _repository;
+    private readonly IProductCustomerDiscountValidator _validator;
+    private readonly IProductQueryRepository _productQueryRepository;
 
-    public ProductCustomerDiscountApplication(IProductCustomerDiscountRepository repository, IProductCustomerDiscountValidator validator)
+    public ProductCustomerDiscountApplication(IProductCustomerDiscountRepository repository,
+        IProductCustomerDiscountValidator validator,
+        IProductQueryRepository productQueryRepository)
     {
-        Repository = repository;
-        Validator = validator;
+        _repository = repository;
+        _validator = validator;
+        _productQueryRepository = productQueryRepository;
     }
 
     public void Create(ProdcutCustomerCommand customerDiscount)
     {
-        Repository.Create(new ProductCustomerDiscount(customerDiscount.ProductId, customerDiscount.CustomerDiscountId, Validator));
+        var entity = new ProductCustomerDiscount(customerDiscount.ProductId, customerDiscount.CustomerDiscountId, _validator);
+        _repository.Create(entity);
+
+        _productQueryRepository.AddDiscount(entity.ProductId, entity.CustomerDiscountId);
     }
 
     public void DeleteBy(long productId)
     {
-        Repository.RemoveBy(productId);
+        _repository.RemoveBy(productId);
+        _productQueryRepository.RemoveDiscount(productId);
     }
 
     public long GetCustomerDiscountId(long productId)
     {
-        return Repository.GetCustomerDiscountId(productId);
+        return _repository.GetCustomerDiscountId(productId);
     }
 
     public void Update(EditProdcutCustomerCommand editCustomerDiscount)
     {
-        var editCommand = Repository.GetBy(editCustomerDiscount.Id);
+        var entity = _repository.GetBy(editCustomerDiscount.Id);
 
-        if (editCommand == null)
+        if (entity == null)
             throw new EntityNotFoundException();
 
-        editCommand.EditCustomerDiscountId(editCustomerDiscount.CustomerDiscountId, Validator);
-        Repository.UpdateEntity(editCommand);
+        entity.EditCustomerDiscountId(editCustomerDiscount.CustomerDiscountId, _validator);
+        _repository.UpdateEntity(entity);
+
+        _productQueryRepository.EditDiscount(entity.ProductId, entity.CustomerDiscountId);
     }
 
 }

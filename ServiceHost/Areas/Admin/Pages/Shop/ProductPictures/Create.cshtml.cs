@@ -1,8 +1,8 @@
 using EShopQuery.Contracts.Admin.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShopManagement.Application.Constracts.ProductPictureAgg;
-using ShopManagement.Application.Constracts.ProductPictureAgg.Command;
+using ShopManagement.Application.Contract.ProductPictureAgg;
+using ShopManagement.Application.Contract.ProductPictureAgg.Command;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.ProductPictures;
 

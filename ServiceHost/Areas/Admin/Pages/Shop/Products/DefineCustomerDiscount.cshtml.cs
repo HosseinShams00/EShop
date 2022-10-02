@@ -8,52 +8,52 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Products;
 
 public class DefineCustomerDiscountModel : PageModel
 {
-    private readonly IAdminCustomerDiscountQuery _AdminDiscountQuery;
-    private readonly IAdminProductCustomerDiscountQuery _AdminProductDiscountQuery;
+    private readonly IAdminCustomerDiscountQuery _adminDiscountQuery;
+    private readonly IAdminProductCustomerDiscountQuery _adminProductDiscountQuery;
 
-    private readonly IProductCustomerDiscountApplication _ProductCustomerDiscountApplication;
+    private readonly IProductCustomerDiscountApplication _productCustomerDiscountApplication;
 
     public IReadOnlyCollection<CustomerDiscountQueryModel> ViewModels { get; private set; }
-    [BindProperty] public EditProdcutCustomerCommand _Command { get; set; }
+    [BindProperty] public EditProdcutCustomerCommand Command { get; set; }
 
     public DefineCustomerDiscountModel(IProductCustomerDiscountApplication productCustomerDiscountApplication,
                                         IAdminCustomerDiscountQuery adminDiscountQuery,
                                         IAdminProductCustomerDiscountQuery adminProductDiscountQuery)
     {
-        _ProductCustomerDiscountApplication = productCustomerDiscountApplication;
-        _Command = new();
-        _AdminDiscountQuery = adminDiscountQuery;
-        _AdminProductDiscountQuery = adminProductDiscountQuery;
+        _productCustomerDiscountApplication = productCustomerDiscountApplication;
+        Command = new();
+        _adminDiscountQuery = adminDiscountQuery;
+        _adminProductDiscountQuery = adminProductDiscountQuery;
     }
 
     public void OnGet(long productId)
     {
-        ViewModels = _AdminDiscountQuery.GetViewModels();
-        _Command = _AdminProductDiscountQuery.GetEditCommand(productId) ?? new EditProdcutCustomerCommand() { ProductId = productId };
+        ViewModels = _adminDiscountQuery.GetViewModels();
+        Command = _adminProductDiscountQuery.GetEditCommand(productId) ?? new EditProdcutCustomerCommand() { ProductId = productId };
     }
 
     public IActionResult OnPost()
     {
-        if (_Command.CustomerDiscountId == 0)
+        if (Command.CustomerDiscountId == 0)
         {
-            if (_Command.Id != 0)
-                _ProductCustomerDiscountApplication.DeleteBy(_Command.ProductId);
+            if (Command.Id != 0)
+                _productCustomerDiscountApplication.DeleteBy(Command.ProductId);
 
             return RedirectToPage("./index");
 
         }
-        if (_Command.Id == 0)
+        if (Command.Id == 0)
         {
-            _ProductCustomerDiscountApplication.Create(new ProdcutCustomerCommand()
+            _productCustomerDiscountApplication.Create(new ProdcutCustomerCommand()
             {
-                ProductId = _Command.ProductId,
-                CustomerDiscountId = _Command.CustomerDiscountId
+                ProductId = Command.ProductId,
+                CustomerDiscountId = Command.CustomerDiscountId
             });
             return RedirectToPage("./index");
 
         }
 
-        _ProductCustomerDiscountApplication.Update(_Command);
+        _productCustomerDiscountApplication.Update(Command);
         return RedirectToPage("./index");
     }
 

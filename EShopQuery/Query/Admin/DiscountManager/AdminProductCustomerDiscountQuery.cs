@@ -8,18 +8,18 @@ namespace EShopQuery.Query.Admin.DiscountManager;
 
 public class AdminProductCustomerDiscountQuery : IAdminProductCustomerDiscountQuery
 {
-    private readonly DiscountManagerEFCoreDbContext Context;
-    private readonly ShopManagerEFCoreDbContext _ShopManagerEFCoreDbContext;
+    private readonly DiscountManagerEFCoreDbContext _context;
+    private readonly ShopManagerEFCoreDbContext _shopManagerEfCoreDbContext;
 
     public AdminProductCustomerDiscountQuery(DiscountManagerEFCoreDbContext context, ShopManagerEFCoreDbContext shopManagerEFCoreDbContext)
     {
-        Context = context;
-        _ShopManagerEFCoreDbContext = shopManagerEFCoreDbContext;
+        _context = context;
+        _shopManagerEfCoreDbContext = shopManagerEFCoreDbContext;
     }
 
     public EditProdcutCustomerCommand? GetEditCommand(long productId)
     {
-        return Context.ProductCustomerDiscounts
+        return _context.ProductCustomerDiscounts
             .Select(x => new EditProdcutCustomerCommand()
             {
                 Id = x.Id,
@@ -33,14 +33,14 @@ public class AdminProductCustomerDiscountQuery : IAdminProductCustomerDiscountQu
     {
         List<ProductCustomerDiscountQueryModel> result = new();
 
-        var productCustomers = Context.ProductCustomerDiscounts
+        var productCustomers = _context.ProductCustomerDiscounts
             .Where(x => x.CustomerDiscountId == customerDiscountId)
             .AsNoTracking()
             .ToList();
 
         foreach (var productCustomer in productCustomers)
         {
-            var query = _ShopManagerEFCoreDbContext.Products
+            var query = _shopManagerEfCoreDbContext.Products
                 .Where(x => x.Id == productCustomer.ProductId)
                 .Select(x => new ProductCustomerDiscountQueryModel()
                 {

@@ -7,18 +7,18 @@
         <div class="col-md-5 offset-3">
             <div class="form-group">
                 <label>قیمت محصول</label>
-                <input type="number" placeholder="قیمت محصول را وارد نمایید" class="form-control" asp-for="_Command.UnitPrice" />
-                <span asp-validation-for="_Command.UnitPrice" class="text-danger text-sm"></span>
+                <input type="number" placeholder="قیمت محصول را وارد نمایید" class="form-control" asp-for="Command.UnitPrice" />
+                <span asp-validation-for="Command.UnitPrice" class="text-danger text-sm"></span>
             </div>
         </div>
 
-        <a class="col-md-2" asp-page="./AddOperation" asp-route-inventoryId="@Model._Command.Id">
+        <a class="col-md-2" asp-page="./AddOperation" asp-route-inventoryId="@Model.Command.Id">
             <button type="button" class="btn btn-dark">افزودن تراکنش جدید</button>
         </a>
-        <a class="col-md-2" asp-page="./Operations" asp-route-id="@Model._Command.Id">
+        <a class="col-md-2" asp-page="./Operations" asp-route-id="@Model.Command.Id">
             <button type="button" class="btn btn-dark">مشاهده لیست تراکنش ها</button>
         </a>
-        <input type="hidden" asp-for="_Command.Id" />
+        <input type="hidden" asp-for="Command.Id" />
         <button type="submit" class="btn bg-gradient-success">تایید</button>
     </div>
 </form>

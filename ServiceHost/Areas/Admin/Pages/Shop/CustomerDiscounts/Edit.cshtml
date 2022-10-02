@@ -8,40 +8,40 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>سر تیتر تخفیف</label>
-                <input type="text" placeholder="سر تیتر تخفیف" class="form-control" asp-for="_Command.Title" />
-                <span asp-validation-for="_Command.Title" class="text-danger text-sm"></span>
+                <input type="text" placeholder="سر تیتر تخفیف" class="form-control" asp-for="Command.Title" />
+                <span asp-validation-for="Command.Title" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>تاریخ شروع</label>
-                <input type="datetime-local" class="form-control" asp-for="_Command.StartDateTime" />
-                <span asp-validation-for="_Command.StartDateTime" class="text-danger text-sm"></span>
+                <input type="datetime-local" class="form-control" asp-for="Command.StartDateTime" />
+                <span asp-validation-for="Command.StartDateTime" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>تاریخ پایان</label>
-                <input type="datetime-local" class="form-control" asp-for="_Command.EndDateTime" />
-                <span asp-validation-for="_Command.EndDateTime" class="text-danger text-sm"></span>
+                <input type="datetime-local" class="form-control" asp-for="Command.EndDateTime" />
+                <span asp-validation-for="Command.EndDateTime" class="text-danger text-sm"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>مقدار تخفیف</label>
-                <input type="text" placeholder="مقدار تخفیف" class="form-control" asp-for="_Command.DiscountPercent" />
-                <span asp-validation-for="_Command.DiscountPercent" class="text-danger text-sm"></span>
+                <input type="text" placeholder="مقدار تخفیف" class="form-control" asp-for="Command.DiscountPercent" />
+                <span asp-validation-for="Command.DiscountPercent" class="text-danger text-sm"></span>
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="form-group">
                 <label>توضیحات تخفیف</label>
-                <textarea asp-for="_Command.Description" class="form-control" rows="3"></textarea>
-                <span asp-validation-for="_Command.Description" class="text-danger text-sm"></span>
+                <textarea asp-for="Command.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Command.Description" class="text-danger text-sm"></span>
             </div>
         </div>
-        <input type="hidden" asp-for="_Command.Id"/>
+        <input type="hidden" asp-for="Command.Id"/>
         <button type="submit" class="btn bg-gradient-success">تایید</button>
 
     </div>

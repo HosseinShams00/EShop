@@ -1,7 +1,7 @@
 using EShopQuery.Contracts.Admin.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShopManagement.Application.Constracts.ProductAgg;
+using ShopManagement.Application.Contract.ProductAgg;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.Products;
 

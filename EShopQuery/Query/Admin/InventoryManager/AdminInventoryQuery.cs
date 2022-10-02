@@ -1,24 +1,21 @@
 ﻿using EShopQuery.Contracts.Admin.InventoryManager;
-using InventoryManager.Applicaton.Contracts.InventoryAgg.Command;
-using InventoryManager.Infrastructure.EFCore;
-using ShopManagement.Infrastructure.EFCore;
+using InventoryManager.Applicaton.Contract.InventoryAgg.Command;
+using SecondaryDB.Infrastructure.EFCore;
 
 namespace EShopQuery.Query.Admin.InventoryManager;
 
 public class AdminInventoryQuery : IAdminInventoryQuery
 {
-    private readonly InventoryEFCoreDbContext _InventoryDbContext;
-    private readonly ShopManagerEFCoreDbContext _ShopManagerDbContext;
+    private readonly SecondaryDBEfCoreContext _context;
 
-    public AdminInventoryQuery(InventoryEFCoreDbContext inventoryDbContext, ShopManagerEFCoreDbContext shopManagerDbContext)
+    public AdminInventoryQuery(SecondaryDBEfCoreContext context)
     {
-        _InventoryDbContext = inventoryDbContext;
-        _ShopManagerDbContext = shopManagerDbContext;
+        _context = context;
     }
 
     public EditInventoryCommand? GetDetails(long id)
     {
-        return _InventoryDbContext.Inventories
+        return _context.InventoryQueries
             .Select(x => new EditInventoryCommand()
             {
                 Id = x.Id,
@@ -30,7 +27,7 @@ public class AdminInventoryQuery : IAdminInventoryQuery
 
     public long GetInventoryIdWith(long productId)
     {
-        return _InventoryDbContext.Inventories
+        return _context.InventoryQueries
             .Where(x => x.ProductId == productId)
             .Select(x => x.Id)
             .FirstOrDefault();
@@ -38,7 +35,7 @@ public class AdminInventoryQuery : IAdminInventoryQuery
 
     public List<InventoryOperationQueryModel> GetOperationViewModels(long inventoryId)
     {
-        return _InventoryDbContext.InventoryOperations
+        return _context.InventoryOperationQueries
             .Where(x => x.InventoryId == inventoryId)
             .Select(x => new InventoryOperationQueryModel()
             {
@@ -56,38 +53,30 @@ public class AdminInventoryQuery : IAdminInventoryQuery
 
     public List<InventoryQueryModel> GetViewModels()
     {
-        var viewModels = _InventoryDbContext.Inventories
+        var viewModels = _context.InventoryQueries
             .Select(x => new InventoryQueryModel()
             {
                 Id = x.Id,
                 CurrentCount = x.CurrentCount,
                 ProductId = x.ProductId,
                 UnitPrice = x.UnitPrice,
-                ProductName = String.Empty
+                ProductName = x.ProductQuery.Name
             })
             .ToList();
-
-        for (int i = 0; i < viewModels.Count; i++)
-        {
-            viewModels[i].ProductName = _ShopManagerDbContext.Products
-                                        .Where(x => x.Id == viewModels[i].ProductId)
-                                        .Select(x => x.Name)
-                                        .FirstOrDefault() ?? string.Empty;
-        }
-
+        
         return viewModels;
     }
 
     public List<InventoryQueryModel> GetViewModels(InventorySearchModel searchModel)
     {
-        var viewModelsQuery = _InventoryDbContext.Inventories
+        var viewModelsQuery = _context.InventoryQueries
             .Select(x => new InventoryQueryModel()
             {
                 Id = x.Id,
                 CurrentCount = x.CurrentCount,
                 ProductId = x.ProductId,
                 UnitPrice = x.UnitPrice,
-                ProductName = String.Empty
+                ProductName = x.ProductQuery.Name
             });
 
         if (searchModel.ProductId != 0)
@@ -98,17 +87,7 @@ public class AdminInventoryQuery : IAdminInventoryQuery
         else
             viewModelsQuery = viewModelsQuery.Where(x => x.CurrentCount <= 0);
 
-        var viewModels = viewModelsQuery.ToList();
 
-
-        for (int i = 0; i < viewModels.Count; i++)
-        {
-            viewModels[i].ProductName = _ShopManagerDbContext.Products
-                                        .Where(x => x.Id == viewModels[i].ProductId)
-                                        .Select(x => x.Name)
-                                        .FirstOrDefault() ?? string.Empty;
-        }
-
-        return viewModels;
+        return viewModelsQuery.ToList();
     }
 }

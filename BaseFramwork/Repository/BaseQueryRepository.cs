@@ -19,7 +19,7 @@ public class BaseQueryRepository<TKeyType, T> : IBaseQueryRepository<TKeyType, T
 
     public T? Get(Expression<Func<T, bool>> expression)
     {
-        return _context.Set<T>().Find(expression);
+        return _context.Set<T>().FirstOrDefault(expression);
     }
 
     public void UpdateEntity(T entity)

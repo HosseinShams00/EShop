@@ -1,7 +1,7 @@
 using BaseFramework.Application.Exceptions;
 using EShopQuery.Contracts.Admin.InventoryManager;
-using InventoryManager.Applicaton.Contracts.InventoryAgg;
-using InventoryManager.Applicaton.Contracts.InventoryAgg.Command;
+using InventoryManager.Applicaton.Contract.InventoryAgg;
+using InventoryManager.Applicaton.Contract.InventoryAgg.Command;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,19 +10,19 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Inventory;
 public class EditModel : PageModel
 {
 
-    private readonly IAdminInventoryQuery _AdminQuery;
-    private readonly IInventoryApplication _Application;
-    [BindProperty] public EditInventoryCommand _Command { get; set; }
+    private readonly IAdminInventoryQuery _adminQuery;
+    private readonly IInventoryApplication _application;
+    [BindProperty] public EditInventoryCommand Command { get; set; }
 
     public EditModel(IAdminInventoryQuery adminQuery, IInventoryApplication application)
     {
-        _AdminQuery = adminQuery;
-        _Application = application;
+        _adminQuery = adminQuery;
+        _application = application;
     }
 
     public void OnGet(long id)
     {
-        _Command = _AdminQuery.GetDetails(id) ?? throw new EntityNotFoundException();
+        Command = _adminQuery.GetDetails(id) ?? throw new EntityNotFoundException();
     }
 
     public IActionResult OnPost()
@@ -30,7 +30,7 @@ public class EditModel : PageModel
         if (ModelState.IsValid == false)
             return Page();
 
-        _Application.Update(_Command);
+        _application.Update(Command);
         return RedirectToPage("./index");
 
     }

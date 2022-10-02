@@ -4,9 +4,9 @@ using EShopQuery.Contracts.Admin.ProductCategory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ServiceHost.Attributes;
-using ShopManagement.Application.Constracts.ProductCategroyAgg;
-using ShopManagement.Application.Constracts.ProductCategroyAgg.Command;
 using BaseFramework.Application.Exceptions;
+using ShopManagement.Application.Contract.ProductCategroyAgg.Command;
+using ShopManagement.Application.Contract.ProductCategroyAgg;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategories;
 

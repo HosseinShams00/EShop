@@ -1,22 +1,22 @@
 ﻿using EShopQuery.Contracts.Admin.Slider;
-using ShopManagement.Application.Constracts.SliderAgg.Command;
-using ShopManagement.Infrastructure.EFCore;
 using BaseFramework.Application.Exceptions;
+using SecondaryDB.Infrastructure.EFCore;
+using ShopManagement.Application.Contract.SliderAgg.Command;
 
 namespace EShopQuery.Query.Admin.Slider;
 
 public class AdminSliderQuery : IAdminSliderQuery
 {
-    private readonly ShopManagerEFCoreDbContext Context;
+    private readonly SecondaryDBEfCoreContext _context;
 
-    public AdminSliderQuery(ShopManagerEFCoreDbContext context)
+    public AdminSliderQuery(SecondaryDBEfCoreContext context)
     {
-        Context = context;
+        _context = context;
     }
 
     public EditSlider GetDetail(long id)
     {
-        var command = Context.Sliders
+        var command = _context.SliderQueries
             .Select(x => new EditSlider()
             {
                 Id = x.Id,
@@ -38,10 +38,10 @@ public class AdminSliderQuery : IAdminSliderQuery
 
     }
 
-    public List<SliderQueryModel> GetViewModelsWith(bool IsRemoved)
+    public List<SliderQueryModel> GetViewModelsWith(bool isRemoved)
     {
-        return Context.Sliders
-            .Where(q => q.IsRemoved == IsRemoved)
+        return _context.SliderQueries
+            .Where(q => q.IsRemoved == isRemoved)
             .Select(x => new SliderQueryModel()
             {
                 Id = x.Id,

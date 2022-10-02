@@ -1,4 +1,4 @@
-﻿using EShopQuery.Contracts.Slider;
+﻿using EShopQuery.Contracts.User.Slider;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceHost.ViewComponents;

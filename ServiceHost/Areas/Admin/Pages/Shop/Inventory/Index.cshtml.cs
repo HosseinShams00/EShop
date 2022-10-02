@@ -6,17 +6,17 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Inventory;
 
 public class IndexModel : PageModel
 {
-    private readonly IAdminInventoryQuery _AdminQuery;
+    private readonly IAdminInventoryQuery _adminQuery;
 
     public IReadOnlyCollection<InventoryQueryModel> ViewModels { get; set; }
 
     public IndexModel(IAdminInventoryQuery adminQuery)
     {
-        _AdminQuery = adminQuery;
+        _adminQuery = adminQuery;
     }
 
     public void OnGet()
     {
-        ViewModels = _AdminQuery.GetViewModels();
+        ViewModels = _adminQuery.GetViewModels();
     }
 }

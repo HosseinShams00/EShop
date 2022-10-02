@@ -1,20 +1,20 @@
-﻿using EShopQuery.Contracts.Slider;
-using ShopManagement.Infrastructure.EFCore;
+﻿using EShopQuery.Contracts.User.Slider;
+using SecondaryDB.Infrastructure.EFCore;
 
 namespace EShopQuery.Query.User;
 
 public class UserSliderQuery : IUserSliderQuery
 {
-    private readonly ShopManagerEFCoreDbContext Context;
+    private readonly SecondaryDBEfCoreContext _context;
 
-    public UserSliderQuery(ShopManagerEFCoreDbContext context)
+    public UserSliderQuery(SecondaryDBEfCoreContext context)
     {
-        Context = context;
+        _context = context;
     }
 
     public List<SliderQueryModel> GetViewModels()
     {
-        return Context.Sliders
+        return _context.SliderQueries
             .Where(q => q.IsRemoved == false)
             .Select(x => new SliderQueryModel()
             {

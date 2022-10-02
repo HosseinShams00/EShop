@@ -4,8 +4,8 @@ using EShopQuery.Contracts.Admin.Slider;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ServiceHost.Attributes;
-using ShopManagement.Application.Constracts.SliderAgg;
-using ShopManagement.Application.Constracts.SliderAgg.Command;
+using ShopManagement.Application.Contract.SliderAgg;
+using ShopManagement.Application.Contract.SliderAgg.Command;
 
 namespace ServiceHost.Areas.Admin.Pages.Shop.Sliders;
 

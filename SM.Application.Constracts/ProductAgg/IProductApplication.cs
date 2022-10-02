@@ -1,6 +1,6 @@
-﻿using ShopManagement.Application.Constracts.ProductAgg.Command;
+﻿using ShopManagement.Application.Contract.ProductAgg.Command;
 
-namespace ShopManagement.Application.Constracts.ProductAgg;
+namespace ShopManagement.Application.Contract.ProductAgg;
 
 public interface IProductApplication
 {

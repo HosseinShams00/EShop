@@ -1,6 +1,6 @@
 ﻿using DiscountManager.Application.Contracts.CustommerDiscountAgg;
 using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg;
-using DiscountManager.Application.CustommerDiscountAgg;
+using DiscountManager.Application.CustomerDiscountAgg;
 using DiscountManager.Application.ProductCustomerDiscountAgg;
 using DiscountManager.Domain.CustomerDiscountAgg;
 using DiscountManager.Domain.ProductCustomerDiscountAgg;

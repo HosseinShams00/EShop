@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ShopManagement.Application.Constracts.ProductAgg.Command;
+namespace ShopManagement.Application.Contract.ProductAgg.Command;
 
 public class CreateProduct
 {

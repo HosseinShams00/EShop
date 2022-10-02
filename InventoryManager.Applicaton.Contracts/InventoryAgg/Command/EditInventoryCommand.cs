@@ -1,6 +1,6 @@
-﻿namespace InventoryManager.Applicaton.Contracts.InventoryAgg.Command;
+﻿namespace InventoryManager.Applicaton.Contract.InventoryAgg.Command;
 
-public class EditInventoryCommand 
+public class EditInventoryCommand
 {
     public long Id { get; set; }
     public int UnitPrice { get; set; }

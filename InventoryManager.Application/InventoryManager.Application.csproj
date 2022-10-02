@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contracts.csproj" />
+    <ProjectReference Include="..\InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contract.csproj" />
     <ProjectReference Include="..\InventoryManager.Domain\InventoryManager.Domain.csproj" />
+    <ProjectReference Include="..\SecondaryDB.Domain\SecondaryDB.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,11 +10,11 @@
     <ProjectReference Include="..\DiscountManager.Application.Contracts\DiscountManager.Application.Contracts.csproj" />
     <ProjectReference Include="..\DiscountManager.Infrastructure.EFCore\DiscountManager.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\InventoryManager.Application\InventoryManager.Application.csproj" />
-    <ProjectReference Include="..\InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contracts.csproj" />
+    <ProjectReference Include="..\InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contract.csproj" />
     <ProjectReference Include="..\InventoryManager.Infrastructure\InventoryManager.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\SecondaryDB.Infrastructure.EFCore\SecondaryDB.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructure.EFCore\ShopManagement.Infrastructure.EFCore.csproj" />
-    <ProjectReference Include="..\SM.Application.Constracts\ShopManagement.Application.Constracts.csproj" />
+    <ProjectReference Include="..\SM.Application.Constracts\ShopManagement.Application.Contract.csproj" />
   </ItemGroup>
 
 </Project>

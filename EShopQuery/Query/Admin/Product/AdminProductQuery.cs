@@ -1,26 +1,22 @@
 ﻿using EShopQuery.Contracts.Admin.Product;
-using ShopManagement.Application.Constracts.ProductAgg.Command;
-using ShopManagement.Infrastructure.EFCore;
-using Microsoft.EntityFrameworkCore;
 using BaseFramework.Application.Exceptions;
-using EShopQuery.Contracts.Admin.InventoryManager;
+using SecondaryDB.Infrastructure.EFCore;
+using ShopManagement.Application.Contract.ProductAgg.Command;
 
 namespace EShopQuery.Query.Admin.Product;
 
 public class AdminProductQuery : IAdminProductQuery
 {
-    private readonly ShopManagerEFCoreDbContext Context;
-    private readonly IAdminInventoryQuery _AdminInventoryQury;
+    private readonly SecondaryDBEfCoreContext _context;
 
-    public AdminProductQuery(ShopManagerEFCoreDbContext context, IAdminInventoryQuery adminInventoryQury)
+    public AdminProductQuery(SecondaryDBEfCoreContext context)
     {
-        Context = context;
-        _AdminInventoryQury = adminInventoryQury;
+        _context = context;
     }
 
     public EditProduct GetDetail(long id)
     {
-        var command = Context.Products
+        var command = _context.ProductQueries
             .Select(x => new EditProduct()
             {
                 Id = x.Id,
@@ -46,7 +42,7 @@ public class AdminProductQuery : IAdminProductQuery
 
     public List<ProductQueryModel> GetViewModels()
     {
-        return Context.Products
+        return _context.ProductQueries
             .Select(x => new ProductQueryModel
             {
                 Id = x.Id,
@@ -54,14 +50,14 @@ public class AdminProductQuery : IAdminProductQuery
                 Name = x.Name,
                 CreationTime = x.CreationTime.ToString(),
                 IsRemoved = x.IsRemoved,
-                InventoryId = _AdminInventoryQury.GetInventoryIdWith(x.Id)
+                InventoryId = x.InventoryQuery.Id
 
             }).ToList();
     }
 
     public List<ProductQueryModel> Search(ProductSearchModel productSearchModel)
     {
-        var query = Context.Products
+        var query = _context.ProductQueries
             .Select(x => new ProductQueryModel
             {
                 Id = x.Id,
@@ -69,8 +65,8 @@ public class AdminProductQuery : IAdminProductQuery
                 Name = x.Name,
                 CreationTime = x.CreationTime.ToString(),
                 IsRemoved = x.IsRemoved,
-                InventoryId = _AdminInventoryQury.GetInventoryIdWith(x.Id)
-            });;
+                InventoryId = x.InventoryQuery.Id
+            });
 
         if (string.IsNullOrWhiteSpace(productSearchModel.Name) == false)
             query = query.Where(x => x.Name.Contains(productSearchModel.Name));
@@ -78,6 +74,6 @@ public class AdminProductQuery : IAdminProductQuery
         if (productSearchModel.IsRemoved == false)
             query = query.Where(q => q.IsRemoved == false);
 
-        return query.OrderByDescending(x => x.Id).AsNoTracking().ToList();
+        return query.OrderByDescending(x => x.Id).ToList();
     }
 }

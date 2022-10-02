@@ -1,4 +1,4 @@
-﻿using InventoryManager.Applicaton.Contracts.InventoryAgg.Command;
+﻿using InventoryManager.Applicaton.Contract.InventoryAgg.Command;
 
 namespace EShopQuery.Contracts.Admin.InventoryManager;
 
@@ -8,5 +8,4 @@ public interface IAdminInventoryQuery
     List<InventoryQueryModel> GetViewModels();
     List<InventoryQueryModel> GetViewModels(InventorySearchModel searchModel);
     List<InventoryOperationQueryModel> GetOperationViewModels(long inventoryId);
-    long GetInventoryIdWith(long productId);
 }

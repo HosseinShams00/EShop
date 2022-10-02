@@ -1,74 +1,98 @@
 ﻿using BaseFramework.Application.Exceptions;
-using ShopManagement.Application.Constracts.ProductPictureAgg;
-using ShopManagement.Application.Constracts.ProductPictureAgg.Command;
+using SecondaryDB.Domain;
 using ShopManagement.Domain.ProductPictureAgg;
-using ShopManagement.Application.Constracts.ProductPictureAgg.Exceptions;
+using ShopManagement.Application.Contract.ProductPictureAgg.Exceptions;
+using BaseFramework.Application;
+using ShopManagement.Application.Contract.ProductPictureAgg.Command;
+using ShopManagement.Application.Contract.ProductPictureAgg;
 
 namespace ShopManagement.Application.ProductPictureAgg;
 
 public class ProductPictureApplication : IProductPictureApplication
 {
-    private readonly IProductPictureRepository ProductPictureRepository;
-    private readonly IProductPictureValidator Validator;
+    private readonly IProductPictureRepository _productPictureRepository;
+    private readonly IProductPictureValidator _validator;
+    private readonly IProductPictureQueryRepository _productPictureQueryRepository;
 
-    public ProductPictureApplication(IProductPictureRepository productPictureRepository, IProductPictureValidator validator)
+    public ProductPictureApplication(IProductPictureRepository productPictureRepository,
+        IProductPictureValidator validator,
+        IProductPictureQueryRepository productPictureQueryRepository)
     {
-        ProductPictureRepository = productPictureRepository;
-        Validator = validator;
+        _productPictureRepository = productPictureRepository;
+        _validator = validator;
+        _productPictureQueryRepository = productPictureQueryRepository;
     }
 
-    public void Create(CreateProductPicture createProductCategory)
+    public void Create(CreateProductPicture createProductPicture)
     {
         try
         {
-            var productPicture = new ProductPicture(createProductCategory.Path, createProductCategory.PictureAlt,
-                createProductCategory.PictureTitle, createProductCategory.ProductId, Validator);
+            var entity = new ProductPicture(createProductPicture.Path, createProductPicture.PictureAlt,
+                createProductPicture.PictureTitle, createProductPicture.ProductId, _validator);
 
-            ProductPictureRepository.Create(productPicture);
+            _productPictureRepository.Create(entity);
+
+            var productPictureQuery = Convertor.Convert<ProductPictureQuery>(entity);
+            _productPictureQueryRepository.Create(productPictureQuery);
         }
         catch (Exception ex)
         {
-
+            throw;
         }
     }
 
     public void Delete(long id)
     {
-        var picture = ProductPictureRepository.GetBy(id);
-        if (picture == null)
+        var entity = _productPictureRepository.GetBy(id);
+        if (entity == null)
             throw new EntityNotFoundException();
 
-        picture.DeActive();
-        ProductPictureRepository.UpdateEntity(picture);
+        entity.DeActive();
+        _productPictureRepository.UpdateEntity(entity);
+
+        var productPictureQuery = _productPictureQueryRepository.Get(x => x.Id == entity.Id);
+        productPictureQuery.IsRemoved = true;
+        _productPictureQueryRepository.UpdateEntity(productPictureQuery);
     }
 
     public void Restore(long id)
     {
-        var picture = ProductPictureRepository.GetBy(id);
-        if (picture == null)
+        var entity = _productPictureRepository.GetBy(id);
+        if (entity == null)
             throw new EntityNotFoundException();
 
-        picture.Active();
-        ProductPictureRepository.UpdateEntity(picture);
+        entity.Active();
+        _productPictureRepository.UpdateEntity(entity);
+
+        var productPictureQuery = _productPictureQueryRepository.Get(x => x.Id == entity.Id);
+        productPictureQuery.IsRemoved = false;
+        _productPictureQueryRepository.UpdateEntity(productPictureQuery);
     }
 
-    public void Update(EditProductPicture editProductCategory)
+    public void Update(EditProductPicture editProductPicture)
     {
         try
         {
-            var picture = ProductPictureRepository.GetBy(editProductCategory.Id);
-            if (picture == null)
+            var entity = _productPictureRepository.GetBy(editProductPicture.Id);
+            if (entity == null)
                 throw new EntityNotFoundException();
 
-            picture.Edit(editProductCategory.Path, editProductCategory.PictureAlt,
-            editProductCategory.PictureTitle, editProductCategory.ProductId, Validator);
+            entity.Edit(editProductPicture.Path, editProductPicture.PictureAlt,
+            editProductPicture.PictureTitle, editProductPicture.ProductId, _validator);
 
-            ProductPictureRepository.UpdateEntity(picture);
+            _productPictureRepository.UpdateEntity(entity);
+
+            var productPictureQuery = _productPictureQueryRepository.Get(x => x.Id == entity.Id);
+            Convertor.Copy(productPictureQuery, entity);
+            _productPictureQueryRepository.UpdateEntity(productPictureQuery);
+
         }
         catch (Exception ex)
         {
             if (ex is Domain.ProductPictureAgg.Exceptions.ProductIdNotExistException)
                 throw new ProductIdNotExistException();
+
+            throw;
         }
     }
 }

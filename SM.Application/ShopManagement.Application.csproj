@@ -8,9 +8,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BaseFramwork\BaseFramework.csproj" />
-    <ProjectReference Include="..\InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contracts.csproj" />
+    <ProjectReference Include="..\InventoryManager.Applicaton.Contracts\InventoryManager.Applicaton.Contract.csproj" />
+    <ProjectReference Include="..\SecondaryDB.Domain\SecondaryDB.Domain.csproj" />
     <ProjectReference Include="..\ShopManagement.Domain\ShopManagement.Domain.csproj" />
-    <ProjectReference Include="..\SM.Application.Constracts\ShopManagement.Application.Constracts.csproj" />
+    <ProjectReference Include="..\SM.Application.Constracts\ShopManagement.Application.Contract.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,28 +6,28 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.CustomerDiscounts;
 
 public class ProductCustomerListModel : PageModel
 {
-    private readonly IAdminProductCustomerDiscountQuery _AdminQuery;
-    private readonly IProductCustomerDiscountApplication _Application;
+    private readonly IAdminProductCustomerDiscountQuery _adminQuery;
+    private readonly IProductCustomerDiscountApplication _application;
 
     public IReadOnlyCollection<ProductCustomerDiscountQueryModel> ViewModels { get; private set; }
-    public long _CustomerDiscountId { get; set; }
+    public long CustomerDiscountId { get; set; }
 
 
     public ProductCustomerListModel(IAdminProductCustomerDiscountQuery adminQuery, IProductCustomerDiscountApplication application)
     {
-        _AdminQuery = adminQuery;
-        _Application = application;
+        _adminQuery = adminQuery;
+        _application = application;
     }
 
     public void OnGet(long customerDiscountId)
     {
-        _CustomerDiscountId = customerDiscountId;
-        ViewModels = _AdminQuery.GetProductsViewModels(customerDiscountId);
+        CustomerDiscountId = customerDiscountId;
+        ViewModels = _adminQuery.GetProductsViewModels(customerDiscountId);
     }
     public void OnGetRemove(long id, long customerDiscountId)
     {
-        _Application.DeleteBy(id);
-        ViewModels = _AdminQuery.GetProductsViewModels(customerDiscountId);
+        _application.DeleteBy(id);
+        ViewModels = _adminQuery.GetProductsViewModels(customerDiscountId);
 
     }
 }

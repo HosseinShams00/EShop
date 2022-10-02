@@ -1,6 +1,6 @@
 ﻿using BaseFramework.Application.Exceptions;
 
-namespace ShopManagement.Application.Constracts.ProductPictureAgg.Exceptions;
+namespace ShopManagement.Application.Contract.ProductPictureAgg.Exceptions;
 
 public class ProductIdNotExistException : ApplicationBaseException
 {
