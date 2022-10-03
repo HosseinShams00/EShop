@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommentManager.Infrastructure.Core\CommentManager.Infrastructure.Core.csproj" />
     <ProjectReference Include="..\DiscountManager.Infrastructure.Core\DiscountManager.Infrastructure.Core.csproj" />
     <ProjectReference Include="..\DocumentManager.Infrastructures\DocumentManager.Infrastructures.csproj" />
     <ProjectReference Include="..\InventoryManager.Infrastructure.Core\InventoryManager.Infrastructure.Core.csproj" />

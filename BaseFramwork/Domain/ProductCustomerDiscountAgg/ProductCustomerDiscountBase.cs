@@ -1,4 +1,4 @@
-﻿namespace BaseFramework.Domain;
+﻿namespace BaseFramework.Domain.ProductCustomerDiscountAgg;
 
 public class ProductCustomerDiscountBase : IProductCustomerDiscountBase
 {

@@ -1,4 +1,4 @@
-﻿using BaseFramework.Domain;
+﻿using BaseFramework.Domain.BaseDomainAgg;
 using ShopManagement.Domain.ProductAgg;
 
 namespace ShopManagement.Domain.ProductPictureAgg;

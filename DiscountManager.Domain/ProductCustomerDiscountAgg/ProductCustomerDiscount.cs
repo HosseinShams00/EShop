@@ -1,4 +1,4 @@
-﻿using BaseFramework.Domain;
+﻿using BaseFramework.Domain.ProductCustomerDiscountAgg;
 using DiscountManager.Domain.CustomerDiscountAgg;
 
 namespace DiscountManager.Domain.ProductCustomerDiscountAgg;
