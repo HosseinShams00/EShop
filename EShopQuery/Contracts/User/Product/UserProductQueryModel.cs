@@ -1,4 +1,6 @@
-﻿namespace EShopQuery.Contracts.User.Product;
+﻿using EShopQuery.Contracts.User.ProductComment;
+
+namespace EShopQuery.Contracts.User.Product;
 
 public class UserProductQueryModel
 {
@@ -12,9 +14,16 @@ public class UserProductQueryModel
     public int? IntPrice { get; set; }
     public string Price { get; set; }
     public string PriceWithDiscount { get; set; }
+    public string Description { get; set; }
+    public string Keywords { get; set; }
+    public string MetaDescription { get; set; }
+    public string ShortDescription { get; set; }
+    public string CategorySlug { get; set; }
     public bool IsInStock { get; set; }
     public bool HasDiscount { get; set; }
     public int? DiscountRate { get; set; }
-    public DateTime? DiscountExpireDate { get; set; }  
+    public DateTime? DiscountExpireDate { get; set; }
+    public List<UserProductCommentQueryModel> UserProductCommentQueryModels { get; set; } = new();
+    public List<UserProductPictureQueryModel> UserProductPictureQueryModels { get; set; } = new();
 
 }

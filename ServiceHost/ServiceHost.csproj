@@ -1923,6 +1923,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Shop\Inventory\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\ProductDetail.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\Search.cshtml" />
   </ItemGroup>
 
@@ -1933,6 +1934,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Pages\Search.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\ProductDetail.cshtml" />
   </ItemGroup>
 
 </Project>
