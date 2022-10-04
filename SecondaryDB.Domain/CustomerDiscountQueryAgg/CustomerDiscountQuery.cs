@@ -1,6 +1,7 @@
 ﻿using DiscountManager.Domain.CustomerDiscountAgg;
+using SecondaryDB.Domain.ProductQueryAgg;
 
-namespace SecondaryDB.Domain;
+namespace SecondaryDB.Domain.CustomerDiscountQueryAgg;
 
 public class CustomerDiscountQuery : ICustomerDiscount
 {

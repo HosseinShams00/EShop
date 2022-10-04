@@ -1,10 +1,10 @@
 ﻿using BaseFramework.Application.Exceptions;
-using SecondaryDB.Domain;
 using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Application.Contract.ProductPictureAgg.Exceptions;
 using BaseFramework.Application;
 using ShopManagement.Application.Contract.ProductPictureAgg.Command;
 using ShopManagement.Application.Contract.ProductPictureAgg;
+using SecondaryDB.Domain.ProductPictureQueryAgg;
 
 namespace ShopManagement.Application.ProductPictureAgg;
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SecondaryDB.Domain;
+using SecondaryDB.Domain.ProductQueryAgg;
 
 namespace SecondaryDB.Infrastructure.EFCore.Mapping;
 
@@ -34,6 +34,10 @@ public class ProductQueryMapping : IEntityTypeConfiguration<ProductQuery>
         builder.HasOne(x => x.CustomerDiscountQuery)
             .WithMany(x => x.ProductQueries)
             .HasForeignKey(x => x.CustomerDiscountId);
+
+        builder.HasMany(x => x.ProductCommentQueries)
+            .WithOne(x => x.ProductQuery)
+            .HasForeignKey(x => x.ProductQueryId);
 
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SecondaryDB.Infrastructure.EFCore;
 
@@ -11,9 +12,10 @@ using SecondaryDB.Infrastructure.EFCore;
 namespace EShopQuery.Migrations
 {
     [DbContext(typeof(SecondaryDBEfCoreContext))]
-    partial class EShopQueryEfCoreContextModelSnapshot : ModelSnapshot
+    [Migration("20221004132244_AddComment")]
+    partial class AddComment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

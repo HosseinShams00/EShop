@@ -1,6 +1,6 @@
 ﻿using InventoryManager.Domain.InventoryOperationAgg;
 
-namespace SecondaryDB.Domain;
+namespace SecondaryDB.Domain.InventoryQueryAgg;
 
 public class InventoryOperationQuery : IInventoryOperation
 {

@@ -1,6 +1,6 @@
 ﻿using BaseFramework.Application;
 using BaseFramework.Application.Exceptions;
-using SecondaryDB.Domain;
+using SecondaryDB.Domain.SliderQueryAgg;
 using ShopManagement.Application.Contract.SliderAgg;
 using ShopManagement.Application.Contract.SliderAgg.Command;
 using ShopManagement.Domain.SliderAgg;

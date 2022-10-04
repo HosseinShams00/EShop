@@ -1,6 +1,6 @@
 ﻿using BaseFramework.Repository;
 
-namespace SecondaryDB.Domain;
+namespace SecondaryDB.Domain.CustomerDiscountQueryAgg;
 
 public interface ICustomerDiscountQueryRepository : IBaseQueryRepository<long, CustomerDiscountQuery>
 {

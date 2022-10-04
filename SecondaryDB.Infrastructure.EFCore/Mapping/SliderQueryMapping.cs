@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SecondaryDB.Domain;
+using SecondaryDB.Domain.SliderQueryAgg;
 
 namespace SecondaryDB.Infrastructure.EFCore.Mapping;
 

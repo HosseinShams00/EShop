@@ -3,10 +3,10 @@ using ShopManagement.Application.Contract.ProductAgg.Exceptions;
 using ShopManagement.Domain.ProductAgg;
 using BaseFramework.Application;
 using InventoryManager.Applicaton.Contract.InventoryAgg.Command;
-using SecondaryDB.Domain;
 using ShopManagement.Application.Contract.ProductAgg.Command;
 using ShopManagement.Application.Contract.ProductAgg;
 using InventoryManager.Applicaton.Contract.InventoryAgg;
+using SecondaryDB.Domain.ProductQueryAgg;
 
 namespace ShopManagement.Application.ProductAgg;
 

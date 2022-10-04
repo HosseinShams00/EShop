@@ -1,6 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using SecondaryDB.Domain;
+using SecondaryDB.Domain.CustomerDiscountQueryAgg;
+using SecondaryDB.Domain.InventoryQueryAgg;
+using SecondaryDB.Domain.ProductCategoryQueryAgg;
+using SecondaryDB.Domain.ProductCommentQueryAgg;
+using SecondaryDB.Domain.ProductPictureQueryAgg;
+using SecondaryDB.Domain.ProductQueryAgg;
+using SecondaryDB.Domain.ReplayCommentQueryAgg;
+using SecondaryDB.Domain.SliderQueryAgg;
 using SecondaryDB.Infrastructure.EFCore;
 using SecondaryDB.Infrastructure.EFCore.Repository;
 
@@ -18,6 +25,8 @@ public class Bootstrapper
         services.AddTransient<ICustomerDiscountQueryRepository, CustomerDiscountQueryRepository>();
         services.AddTransient<IInventoryQueryRepository, InventoryQueryRepository>();
         services.AddTransient<ISliderQueryRepository, SliderQueryRepository>();
+        services.AddTransient<IProductCommentQueryRepository, ProductCommentQueryRepository>();
+        services.AddTransient<IProductReplayCommentQueryRepository, ProductReplayCommentQueryRepository>();
 
     }
 }

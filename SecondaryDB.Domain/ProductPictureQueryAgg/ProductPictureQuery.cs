@@ -1,6 +1,7 @@
-﻿using ShopManagement.Domain.ProductPictureAgg;
+﻿using SecondaryDB.Domain.ProductQueryAgg;
+using ShopManagement.Domain.ProductPictureAgg;
 
-namespace SecondaryDB.Domain;
+namespace SecondaryDB.Domain.ProductPictureQueryAgg;
 
 public class ProductPictureQuery : IProductPicture
 {

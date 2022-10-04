@@ -1,6 +1,7 @@
-﻿using ShopManagement.Domain.ProductCategoryAgg;
+﻿using SecondaryDB.Domain.ProductQueryAgg;
+using ShopManagement.Domain.ProductCategoryAgg;
 
-namespace SecondaryDB.Domain;
+namespace SecondaryDB.Domain.ProductCategoryQueryAgg;
 
 public class ProductCategoryQuery : IProductCategory
 {

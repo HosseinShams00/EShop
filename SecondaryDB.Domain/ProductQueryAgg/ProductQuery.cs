@@ -1,6 +1,11 @@
-﻿using ShopManagement.Domain.ProductAgg;
+﻿using SecondaryDB.Domain.CustomerDiscountQueryAgg;
+using SecondaryDB.Domain.InventoryQueryAgg;
+using SecondaryDB.Domain.ProductCategoryQueryAgg;
+using SecondaryDB.Domain.ProductCommentQueryAgg;
+using SecondaryDB.Domain.ProductPictureQueryAgg;
+using ShopManagement.Domain.ProductAgg;
 
-namespace SecondaryDB.Domain;
+namespace SecondaryDB.Domain.ProductQueryAgg;
 
 public class ProductQuery : IProduct
 {
@@ -23,5 +28,6 @@ public class ProductQuery : IProduct
     public InventoryQuery? InventoryQuery { get; set; }
     public CustomerDiscountQuery? CustomerDiscountQuery { get; set; }
     public List<ProductPictureQuery> ProductPictureQueries { get; set; } = new();
+    public List<ProductCommentQuery> ProductCommentQueries { get; set; } = new();
 
 }

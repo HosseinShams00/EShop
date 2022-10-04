@@ -5,7 +5,7 @@ using InventoryManager.Applicaton.Contract.InventoryAgg.Command;
 using InventoryManager.Applicaton.Contract.InventoryOperationAgg.Command;
 using InventoryManager.Domain.InventoryAgg;
 using InventoryManager.Domain.InventoryOperationAgg;
-using SecondaryDB.Domain;
+using SecondaryDB.Domain.InventoryQueryAgg;
 
 namespace InventoryManager.Application;
 

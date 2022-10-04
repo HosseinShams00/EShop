@@ -1,6 +1,7 @@
 ﻿using InventoryManager.Domain.InventoryAgg;
+using SecondaryDB.Domain.ProductQueryAgg;
 
-namespace SecondaryDB.Domain;
+namespace SecondaryDB.Domain.InventoryQueryAgg;
 
 public class InventoryQuery : IInventory
 {

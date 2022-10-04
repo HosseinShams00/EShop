@@ -1,6 +1,6 @@
 ﻿using BaseFramework.Repository;
 
-namespace SecondaryDB.Domain;
+namespace SecondaryDB.Domain.SliderQueryAgg;
 
 public interface ISliderQueryRepository : IBaseQueryRepository<long, SliderQuery>
 {

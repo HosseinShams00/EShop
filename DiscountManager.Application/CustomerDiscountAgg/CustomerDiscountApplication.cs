@@ -4,7 +4,7 @@ using DiscountManager.Application.Contracts.CustommerDiscountAgg;
 using DiscountManager.Application.Contracts.CustommerDiscountAgg.Command;
 using DiscountManager.Application.Contracts.CustommerDiscountAgg.Exceptions;
 using DiscountManager.Domain.CustomerDiscountAgg;
-using SecondaryDB.Domain;
+using SecondaryDB.Domain.CustomerDiscountQueryAgg;
 using ShopManagement.Domain.ProductAgg;
 
 namespace DiscountManager.Application.CustomerDiscountAgg;

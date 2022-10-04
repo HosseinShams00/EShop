@@ -1,5 +1,5 @@
 ﻿using BaseFramework.Repository;
-using SecondaryDB.Domain;
+using SecondaryDB.Domain.ProductQueryAgg;
 
 namespace SecondaryDB.Infrastructure.EFCore.Repository;
 

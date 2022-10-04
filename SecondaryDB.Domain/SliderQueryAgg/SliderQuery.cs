@@ -1,6 +1,6 @@
 ﻿using ShopManagement.Domain.SliderAgg;
 
-namespace SecondaryDB.Domain;
+namespace SecondaryDB.Domain.SliderQueryAgg;
 
 public class SliderQuery : ISlider
 {

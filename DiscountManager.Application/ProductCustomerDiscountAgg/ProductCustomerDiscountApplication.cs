@@ -3,7 +3,7 @@ using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg;
 using DiscountManager.Application.Contracts.ProductCustomerDiscountAgg.Command;
 using DiscountManager.Domain.CustomerDiscountAgg;
 using DiscountManager.Domain.ProductCustomerDiscountAgg;
-using SecondaryDB.Domain;
+using SecondaryDB.Domain.ProductQueryAgg;
 
 namespace DiscountManager.Application.ProductCustomerDiscountAgg;
 

@@ -1,5 +1,5 @@
 ﻿using BaseFramework.Repository;
-using SecondaryDB.Domain;
+using SecondaryDB.Domain.ProductPictureQueryAgg;
 
 namespace SecondaryDB.Infrastructure.EFCore.Repository;
 public class ProductPictureQueryRepository : BaseQueryRepository<long, ProductPictureQuery>, IProductPictureQueryRepository

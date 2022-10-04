@@ -1,10 +1,10 @@
 ﻿using BaseFramework.Application;
 using BaseFramework.Application.Exceptions;
-using SecondaryDB.Domain;
 using ShopManagement.Application.Contract.ProductCategroyAgg.Exceptions;
 using ShopManagement.Application.Contract.ProductCategroyAgg;
 using ShopManagement.Application.Contract.ProductCategroyAgg.Command;
 using ShopManagement.Domain.ProductCategoryAgg;
+using SecondaryDB.Domain.ProductCategoryQueryAgg;
 
 namespace ShopManagement.Application.ProductCategoryAgg;
 

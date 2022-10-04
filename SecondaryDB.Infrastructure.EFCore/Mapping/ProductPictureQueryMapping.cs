@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SecondaryDB.Domain;
+using SecondaryDB.Domain.ProductPictureQueryAgg;
 
 namespace SecondaryDB.Infrastructure.EFCore.Mapping;
 
