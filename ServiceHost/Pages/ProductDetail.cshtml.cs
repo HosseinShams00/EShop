@@ -37,13 +37,12 @@ public class ProductDetailModel : PageModel
         return Page();
     }
 
-    public void OnPostComment()
+    public IActionResult OnPostComment()
     {
-        if (CreateProductCommentCommand == null)
-            return;
+        if (CreateProductCommentCommand != null)
+            _productCommentApplication.Create(CreateProductCommentCommand);
 
-        _productCommentApplication.Create(CreateProductCommentCommand);
-
+        return RedirectToPage("ProductDetail", new { id = CreateProductCommentCommand?.ProductId });
     }
 
     //public void OnPostReplayComment()

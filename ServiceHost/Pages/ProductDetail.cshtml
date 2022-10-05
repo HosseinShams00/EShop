@@ -301,7 +301,7 @@
                                                                     <label for="your-review">نظر شما:</label>
                                                                     <textarea asp-for="CreateProductCommentCommand.Message" placeholder="نظر خود را بنویسید ..."></textarea>
                                                                 </div>
-                                                                <input type="hidden" asp-for="CreateProductCommentCommand.ProductId" value="0" />
+                                                                <input type="hidden" asp-for="CreateProductCommentCommand.UserId" value="0" />
                                                                 <input type="hidden" asp-for="CreateProductCommentCommand.ProductId" value="@Model.ViewModel.Id" />
                                                                 <div class="col-12">
                                                                     <input value="ارسال" type="submit">

@@ -8,6 +8,7 @@ public class ProductCommentMapping : IEntityTypeConfiguration<ProductCommentQuer
 {
     public void Configure(EntityTypeBuilder<ProductCommentQuery> builder)
     {
+        builder.Property(x => x.Id).ValueGeneratedNever();
         builder.Property(x => x.Message).HasMaxLength(250).IsRequired();
         builder.Property(x => x.UserId).IsRequired();
 

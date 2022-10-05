@@ -182,10 +182,7 @@ namespace EShopQuery.Migrations
             modelBuilder.Entity("SecondaryDB.Domain.ProductCommentQueryAgg.ProductCommentQuery", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
                     b.Property<long?>("AdminId")
                         .HasColumnType("bigint");
@@ -325,10 +322,7 @@ namespace EShopQuery.Migrations
             modelBuilder.Entity("SecondaryDB.Domain.ReplayCommentQueryAgg.ProductReplayCommentQuery", b =>
                 {
                     b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
                     b.Property<long?>("AdminId")
                         .HasColumnType("bigint");

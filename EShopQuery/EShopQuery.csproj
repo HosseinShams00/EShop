@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommentManager.Application.Contract\CommentManager.Application.Contract.csproj" />
     <ProjectReference Include="..\DiscountManager.Application.Contracts\DiscountManager.Application.Contracts.csproj" />
     <ProjectReference Include="..\DiscountManager.Infrastructure.EFCore\DiscountManager.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\InventoryManager.Application\InventoryManager.Application.csproj" />

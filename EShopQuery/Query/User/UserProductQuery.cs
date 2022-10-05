@@ -89,7 +89,7 @@ public class UserProductQuery : IUserProductQuery
                     .Select(z => new UserProductCommentQueryModel()
                     {
                         Id = z.Id,
-                        ConfirmedDateTime = z.ConfirmedDateTime.GetValueOrDefault(),
+                        ConfirmedDateTime = z.ConfirmedDateTime,
                         Message = z.Message,
                         UserName = "Test Comment",
                         UserProductReplayCommentQueryModels = z.ProductReplayCommentQueries
@@ -99,7 +99,7 @@ public class UserProductQuery : IUserProductQuery
                             {
                                 Message = y.Message,
                                 UserName = "Test Replay",
-                                ConfirmedDateTime = y.ConfirmedDateTime.GetValueOrDefault()
+                                ConfirmedDateTime = y.ConfirmedDateTime
                             })
                             .ToList()
                     })
