@@ -8,6 +8,8 @@ public class ProductReplayCommentMapping : IEntityTypeConfiguration<ProductRepla
 {
     public void Configure(EntityTypeBuilder<ProductReplayCommentQuery> builder)
     {
+        builder.Property(x => x.Id).ValueGeneratedNever();
+
         builder.Property(x => x.Message).HasMaxLength(250).IsRequired();
         builder.Property(x => x.UserId).IsRequired();
         builder.Property(x => x.CommentId).IsRequired();

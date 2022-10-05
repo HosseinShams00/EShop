@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CommentManager.Application.Contract\CommentManager.Application.Contract.csproj" />
     <ProjectReference Include="..\CommentManager.Domain\CommentManager.Domain.csproj" />
+    <ProjectReference Include="..\SecondaryDB.Domain\SecondaryDB.Domain.csproj" />
   </ItemGroup>
 
 </Project>

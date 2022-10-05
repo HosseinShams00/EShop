@@ -13,8 +13,7 @@ namespace EShopQuery.Migrations
                 name: "ProductCommentQueries",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<long>(type: "bigint", nullable: false),
                     Message = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     IsConfirmed = table.Column<bool>(type: "bit", nullable: true),
                     UserId = table.Column<long>(type: "bigint", nullable: false),
@@ -38,8 +37,7 @@ namespace EShopQuery.Migrations
                 name: "ProductReplayCommentQueries",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<long>(type: "bigint", nullable: false),
                     CommentId = table.Column<long>(type: "bigint", nullable: false),
                     Message = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     IsConfirmed = table.Column<bool>(type: "bit", nullable: true),

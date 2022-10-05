@@ -1,0 +1,94 @@
+﻿@page
+@model ServiceHost.Areas.Admin.Pages.Shop.ProductComment.IndexModel
+@{
+}
+
+@*<div class="row">
+    <form class="col-10" asp-page="./index" method="get">
+        <div class="col-3 mx-3 d-inline-block" style="">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                <div class="input-group">
+                    <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                    <input asp-for="SearchModel.Name" type="text" class="form-control" placeholder="نام کتگوری را بنویسید">
+                </div>
+            </div>
+        </div>
+        <div class="col-3 mx-3 border-0 d-inline-block">
+            <div class="form-check form-switch p-0">
+                <label class="form-check-label text-body text-truncate mb-0" for="flexSwitchCheckDefault">نشان دادن حذف شده ها</label>
+                <input class="form-check-input ms-auto" asp-for="SearchModel.IsRemoved" type="checkbox" id="flexSwitchCheckDefault">
+            </div>
+        </div>
+        <button class="col-3 mx-3 btn bg-gradient-info d-inline-block" type="submit">جستجو</button>
+    </form>
+    <a class="col-2" asp-page="./Create">
+        <button type="button" class="btn bg-gradient-success">ساخت کتگوری جدید</button>
+    </a>
+</div>*@
+<div class="card my-5">
+
+    <table class="table align-items-center mb-0">
+        <thead>
+            <tr>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder">#</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">نام محصول</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">تاریخ انتشار</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">وضعیت</th>
+                <th class="align-middle text-center text-secondary text-s font-weight-bolder ps-2">متن کامنت</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ViewModels)
+            {
+                <tr>
+                    <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">@item.Id</p>
+                    </td>
+
+                    <td class="align-middle text-center">
+
+                        <h6 class="mb-0 text-xs">@item.ProductName</h6>
+
+                    </td>
+                    <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">@item.CreationDateTime</p>
+                    </td>
+                    <td class="align-middle text-center">
+                        @if (item.IsConfirmed == null)
+                        {
+                            <span class="badge bg-gradient-warning">در صف انتظار</span>
+                        }
+                        else if (item.IsConfirmed.Value == true)
+                        {
+                            <span class="badge bg-gradient-success">فعال</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-gradient-dark">غیر فعال</span>
+                        }
+                    </td>
+                    <td class="align-middle text-center">
+                        <p class="text-xs font-weight-bold mb-0">@item.Message</p>
+                    </td>
+                    <td class="align-middle d-flex align-items-center text-center">
+
+                        <div class="dropdown">
+                            <button type="button" class="btn bg-gradient-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            </button>
+                            <ul class="dropdown-menu text-center" data-popper-placement="bottom-start" aria-labelledby="dropdownTable">
+                                <li class="FontSize15"><a class="dropdown-item" asp-page="./index" asp-page-handler="ConfirmComment" asp-route-id="@item.Id"><i class="bx bx-comment-check"></i>  تایید</a></li>
+                                <li class="FontSize15"><a class="dropdown-item" asp-page="./index" asp-page-handler="DenyComment" asp-route-id="@item.Id"><i class="bx bxs-comment-x text-danger"></i>  رد کردن</a></li>
+
+                            </ul>
+                        </div>
+
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
