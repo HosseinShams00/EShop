@@ -1,7 +1,7 @@
 using BaseFramework.Application.Exceptions;
 using EShopQuery.Contracts.Admin.InventoryManager;
-using InventoryManager.Applicaton.Contract.InventoryAgg;
-using InventoryManager.Applicaton.Contract.InventoryAgg.Command;
+using InventoryManager.Application.Contract.InventoryAgg;
+using InventoryManager.Application.Contract.InventoryAgg.Command;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

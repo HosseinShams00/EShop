@@ -1,4 +1,4 @@
-﻿using InventoryManager.Applicaton.Contract.InventoryAgg.Command;
+﻿using InventoryManager.Application.Contract.InventoryAgg.Command;
 
 namespace EShopQuery.Contracts.Admin.InventoryManager;
 

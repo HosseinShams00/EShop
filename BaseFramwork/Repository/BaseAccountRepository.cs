@@ -1,13 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace BaseFramework.Repository;
 
-public class BaseRepository<TKeyType, T> : IBaseRepository<TKeyType, T> where T : class
+public class BaseAccountRepository<TKeyType, T> : IBaseAccountRepository<TKeyType, T> where T : class
 {
     private readonly DbContext _context;
 
-    public BaseRepository(DbContext context)
+    public BaseAccountRepository(DbContext context)
     {
         _context = context;
     }
@@ -27,12 +27,7 @@ public class BaseRepository<TKeyType, T> : IBaseRepository<TKeyType, T> where T 
     {
         return _context.Set<T>().Find(id);
     }
-
-    public List<T> GetList()
-    {
-        return _context.Set<T>().AsNoTracking().ToList();
-    }
-
+    
     public void UpdateEntity(T entity)
     {
         _context.SaveChanges();

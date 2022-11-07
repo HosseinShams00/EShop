@@ -1,5 +1,5 @@
 ﻿using EShopQuery.Contracts.Admin.InventoryManager;
-using InventoryManager.Applicaton.Contract.InventoryAgg.Command;
+using InventoryManager.Application.Contract.InventoryAgg.Command;
 using SecondaryDB.Infrastructure.EFCore;
 
 namespace EShopQuery.Query.Admin.InventoryManager;

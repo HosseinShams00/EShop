@@ -1,5 +1,5 @@
-using InventoryManager.Applicaton.Contract.InventoryAgg;
-using InventoryManager.Applicaton.Contract.InventoryOperationAgg.Command;
+using InventoryManager.Application.Contract.InventoryAgg;
+using InventoryManager.Application.Contract.InventoryOperationAgg.Command;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

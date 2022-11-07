@@ -1,7 +1,7 @@
-﻿using InventoryManager.Applicaton.Contract.InventoryAgg.Command;
-using InventoryManager.Applicaton.Contract.InventoryOperationAgg.Command;
+﻿using InventoryManager.Application.Contract.InventoryAgg.Command;
+using InventoryManager.Application.Contract.InventoryOperationAgg.Command;
 
-namespace InventoryManager.Applicaton.Contract.InventoryAgg;
+namespace InventoryManager.Application.Contract.InventoryAgg;
 
 public interface IInventoryApplication
 {

@@ -1,8 +1,8 @@
 ﻿using BaseFramework.Application;
 using BaseFramework.Application.Exceptions;
-using InventoryManager.Applicaton.Contract.InventoryAgg;
-using InventoryManager.Applicaton.Contract.InventoryAgg.Command;
-using InventoryManager.Applicaton.Contract.InventoryOperationAgg.Command;
+using InventoryManager.Application.Contract.InventoryAgg;
+using InventoryManager.Application.Contract.InventoryAgg.Command;
+using InventoryManager.Application.Contract.InventoryOperationAgg.Command;
 using InventoryManager.Domain.InventoryAgg;
 using InventoryManager.Domain.InventoryOperationAgg;
 using SecondaryDB.Domain.InventoryQueryAgg;
