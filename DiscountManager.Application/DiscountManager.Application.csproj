@@ -1,15 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\DiscountManager.Application.Contracts\DiscountManager.Application.Contracts.csproj" />
     <ProjectReference Include="..\DiscountManager.Domain\DiscountManager.Domain.csproj" />
     <ProjectReference Include="..\SecondaryDB.Domain\SecondaryDB.Domain.csproj" />
   </ItemGroup>
-
 </Project>

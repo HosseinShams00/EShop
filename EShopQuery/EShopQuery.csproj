@@ -1,11 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\CommentManager.Application.Contract\CommentManager.Application.Contract.csproj" />
     <ProjectReference Include="..\DiscountManager.Application.Contracts\DiscountManager.Application.Contracts.csproj" />
@@ -17,5 +15,4 @@
     <ProjectReference Include="..\ShopManagement.Infrastructure.EFCore\ShopManagement.Infrastructure.EFCore.csproj" />
     <ProjectReference Include="..\SM.Application.Constracts\ShopManagement.Application.Contract.csproj" />
   </ItemGroup>
-
 </Project>

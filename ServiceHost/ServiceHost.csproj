@@ -1,19 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\CommentManager.Infrastructure.Core\CommentManager.Infrastructure.Core.csproj" />
     <ProjectReference Include="..\DiscountManager.Infrastructure.Core\DiscountManager.Infrastructure.Core.csproj" />
@@ -22,7 +19,6 @@
     <ProjectReference Include="..\SecondaryDB.Infrastructure.Core\SecondaryDB.Infrastructure.Core.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructure.Core\ShopManagement.Infrastructure.Core.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <None Include="wwwroot\AdminTheme\assets\css\soft-ui-dashboard.css.map" />
     <None Include="wwwroot\AdminTheme\assets\fonts\nucleo-icons.svg" />
@@ -1905,7 +1901,6 @@
     <None Include="wwwroot\Theme\assets\js\plugins.js" />
     <None Include="wwwroot\Theme\assets\js\vendors.js" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Update="Areas\Admin\Pages\Shop\ProductPictures\Edit.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -1916,28 +1911,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
-
   <ItemGroup>
     <UpToDateCheckInput Remove="Areas\Admin\Pages\Shop\Inventory\Index.cshtml" />
   </ItemGroup>
-
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Admin\Pages\Shop\Inventory\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\ProductDetail.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\Search.cshtml" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Pages\Shared\Components\LastProducts\" />
     <Folder Include="wwwroot\Pictures\" />
   </ItemGroup>
-
   <ItemGroup>
     <UpToDateCheckInput Remove="Pages\Search.cshtml" />
   </ItemGroup>
-
   <ItemGroup>
     <UpToDateCheckInput Remove="Pages\ProductDetail.cshtml" />
   </ItemGroup>
-
 </Project>
